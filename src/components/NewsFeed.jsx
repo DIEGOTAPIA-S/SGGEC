@@ -1,0 +1,206 @@
+import { useState, useEffect } from 'react';
+
+const NewsFeed = ({ isOpen, onClose, onCrisisDetected }) => {
+    const [news, setNews] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [activeTab, setActiveTab] = useState('emergencia');
+    const [isExpanded, setIsExpanded] = useState(false);
+
+
+    const topics = {
+        emergencia: { label: '🚨 Emergencia', query: 'Bogotá (emergencia OR evacuación OR explosión OR "fuga de gas" OR incendio OR colapso)' },
+        crisis: { label: '🤝 Factores Sociales', query: 'Colombia (protesta OR paro OR vandalismo OR violencia OR huelga OR disturbios OR "orden público" OR atentado OR "conflicto social")' },
+        desacres: { label: '🌍 Factores Físicos/Ambientales', query: 'Colombia (sismo OR terremoto OR inundación OR derrumbe OR deslizamiento OR vendaval OR erupción OR sequía OR "ola de calor")' },
+        servicios: { label: '🔌 Servicios Públicos', query: 'Colombia ("corte de agua" OR apagón OR "corte de luz" OR racionamiento OR "falla eléctrica" OR acueducto OR alcantarillado OR "gas domiciliario" OR "servicios públicos" OR EPM OR Codensa OR "Gas Natural Fenosa" OR "Gases del Caribe" OR "Aguas de Bogotá" OR EAAB OR Emcali OR "interrupción del servicio")' },
+        continuidad: { label: '💻 Noticias IT', query: 'Colombia (ciberataque OR hackeo OR ransomware OR "falla de sistema" OR "caída de red" OR "brecha de seguridad" OR "ataque informático" OR phishing OR malware OR "interrupción tecnológica")' },
+        movilidad: { label: '🚦 Movilidad', query: 'Bogotá (movilidad OR "cierre via" OR accidente OR transmilenio OR bloqueo)' }
+    };
+
+
+    useEffect(() => {
+        if (isOpen) {
+            fetchNews(topics[activeTab].query);
+        }
+    }, [isOpen, activeTab]);
+
+    const fetchNews = async (query) => {
+        setLoading(true);
+        setError(false);
+        try {
+            const targetUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=es-419&gl=CO&ceid=CO:es-419`;
+            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 8000);
+            const response = await fetch(proxyUrl, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            const json = await response.json();
+            
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(json.contents, "text/xml");
+            const items = xmlDoc.getElementsByTagName("item");
+            
+            const parsedNews = Array.from(items).map(item => {
+                const rawTitle = item.getElementsByTagName("title")[0]?.textContent || '';
+                const parts = rawTitle.split(' - ');
+                const title = parts.slice(0, -1).join(' - ') || rawTitle;
+                const source = parts[parts.length - 1] || item.getElementsByTagName("source")[0]?.textContent || 'Google News';
+                
+                const rawDesc = item.getElementsByTagName("description")[0]?.textContent || '';
+                const summary = rawDesc.replace(/<[^>]*>?/gm, '');
+
+                return {
+                    title,
+                    link: item.getElementsByTagName("link")[0]?.textContent || '',
+                    summary: summary.length > 200 ? summary.substring(0, 200) + '...' : summary,
+                    source,
+                    published: item.getElementsByTagName("pubDate")[0]?.textContent || new Date().toISOString()
+                };
+            });
+            
+            if (parsedNews.length === 0) {
+                setError(true);
+            }
+            setNews(parsedNews.slice(0, 10));
+        } catch (err) {
+            console.error("Error fetching news:", err);
+            setNews([]);
+            setError(true);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    if (!isOpen) return null;
+
+    // Calcular tiempo relativo (ej. "hace 2 horas")
+    const getRelativeTime = (dateString) => {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffInSeconds = Math.floor((now - date) / 1000);
+
+        if (isNaN(diffInSeconds)) return dateString; // Fallback si no parsea bien
+
+        if (diffInSeconds < 60) return 'hace momentos';
+        if (diffInSeconds < 3600) return `hace ${Math.floor(diffInSeconds / 60)} min`;
+        if (diffInSeconds < 86400) return `hace ${Math.floor(diffInSeconds / 3600)} h`;
+        return `hace ${Math.floor(diffInSeconds / 86400)} d`;
+    };
+
+    return (
+        <div style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            width: isExpanded ? '800px' : '400px', // Dynamic width
+            maxWidth: '100vw',
+            background: 'white',
+            boxShadow: '-2px 0 10px rgba(0,0,0,0.1)',
+            zIndex: 5000,
+            display: 'flex',
+            flexDirection: 'column',
+            transition: 'width 0.3s ease-in-out, transform 0.3s ease-in-out',
+            transform: isOpen ? 'translateX(0)' : 'translateX(100%)'
+        }}>
+            {/* Header */}
+            <div style={{ padding: '20px', background: '#1e293b', color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <h2 style={{ margin: 0, fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        📰 Sala de Noticias
+                    </h2>
+                    {/* Expand Toggle Button */}
+                    <button
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        title={isExpanded ? "Contraer" : "Expandir"}
+                        style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', cursor: 'pointer', borderRadius: '4px', padding: '4px 8px' }}
+                    >
+                        {isExpanded ? '⇥⇤' : '⇤⇥'}
+                    </button>
+                </div>
+                <button
+                    onClick={onClose}
+                    title="Cerrar Noticias"
+                    style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', fontSize: '1.5rem', cursor: 'pointer', width: '32px', height: '32px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
+                    &times;
+                </button>
+            </div>
+
+            {/* Tabs */}
+            <div style={{ display: 'flex', borderBottom: '1px solid #e2e8f0' }}>
+                {Object.entries(topics).map(([key, { label }]) => (
+                    <button
+                        key={key}
+                        onClick={() => setActiveTab(key)}
+                        style={{
+                            flex: 1,
+                            padding: '12px',
+                            background: activeTab === key ? 'white' : '#f8fafc',
+                            border: 'none',
+                            borderBottom: activeTab === key ? '2px solid #2563eb' : 'none',
+                            color: activeTab === key ? '#2563eb' : '#64748b',
+                            fontWeight: activeTab === key ? 'bold' : 'normal',
+                            cursor: 'pointer',
+                            fontSize: '0.9rem'
+                        }}
+                    >
+                        {label}
+                    </button>
+                ))}
+            </div>
+
+            {/* List */}
+            <div style={{ flex: 1, overflowY: 'auto', padding: '15px', background: '#f1f5f9' }}>
+                {loading ? (
+                    <div style={{ textAlign: 'center', padding: '20px', color: '#64748b' }}>Cargando noticias... ⏳</div>
+                ) : error ? (
+                    <div style={{ textAlign: 'center', padding: '40px 20px' }}>
+                        <div style={{ fontSize: '3rem', marginBottom: '15px' }}>📡</div>
+                        <h4 style={{ color: '#475569', margin: '0 0 10px' }}>Sin conexión al servicio de noticias</h4>
+                        <p style={{ color: '#94a3b8', fontSize: '0.85rem', lineHeight: '1.5', margin: '0 0 20px' }}>
+                            Esta función requiere conexión a internet para consultar Google News en tiempo real.
+                            Si estás en modo offline o la red corporativa bloquea el acceso, las noticias no estarán disponibles.
+                        </p>
+                        <button
+                            onClick={() => fetchNews(topics[activeTab].query)}
+                            style={{ background: '#3b82f6', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '8px', cursor: 'pointer', fontWeight: 600 }}
+                        >
+                            🔄 Reintentar
+                        </button>
+                    </div>
+                ) : (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                        {news.map((item, index) => (
+                            <div key={index} style={{ background: 'white', padding: '15px', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', borderLeft: '4px solid #3b82f6' }}>
+                                <a href={item.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <h4 style={{ margin: '0 0 8px 0', color: '#1e293b', fontSize: '1rem', lineHeight: '1.4' }}>{item.title}</h4>
+                                    {item.summary && (
+                                        <p style={{ fontSize: '0.85rem', color: '#475569', margin: '0 0 10px 0', lineHeight: '1.5', display: '-webkit-box', WebkitLineClamp: isExpanded ? 4 : 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                                            {item.summary}
+                                        </p>
+                                    )}
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', color: '#64748b' }}>
+                                        <span style={{ fontWeight: '500', color: '#475569' }}>{item.source}</span>
+                                        <span>{getRelativeTime(item.published)}</span>
+                                    </div>
+                                </a>
+                            </div>
+                        ))}
+                        {news.length === 0 && (
+                            <div style={{ textAlign: 'center', padding: '20px', color: '#94a3b8' }}>
+                                No se encontraron noticias recientes para este tema.
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+
+            <div style={{ padding: '10px', textAlign: 'center', fontSize: '0.7rem', color: '#cbd5e1', background: '#1e293b' }}>
+                Fuente: Google News RSS
+            </div>
+        </div>
+    );
+};
+
+export default NewsFeed;

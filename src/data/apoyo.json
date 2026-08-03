@@ -1,0 +1,4032 @@
+[
+  {
+    "id": 194,
+    "nombre": "B- 1 ESTACION CHAPINERO",
+    "tipo": "fire_station",
+    "direccion": "CL 62 9A 19",
+    "telefono": "2175300",
+    "latitud": 4.6479918,
+    "longitud": -74.0625376,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 195,
+    "nombre": "B- 2 ESTACION CENTRAL",
+    "tipo": "fire_station",
+    "direccion": "CL 11 20A 10",
+    "telefono": "3602845",
+    "latitud": 4.6068033,
+    "longitud": -74.0878436,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 196,
+    "nombre": "B- 3 ESTACION SUR",
+    "tipo": "fire_station",
+    "direccion": "AK 27 19A 20 SUR",
+    "telefono": "2727721 - 2727701",
+    "latitud": 4.5895133,
+    "longitud": -74.1081498,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 197,
+    "nombre": "B- 4 ESTACION PUENTE ARANDA",
+    "tipo": "fire_station",
+    "direccion": "CL 20 68A 06",
+    "telefono": "2600106 - 2066687",
+    "latitud": 4.6456225,
+    "longitud": -74.1128582,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 209,
+    "nombre": "B- 5 ESTACION KENNEDY",
+    "tipo": "fire_station",
+    "direccion": "KR 79 41D 20 SUR",
+    "telefono": "2648343 - 2648232",
+    "latitud": 4.6202433,
+    "longitud": -74.1601705,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 198,
+    "nombre": "B- 6 ESTACION FONTIBON",
+    "tipo": "fire_station",
+    "direccion": "CL 22 95 20 - CL 22 95 64",
+    "telefono": "2676810 - 2676046",
+    "latitud": 4.6696064,
+    "longitud": -74.1429779,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 199,
+    "nombre": "B- 7 ESTACION FERIAS",
+    "tipo": "fire_station",
+    "direccion": "KR 69J 72 61",
+    "telefono": "2508878 - 2506572",
+    "latitud": 4.6833518,
+    "longitud": -74.0899124,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 208,
+    "nombre": "B- 8 ESTACION BOSA",
+    "tipo": "fire_station",
+    "direccion": "CL 63 SUR 80K 15",
+    "telefono": "7767991 - 7767361 - 7768904",
+    "latitud": 4.6109298,
+    "longitud": -74.1860495,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 200,
+    "nombre": "B- 9 ESTACION BELLAVISTA",
+    "tipo": "fire_station",
+    "direccion": "CL 37 SUR 9A 20",
+    "telefono": "2076167 - 2076143",
+    "latitud": 4.551731,
+    "longitud": -74.0869359,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 201,
+    "nombre": "B-10 ESTACION MARICHUELA",
+    "tipo": "fire_station",
+    "direccion": "KR 1A 76A BIS 09 SUR MJ",
+    "telefono": "2002342 - 2001509",
+    "latitud": 4.5120084,
+    "longitud": -74.1169911,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 202,
+    "nombre": "B-11 ESTACION CANDELARIA",
+    "tipo": "fire_station",
+    "direccion": "CL 62 SUR 22B 85",
+    "telefono": "7151464 - 7151613",
+    "latitud": 4.5676876,
+    "longitud": -74.1454397,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 203,
+    "nombre": "B-12 ESTACION SUBA",
+    "tipo": "fire_station",
+    "direccion": "KR 92 146C 49",
+    "telefono": "6804141 - 6857486",
+    "latitud": 4.741198,
+    "longitud": -74.085227,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 204,
+    "nombre": "B-13 ESTACION CAOBOS SALAZAR",
+    "tipo": "fire_station",
+    "direccion": "AK 15 145 50",
+    "telefono": "6143290 - 2164078",
+    "latitud": 4.7275409,
+    "longitud": -74.040711,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 210,
+    "nombre": "B-14 ESTACION BICENTARIO",
+    "tipo": "fire_station",
+    "direccion": "KR 55A 167 51",
+    "telefono": "4838153",
+    "latitud": 4.7499616,
+    "longitud": -74.0567466,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 205,
+    "nombre": "B-15 ESTACION GARCES NAVAS",
+    "tipo": "fire_station",
+    "direccion": "KR 110 77 24 MJ 1",
+    "telefono": "2272658 - 2273140",
+    "latitud": 4.7141205,
+    "longitud": -74.1207481,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 206,
+    "nombre": "B-16 ESTACION VENECIA",
+    "tipo": "fire_station",
+    "direccion": "DG 49A SUR 49 61",
+    "telefono": "2048209",
+    "latitud": 4.5912891,
+    "longitud": -74.1358705,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 207,
+    "nombre": "B-17 ESTACION CENTRO HISTORICO",
+    "tipo": "fire_station",
+    "direccion": "CL 9 3 12 ESTE",
+    "telefono": "2861305 - 2861288",
+    "latitud": 4.5922408,
+    "longitud": -74.0699449,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 317,
+    "nombre": "Administradora Clínica La Colina S.A.S.",
+    "tipo": "hospital",
+    "direccion": "Kr 72 167   42",
+    "telefono": "4897000  Ext. 3906 - 3902",
+    "latitud": 4.7510063,
+    "longitud": -74.0662091,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 277,
+    "nombre": "Administradora Clínica La Colina SAS",
+    "tipo": "hospital",
+    "direccion": "CL 167 72 07",
+    "telefono": "6013905355",
+    "latitud": 4.7501296,
+    "longitud": -74.0654451,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 318,
+    "nombre": "Bienaventuranza IPS SAS",
+    "tipo": "hospital",
+    "direccion": "Av Cl 53 71   A   13",
+    "telefono": "7432442 Ext. 2005-4001",
+    "latitud": 4.6699447,
+    "longitud": -74.1058099,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 25,
+    "nombre": "CAPS Abraham Lincoln",
+    "tipo": "hospital",
+    "direccion": "Carrera 12 # 53-90 Sur",
+    "telefono": "",
+    "latitud": 4.5590926,
+    "longitud": -74.1259779,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 17,
+    "nombre": "CAPS Altamira",
+    "tipo": "hospital",
+    "direccion": "Carrera 12A Este # 42-32 Sur",
+    "telefono": "",
+    "latitud": 4.5451539,
+    "longitud": -74.0848651,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 27,
+    "nombre": "CAPS Betania",
+    "tipo": "hospital",
+    "direccion": "Calle 76B Sur # 7-64",
+    "telefono": "",
+    "latitud": 4.5121201,
+    "longitud": -74.1103054,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 15,
+    "nombre": "CAPS Bomberos",
+    "tipo": "hospital",
+    "direccion": "Calle 40C Sur # 79-10",
+    "telefono": "",
+    "latitud": 4.6230737,
+    "longitud": -74.1584798,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 12,
+    "nombre": "CAPS Bosa Centro",
+    "tipo": "hospital",
+    "direccion": "Calle 65 Sur # 80H-44",
+    "telefono": "",
+    "latitud": 4.6093701,
+    "longitud": -74.1856875,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 33,
+    "nombre": "CAPS Boyacá Real",
+    "tipo": "hospital",
+    "direccion": "Carrera 74a # 69a-38",
+    "telefono": "",
+    "latitud": 4.686089,
+    "longitud": -74.0993295,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 19,
+    "nombre": "CAPS Bravo Páez",
+    "tipo": "hospital",
+    "direccion": "Calle 35B Sur # 25A-37",
+    "telefono": "",
+    "latitud": 4.5837695,
+    "longitud": -74.1200459,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 37,
+    "nombre": "CAPS Cabañas",
+    "tipo": "hospital",
+    "direccion": "Calle 57 Sur # 89B-19",
+    "telefono": "",
+    "latitud": 4.6308965,
+    "longitud": -74.1901609,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 24,
+    "nombre": "CAPS Candelaria II",
+    "tipo": "hospital",
+    "direccion": "Transversal 36 # 59B-59 Sur",
+    "telefono": "",
+    "latitud": 4.5719168,
+    "longitud": -74.1497852,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 4,
+    "nombre": "CAPS Chapinero",
+    "tipo": "hospital",
+    "direccion": "Calle 66 # 15-41",
+    "telefono": "",
+    "latitud": 4.653493,
+    "longitud": -74.0656786,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 20,
+    "nombre": "CAPS Chircales",
+    "tipo": "hospital",
+    "direccion": "Transversal 5L Bis # 48F-69 Sur",
+    "telefono": "",
+    "latitud": 4.5576802,
+    "longitud": -74.112214,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 40,
+    "nombre": "CAPS Diana Turbay",
+    "tipo": "hospital",
+    "direccion": "Carrera 1F # 48x-40 sur",
+    "telefono": "",
+    "latitud": 4.5455475,
+    "longitud": -74.1064509,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 39,
+    "nombre": "CAPS El Carmen",
+    "tipo": "hospital",
+    "direccion": "Calle 48 a # 28-89 sur",
+    "telefono": "",
+    "latitud": 4.5835614,
+    "longitud": -74.1321354,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 13,
+    "nombre": "CAPS El Porvenir",
+    "tipo": "hospital",
+    "direccion": "Carrera 87 # 53B-51 Sur",
+    "telefono": "",
+    "latitud": 4.6310115,
+    "longitud": -74.1843324,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 38,
+    "nombre": "CAPS El Tunal",
+    "tipo": "hospital",
+    "direccion": "Kr 20 # 47B-35 sur",
+    "telefono": "",
+    "latitud": 4.5716055,
+    "longitud": -74.1285189,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 3,
+    "nombre": "CAPS Emaús",
+    "tipo": "hospital",
+    "direccion": "Calle 64C # 121-76",
+    "telefono": "",
+    "latitud": 4.7152863,
+    "longitud": -74.1404327,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 8,
+    "nombre": "CAPS Engativá - Calle 80",
+    "tipo": "hospital",
+    "direccion": "Transversal 100A # 80A-50",
+    "telefono": "",
+    "latitud": 4.7112614,
+    "longitud": -74.1094256,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 7,
+    "nombre": "CAPS Fray Bartolomé de las Casas",
+    "tipo": "hospital",
+    "direccion": "Carrera 65 # 103-66",
+    "telefono": "",
+    "latitud": 4.6927745,
+    "longitud": -74.0676191,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 6,
+    "nombre": "CAPS GAITANA I",
+    "tipo": "hospital",
+    "direccion": "Transversal 116C # 133-18",
+    "telefono": "",
+    "latitud": 4.7416959,
+    "longitud": -74.1094886,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 32,
+    "nombre": "CAPS Garcés Navas",
+    "tipo": "hospital",
+    "direccion": "Carrera 107 # 75B-08",
+    "telefono": "",
+    "latitud": 4.7104999,
+    "longitud": -74.1208177,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 29,
+    "nombre": "CAPS Ismael Perdomo",
+    "tipo": "hospital",
+    "direccion": "Calle 60A Sur # 71F-59",
+    "telefono": "",
+    "latitud": 4.5874107,
+    "longitud": -74.1653919,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 26,
+    "nombre": "CAPS Marichuela",
+    "tipo": "hospital",
+    "direccion": "Calle 76 Sur # 14-74",
+    "telefono": "",
+    "latitud": 4.513344,
+    "longitud": -74.1165981,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 30,
+    "nombre": "CAPS Meissen",
+    "tipo": "hospital",
+    "direccion": "Calle 60G # 18B-36 Sur",
+    "telefono": "",
+    "latitud": 4.5595933,
+    "longitud": -74.1386067,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 36,
+    "nombre": "CAPS Occidente de Kennedy",
+    "tipo": "hospital",
+    "direccion": "Transversal 74F # 40B-54 Sur",
+    "telefono": "",
+    "latitud": 4.6163925,
+    "longitud": -74.153393,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 16,
+    "nombre": "CAPS Olaya",
+    "tipo": "hospital",
+    "direccion": "Carrera 21 # 22-51 Sur",
+    "telefono": "",
+    "latitud": 4.58373,
+    "longitud": -74.1057717,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 11,
+    "nombre": "CAPS Pablo VI",
+    "tipo": "hospital",
+    "direccion": "Calle 70 Sur #77I-26",
+    "telefono": "",
+    "latitud": 4.5988831,
+    "longitud": -74.1917397,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 35,
+    "nombre": "CAPS Patio Bonito Tintal",
+    "tipo": "hospital",
+    "direccion": "Calle 10 # 86-58",
+    "telefono": "",
+    "latitud": 4.651628,
+    "longitud": -74.148007,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 14,
+    "nombre": "CAPS Patios",
+    "tipo": "hospital",
+    "direccion": "Calle 2A # 88B-47",
+    "telefono": "",
+    "latitud": 4.6429549,
+    "longitud": -74.1612953,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 22,
+    "nombre": "CAPS Perseverancia",
+    "tipo": "hospital",
+    "direccion": "Carrera 5 # 33A-45",
+    "telefono": "",
+    "latitud": 4.6199868,
+    "longitud": -74.0655101,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 23,
+    "nombre": "CAPS Primero de Mayo",
+    "tipo": "hospital",
+    "direccion": "Calle 22 Sur # 8A-58",
+    "telefono": "",
+    "latitud": 4.5753111,
+    "longitud": -74.0936805,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 34,
+    "nombre": "CAPS Rincón",
+    "tipo": "hospital",
+    "direccion": "Carrera 94b # 129b-04",
+    "telefono": "",
+    "latitud": 4.7260556,
+    "longitud": -74.0931445,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 21,
+    "nombre": "CAPS Samper Mendoza",
+    "tipo": "hospital",
+    "direccion": "Carrera 23 # 22A-26",
+    "telefono": "",
+    "latitud": 4.6169986,
+    "longitud": -74.0810468,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 31,
+    "nombre": "CAPS San Benito",
+    "tipo": "hospital",
+    "direccion": "Calle 58 # 18B-25 Sur",
+    "telefono": "",
+    "latitud": 4.5661179,
+    "longitud": -74.1372554,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 2,
+    "nombre": "CAPS San Cristobal",
+    "tipo": "hospital",
+    "direccion": "Calle 164 # 7F-10",
+    "telefono": "",
+    "latitud": 4.7399447,
+    "longitud": -74.025129,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 18,
+    "nombre": "CAPS Santa Clara - San Juan de Dios",
+    "tipo": "hospital",
+    "direccion": "Carrera 10 # 1-59 Sur",
+    "telefono": "",
+    "latitud": 4.5895378,
+    "longitud": -74.0875798,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 1,
+    "nombre": "CAPS Suba",
+    "tipo": "hospital",
+    "direccion": "Carrera 92  # 147C-30",
+    "telefono": "",
+    "latitud": 4.7435876,
+    "longitud": -74.0841366,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 10,
+    "nombre": "CAPS Trinidad Galán",
+    "tipo": "hospital",
+    "direccion": "Carrera 60 # 4-15",
+    "telefono": "",
+    "latitud": 4.6224072,
+    "longitud": -74.120568,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 5,
+    "nombre": "CAPS Verbenal",
+    "tipo": "hospital",
+    "direccion": "Carrera 18A # 187-91",
+    "telefono": "",
+    "latitud": 4.7653779,
+    "longitud": -74.039123,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 28,
+    "nombre": "CAPS Vista Hermosa",
+    "tipo": "hospital",
+    "direccion": "Carrera 18 C # 66A-55 Sur",
+    "telefono": "",
+    "latitud": 4.5526586,
+    "longitud": -74.1446934,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 9,
+    "nombre": "CAPS Zona Franca",
+    "tipo": "hospital",
+    "direccion": "Carrera 106 # 15A-32",
+    "telefono": "",
+    "latitud": 4.6726021,
+    "longitud": -74.1537136,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 336,
+    "nombre": "CLINICA DE MARLY S.A",
+    "tipo": "hospital",
+    "direccion": "CL 50 9 67 Segundo Piso",
+    "telefono": "3436600 Ext 1224 - 2224",
+    "latitud": 4.5583928,
+    "longitud": -74.1219403,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 349,
+    "nombre": "CLINICA PEDIATRICA COLSANITAS",
+    "tipo": "hospital",
+    "direccion": "CALLE 127 20 56 PISO 2",
+    "telefono": "7455100 5714234",
+    "latitud": 4.7086012,
+    "longitud": -74.0501833,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 328,
+    "nombre": "CLÍNICA COLSANITAS REINA SOFIA STS",
+    "tipo": "hospital",
+    "direccion": "KR 31 125 A 23",
+    "telefono": "Tel: 6252111 Ext: 1166-1167",
+    "latitud": 4.707054,
+    "longitud": -74.0523907,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 315,
+    "nombre": "Central de Urgencias Norte",
+    "tipo": "hospital",
+    "direccion": "CL 163 A 22 22",
+    "telefono": "6466060 Ext 5719469",
+    "latitud": 4.7443737,
+    "longitud": -74.046416,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 322,
+    "nombre": "Centro De Investigaciones Oncológicas Clínica San Diego CIOSAD S.A.S",
+    "tipo": "hospital",
+    "direccion": "Av Cl 33 14   37 1er piso",
+    "telefono": "3208400 Ext.116 -102 calidad",
+    "latitud": 4.623154,
+    "longitud": -74.070381,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 323,
+    "nombre": "Centro De Medicina Internacional- Vip",
+    "tipo": "hospital",
+    "direccion": "Cl 97 23   10",
+    "telefono": "7452727 Ext. 1201",
+    "latitud": 4.6849474,
+    "longitud": -74.056573,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 324,
+    "nombre": "Centro Hospitalario San Nicolás",
+    "tipo": "hospital",
+    "direccion": "Kr 28 74   10",
+    "telefono": "Institucional 3168223312",
+    "latitud": 4.6665747,
+    "longitud": -74.0687736,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 249,
+    "nombre": "Centro Médico Colsubsidio Quiroga",
+    "tipo": "hospital",
+    "direccion": "CL 38 SUR 18 30",
+    "telefono": "7607461 Ext. 101",
+    "latitud": 4.5765343,
+    "longitud": -74.1184522,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 325,
+    "nombre": "Centro Médico de Puente Aranda - Clínica Colsanitas S.A.",
+    "tipo": "hospital",
+    "direccion": "Kr 62 14   41",
+    "telefono": "3904177-Ext. 5119404-401-402-406-405-403",
+    "latitud": 4.6345546,
+    "longitud": -74.1124406,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 255,
+    "nombre": "Centro Policlínico Del Olaya",
+    "tipo": "hospital",
+    "direccion": "KR 20 23 23 SUR",
+    "telefono": "3612888",
+    "latitud": 4.5833178,
+    "longitud": -74.1055282,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 326,
+    "nombre": "Centro Policlínico Del Olaya-Torre 6 – CPO",
+    "tipo": "hospital",
+    "direccion": "Kr 20 21 04 sur torre 6 piso 4",
+    "telefono": "3612888 Ext. 442-441",
+    "latitud": 4.5832006,
+    "longitud": -74.1041492,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 319,
+    "nombre": "Centro de Atención en Salud Cafam Clínica Cl 51",
+    "tipo": "hospital",
+    "direccion": "Cl 51 15 34 piso 2",
+    "telefono": "3105111 Ext. 4196",
+    "latitud": 4.6389438,
+    "longitud": -74.0681145,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 320,
+    "nombre": "Centro de Atención en Salud Cafam Clínica Cl 93",
+    "tipo": "hospital",
+    "direccion": "Cl 93 19 B   77 piso 2",
+    "telefono": "3773673 ext. 13236",
+    "latitud": 4.679121,
+    "longitud": -74.0570642,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 234,
+    "nombre": "Centro de Atención en Salud Cafam Floresta",
+    "tipo": "hospital",
+    "direccion": "AK 68 90 88",
+    "telefono": "5550700 ext 12017-12015",
+    "latitud": 4.6857318,
+    "longitud": -74.0744084,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 235,
+    "nombre": "Centro de Atención en Salud Cafam Suba",
+    "tipo": "hospital",
+    "direccion": "KR 113 C 142 A 98",
+    "telefono": "5550700 ext 12017-12015",
+    "latitud": 4.748336,
+    "longitud": -74.1032202,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 321,
+    "nombre": "Centro de Atención en Salud Santa Bárbara",
+    "tipo": "hospital",
+    "direccion": "Cl 127 16 A 27 segundo piso",
+    "telefono": "5556543 ext. 13537-13538",
+    "latitud": 4.704402,
+    "longitud": -74.0456621,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 307,
+    "nombre": "Centro de Salud Patio Bonito",
+    "tipo": "hospital",
+    "direccion": "DG 38 sur 82 30",
+    "telefono": "4547018",
+    "latitud": 4.6344883,
+    "longitud": -74.1610902,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 303,
+    "nombre": "Centro de Salud Trinidad Galán",
+    "tipo": "hospital",
+    "direccion": "KR 60 4 15",
+    "telefono": "2607876",
+    "latitud": 4.6224072,
+    "longitud": -74.120568,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 333,
+    "nombre": "Clinica Colsubsidio127",
+    "tipo": "hospital",
+    "direccion": "Cl 127 15 A  73",
+    "telefono": "7447525 Ext. 74689",
+    "latitud": 4.7090598,
+    "longitud": -74.0439605,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 311,
+    "nombre": "Clininorte 161",
+    "tipo": "hospital",
+    "direccion": "Ac 161 16 C 39",
+    "telefono": "3188604159",
+    "latitud": 4.7399103,
+    "longitud": -74.0404628,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 314,
+    "nombre": "Clínica Azul",
+    "tipo": "hospital",
+    "direccion": "KR 49 D 91 33",
+    "telefono": "3184871071",
+    "latitud": 4.6798641,
+    "longitud": -74.0644712,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 327,
+    "nombre": "Clínica Azul",
+    "tipo": "hospital",
+    "direccion": "Kr 49 D 91   33 piso 2",
+    "telefono": "6095555 Ext. 9201",
+    "latitud": 4.6798641,
+    "longitud": -74.0644712,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 329,
+    "nombre": "Clínica Colsubsidio Calle 100",
+    "tipo": "hospital",
+    "direccion": "Cl 100 23 59 piso 2",
+    "telefono": "7457783 Ext. 73952 -73957",
+    "latitud": 4.6885393,
+    "longitud": -74.0565961,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 330,
+    "nombre": "Clínica Colsubsidio Ciudad Roma",
+    "tipo": "hospital",
+    "direccion": "Kr 86 53   10 sur   piso 1 Torre A",
+    "telefono": "7431040 -Ext. 219-113",
+    "latitud": 4.6247957,
+    "longitud": -74.179755,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 331,
+    "nombre": "Clínica Colsubsidio Cl 94",
+    "tipo": "hospital",
+    "direccion": "Kr 45 94   67",
+    "telefono": "7420100 Ext. 10329",
+    "latitud": 4.6822403,
+    "longitud": -74.0594638,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 332,
+    "nombre": "Clínica Colsubsidio Infantil",
+    "tipo": "hospital",
+    "direccion": "Cl 67 10   67 piso 2",
+    "telefono": "7426812 - Ext. 2237 - 2236 -2238",
+    "latitud": 4.6523806,
+    "longitud": -74.0608477,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 335,
+    "nombre": "Clínica De La Mujer",
+    "tipo": "hospital",
+    "direccion": "Kr 19 C 91  08   planta baja",
+    "telefono": "6161799 Ext. 282",
+    "latitud": 4.6773601,
+    "longitud": -74.0568865,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 337,
+    "nombre": "Clínica Del Country",
+    "tipo": "hospital",
+    "direccion": "Kr 16 82   57 /61 Piso 1   2",
+    "telefono": "5300470 Ext. 1203 - 1214",
+    "latitud": 4.6689237,
+    "longitud": -74.0569014,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 266,
+    "nombre": "Clínica Del Country IPS",
+    "tipo": "hospital",
+    "direccion": "KR 16 82 57",
+    "telefono": "6013905099",
+    "latitud": 4.6689237,
+    "longitud": -74.0569014,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 338,
+    "nombre": "Clínica Del Occidente Ltda.",
+    "tipo": "hospital",
+    "direccion": "Avda Américas 71 C   29 sótano",
+    "telefono": "4254620 Ext. 653 - 483",
+    "latitud": 4.6299077,
+    "longitud": -74.1363126,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 267,
+    "nombre": "Clínica Del Occidente S.A.",
+    "tipo": "hospital",
+    "direccion": "AV DE LAS AMERICAS 71 C 29",
+    "telefono": "4254620 Ext 150",
+    "latitud": 4.6293796,
+    "longitud": -74.1357707,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 248,
+    "nombre": "Clínica Infantil Colsubsidio",
+    "tipo": "hospital",
+    "direccion": "CL 66 10 48",
+    "telefono": "7467310 extensión 75210",
+    "latitud": 4.6521103,
+    "longitud": -74.0610838,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 256,
+    "nombre": "Clínica Infantil Santa María Del Lago",
+    "tipo": "hospital",
+    "direccion": "CL 73 A 76 66",
+    "telefono": "3406767",
+    "latitud": 4.6919627,
+    "longitud": -74.0981228,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 339,
+    "nombre": "Clínica Infantil Santa María del Lago",
+    "tipo": "hospital",
+    "direccion": "Cl 74 76   66",
+    "telefono": "4306767 Ext. 5713222",
+    "latitud": 4.6929363,
+    "longitud": -74.0983636,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 253,
+    "nombre": "Clínica Juan N Corpas Ltda",
+    "tipo": "hospital",
+    "direccion": "KR 111 159 A 61",
+    "telefono": "6865000 Ext.1060 - 3233103491",
+    "latitud": 4.7607666,
+    "longitud": -74.0925979,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 340,
+    "nombre": "Clínica Juan N Corpas Ltda.",
+    "tipo": "hospital",
+    "direccion": "Kr 111 159 A   61",
+    "telefono": "6445757 Ext. 16081-6865000 Ext.418-",
+    "latitud": 4.7607666,
+    "longitud": -74.0925979,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 278,
+    "nombre": "Clínica Los Nogales SAS",
+    "tipo": "hospital",
+    "direccion": "CL 95 23 61",
+    "telefono": "5937000 Ext: 2045 / 2036 Cel: 3147130121",
+    "latitud": 4.6829729,
+    "longitud": -74.0570808,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 341,
+    "nombre": "Clínica Los Nogales SAS",
+    "tipo": "hospital",
+    "direccion": "Cl 95 23   61",
+    "telefono": "5937000 Ext. unidad Transfusional 1645 -1646-1608",
+    "latitud": 4.6829729,
+    "longitud": -74.0570808,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 342,
+    "nombre": "Clínica Magdalena Caja de Compensación Familiar Compensar",
+    "tipo": "hospital",
+    "direccion": "Cl 39 14   34 piso 1",
+    "telefono": "4285088 Ext. 11522",
+    "latitud": 4.6270578,
+    "longitud": -74.0692002,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 343,
+    "nombre": "Clínica Materno Infantil Eusalud",
+    "tipo": "hospital",
+    "direccion": "Dg 54 16 A   16",
+    "telefono": "4320870/72 Ext. 565 - 525",
+    "latitud": 4.6425376,
+    "longitud": -74.0686844,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 276,
+    "nombre": "Clínica Medical S.A.S.",
+    "tipo": "hospital",
+    "direccion": "CL 36 Sur 77 33",
+    "telefono": "4505200 3168757999",
+    "latitud": 4.621862,
+    "longitud": -74.149592,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 344,
+    "nombre": "Clínica Medical S.A.S.",
+    "tipo": "hospital",
+    "direccion": "Cl 36 Sur 77   33",
+    "telefono": "4505200 Ext. 139",
+    "latitud": 4.621862,
+    "longitud": -74.149592,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 275,
+    "nombre": "Clínica Medical S.A.S. Sede Santa Juliana",
+    "tipo": "hospital",
+    "direccion": "CL 1D 17A 35",
+    "telefono": "2428440 - 316 8757999",
+    "latitud": 4.5930359,
+    "longitud": -74.0902402,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 345,
+    "nombre": "Clínica Medical S.A.S. Sede Santa Juliana",
+    "tipo": "hospital",
+    "direccion": "Cl 1D 17 A   35 piso 2",
+    "telefono": "7442565- Opción 132",
+    "latitud": 4.5930359,
+    "longitud": -74.0902402,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 274,
+    "nombre": "Clínica Medical SAS - Sede Toberin",
+    "tipo": "hospital",
+    "direccion": "KR 21 169 15",
+    "telefono": "3168757999",
+    "latitud": 4.7498457,
+    "longitud": -74.0442105,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 272,
+    "nombre": "Clínica Medicentro Familiar Sede Suba",
+    "tipo": "hospital",
+    "direccion": "KR 94B 132A 65",
+    "telefono": "3108077965",
+    "latitud": 4.7327323,
+    "longitud": -74.0892058,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 245,
+    "nombre": "Clínica Nueva",
+    "tipo": "hospital",
+    "direccion": "CL 45 F 16 A 11",
+    "telefono": "3274444 ext 515-530",
+    "latitud": 4.6342616,
+    "longitud": -74.0709612,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 346,
+    "nombre": "Clínica Nueva - Compensar Sede B",
+    "tipo": "hospital",
+    "direccion": "Tv 16 A 45 D   32",
+    "telefono": "3274444 - Ext. 105/6 -",
+    "latitud": 4.6340573,
+    "longitud": -74.070715,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 313,
+    "nombre": "Clínica Nueva El Lago S.A.S - Sede Calle 76",
+    "tipo": "hospital",
+    "direccion": "CL 76 15 55",
+    "telefono": "3078061 - 3123459128",
+    "latitud": 4.6629438,
+    "longitud": -74.0596767,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 347,
+    "nombre": "Clínica Oncolife IPS SAS Sede Norte",
+    "tipo": "hospital",
+    "direccion": "Autop Norte 103   59",
+    "telefono": "5803973 Ext. 111",
+    "latitud": 4.6905003,
+    "longitud": -74.0572003,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 252,
+    "nombre": "Clínica Palermo",
+    "tipo": "hospital",
+    "direccion": "CL 45 C 22 02",
+    "telefono": "5727777 - 7420540",
+    "latitud": 4.6361734,
+    "longitud": -74.0738854,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 348,
+    "nombre": "Clínica Palermo - STS Compensar",
+    "tipo": "hospital",
+    "direccion": "Kr 23 45 C   31 Segundo piso",
+    "telefono": "4285088 Ext. 11845-11844",
+    "latitud": 4.6361734,
+    "longitud": -74.0738854,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 350,
+    "nombre": "Clínica Piloto-PROFAMILIA",
+    "tipo": "hospital",
+    "direccion": "Carrera 15 34 47",
+    "telefono": "3390900 ext. 1140-1142-1146",
+    "latitud": 4.6237155,
+    "longitud": -74.070457,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 258,
+    "nombre": "Clínica Reina Sofia",
+    "tipo": "hospital",
+    "direccion": "KR 21 127 03",
+    "telefono": "6466060 ext 5717528",
+    "latitud": 4.7068586,
+    "longitud": -74.0518898,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 257,
+    "nombre": "Clínica Reina Sofia Pediátrica Y Mujer",
+    "tipo": "hospital",
+    "direccion": "Ac 127 20 56",
+    "telefono": "6466060",
+    "latitud": 4.7065119,
+    "longitud": -74.0508566,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 351,
+    "nombre": "Clínica San Francisco de Asis",
+    "tipo": "hospital",
+    "direccion": "Cl 16 16 80",
+    "telefono": "5190707 ext 157",
+    "latitud": 4.6080284,
+    "longitud": -74.080319,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 352,
+    "nombre": "Clínica Santa Teresita Del Niño Jesús S.A.",
+    "tipo": "hospital",
+    "direccion": "Kr 96 C 21 A   43 piso 1",
+    "telefono": "7436570/1 Ext. 18",
+    "latitud": 4.6720253,
+    "longitud": -74.1368467,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 353,
+    "nombre": "Clínica Santa Teresita Normandía",
+    "tipo": "hospital",
+    "direccion": "Kr 71 B 51 09 Normandía  piso 7",
+    "telefono": "3285797-Ext. 1707-1701",
+    "latitud": 4.6687562,
+    "longitud": -74.1077513,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 354,
+    "nombre": "Clínica Traumatología Y Ortopedia-Eusalud",
+    "tipo": "hospital",
+    "direccion": "Kr 78 3 A   40   MANDALAY",
+    "telefono": "4320870 Ext. 425",
+    "latitud": 4.6277089,
+    "longitud": -74.1448974,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 259,
+    "nombre": "Clínica Universitaria Colombia",
+    "tipo": "hospital",
+    "direccion": "CL 23 66 46",
+    "telefono": "5948650",
+    "latitud": 4.6480235,
+    "longitud": -74.1064458,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 355,
+    "nombre": "Clínica Universitaria Colombia - Clínica Colsanitas S.A.",
+    "tipo": "hospital",
+    "direccion": "Cl 22 B 66   46 piso 4°",
+    "telefono": "6681062 - 5948660",
+    "latitud": 4.6464343,
+    "longitud": -74.1089811,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 334,
+    "nombre": "Clínica de Especialidades Quirurgicas S.A.S",
+    "tipo": "hospital",
+    "direccion": "CL 50 15 46 PI 1",
+    "telefono": "6176632",
+    "latitud": 4.6379119,
+    "longitud": -74.068211,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 247,
+    "nombre": "Clínica de La Mujer",
+    "tipo": "hospital",
+    "direccion": "KR 19 C 91 17",
+    "telefono": "6161799- 3506005706",
+    "latitud": 4.677681,
+    "longitud": -74.05725,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 261,
+    "nombre": "Clínica de Marly",
+    "tipo": "hospital",
+    "direccion": "CL 50 9 67",
+    "telefono": "3436600",
+    "latitud": 4.6366017,
+    "longitud": -74.0650826,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 239,
+    "nombre": "Clínica de Nuestra Señora de La Paz",
+    "tipo": "hospital",
+    "direccion": "KR 69 12 75",
+    "telefono": "2921277",
+    "latitud": 4.6360305,
+    "longitud": -74.1218752,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 250,
+    "nombre": "Clínica de Ortopedia Y Accidentes Laborales",
+    "tipo": "hospital",
+    "direccion": "CL 6 A 70 06",
+    "telefono": "",
+    "latitud": 4.6305247,
+    "longitud": -74.1309164,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 233,
+    "nombre": "Clínica la Inmaculada",
+    "tipo": "hospital",
+    "direccion": "KR 7 68 70",
+    "telefono": "5870366",
+    "latitud": 4.6531972,
+    "longitud": -74.0572631,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 242,
+    "nombre": "Cruz Roja Colombiana Seccional Cundinamarca Y Bogotá",
+    "tipo": "hospital",
+    "direccion": "AK 68 68 B 31",
+    "telefono": "7460909",
+    "latitud": 4.6732481,
+    "longitud": -74.0893308,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 244,
+    "nombre": "Cruz Roja Colombiana Seccional Cundinamarca Y Bogotá Sede Alquería",
+    "tipo": "hospital",
+    "direccion": "AK 68 31 41 SUR",
+    "telefono": "7460909",
+    "latitud": 4.6071376,
+    "longitud": -74.1309442,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 243,
+    "nombre": "Cruz Roja Colombiana Seccional Cundinamarca Y Bogotá Sede Norte",
+    "tipo": "hospital",
+    "direccion": "AC 134 7 B 41",
+    "telefono": "7460909",
+    "latitud": 4.7128929,
+    "longitud": -74.032619,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 260,
+    "nombre": "Empresa Social Del Estado Hospital Universitario de la Samaritana",
+    "tipo": "hospital",
+    "direccion": "KR 8 0 29 SUR",
+    "telefono": "4077075 ext 10702",
+    "latitud": 4.5872517,
+    "longitud": -74.0837187,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 357,
+    "nombre": "FUNDACION CARDIO INFANTIL",
+    "tipo": "hospital",
+    "direccion": "CL 163 A 13B   60",
+    "telefono": "6672727 Ext.2106-2107-2108-2121",
+    "latitud": 4.7418522,
+    "longitud": -74.0340409,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 358,
+    "nombre": "FUNDACION HOSPITAL DE LA MISERICORDIA",
+    "tipo": "hospital",
+    "direccion": "AV CARACAS 1 13",
+    "telefono": "3811970 Ext.318",
+    "latitud": 4.5918102,
+    "longitud": -74.0889227,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 359,
+    "nombre": "Fundacion Hospital Infantil Universitario de San José",
+    "tipo": "hospital",
+    "direccion": "Kr 52 67A   71",
+    "telefono": "4377540 Ext. 5033 - 6609751",
+    "latitud": 4.6650784,
+    "longitud": -74.0789256,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 241,
+    "nombre": "Fundación Abood Shaio",
+    "tipo": "hospital",
+    "direccion": "DG 115 A 70 C 75",
+    "telefono": "2261025",
+    "latitud": 4.6980994,
+    "longitud": -74.0730624,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 356,
+    "nombre": "Fundación Abood Shaio",
+    "tipo": "hospital",
+    "direccion": "Dg 115 A 70 C   75 piso 1",
+    "telefono": "Directo 2714331-5938210 opcion 6",
+    "latitud": 4.6980994,
+    "longitud": -74.0730624,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 254,
+    "nombre": "Fundación Cardio Infantil Instituto de Cardiología",
+    "tipo": "hospital",
+    "direccion": "CL 163 A 13 B 60",
+    "telefono": "6672727 Ext. 53304 Cel. 3183569506",
+    "latitud": 4.7418522,
+    "longitud": -74.0340409,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 268,
+    "nombre": "Fundación Hospital Infantil Universitario de San José",
+    "tipo": "hospital",
+    "direccion": "KR 52 67 A 71",
+    "telefono": "4377540",
+    "latitud": 4.6650784,
+    "longitud": -74.0789256,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 232,
+    "nombre": "Fundación Hospital San Carlos",
+    "tipo": "hospital",
+    "direccion": "KR 12D 32 44 SUR",
+    "telefono": "7443333",
+    "latitud": 4.5700671,
+    "longitud": -74.108045,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 360,
+    "nombre": "Fundación Hospital San Carlos",
+    "tipo": "hospital",
+    "direccion": "Kr 12 D 32   44 sur piso 1 Torre A   Entrada torre C",
+    "telefono": "7443333 Ext. 1151 - 1152 -1153",
+    "latitud": 4.5700671,
+    "longitud": -74.108045,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 238,
+    "nombre": "Fundación Hospital de la Misericordia",
+    "tipo": "hospital",
+    "direccion": "AK 14 1 65",
+    "telefono": "3811970 EXT 227",
+    "latitud": 4.5925799,
+    "longitud": -74.0883322,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 361,
+    "nombre": "Fundación Santa Fe De Bogotá",
+    "tipo": "hospital",
+    "direccion": "Cl 119 7   75 piso 2",
+    "telefono": "6030303 Ext. 5171 - 5521 - 5169",
+    "latitud": 4.6955416,
+    "longitud": -74.03319,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 236,
+    "nombre": "Fundación Santa Fe de Bogotá",
+    "tipo": "hospital",
+    "direccion": "CL 119 7 75",
+    "telefono": "6030303 ext. 5105",
+    "latitud": 4.6955416,
+    "longitud": -74.03319,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 362,
+    "nombre": "Grupo Empresarial Jarbsalud IPS",
+    "tipo": "hospital",
+    "direccion": "Cl 33 15   51",
+    "telefono": "7036271-3657452",
+    "latitud": 4.6212666,
+    "longitud": -74.0712425,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 309,
+    "nombre": "Grupo Empresarial Jarbsalud Ips S.A.S.",
+    "tipo": "hospital",
+    "direccion": "CL 33 bis 15 64",
+    "telefono": "4673216 - 7561334",
+    "latitud": 4.6217828,
+    "longitud": -74.0712028,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 363,
+    "nombre": "HOSPITAL CENTRAL POLICIA NACIONAL",
+    "tipo": "hospital",
+    "direccion": "Cra. 59 No. 26 21 CAN",
+    "telefono": "2202187-2202050",
+    "latitud": 4.6474002,
+    "longitud": -74.097757,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 364,
+    "nombre": "HOSPITAL MILITAR CENTRAL",
+    "tipo": "hospital",
+    "direccion": "Transversal 3 #4 9 00 Tercer Piso Norte",
+    "telefono": "3486868 Ext. 5375 - 5376",
+    "latitud": 4.4447396,
+    "longitud": -74.1563524,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 366,
+    "nombre": "HOSPITAL UNIVERSITARIO CLINICA SAN RAFAEL",
+    "tipo": "hospital",
+    "direccion": "KR 8 17 45 SUR",
+    "telefono": "3282300 Ext.2352-2353",
+    "latitud": 4.5766551,
+    "longitud": -74.0913143,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 367,
+    "nombre": "HOSPITAL UNIVERSITARIO DE LA SAMARITANA",
+    "tipo": "hospital",
+    "direccion": "KR 8 0 55 SUR",
+    "telefono": "4077075 Ext.10118",
+    "latitud": 4.5873612,
+    "longitud": -74.0808962,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 305,
+    "nombre": "Hospital Fontibón",
+    "tipo": "hospital",
+    "direccion": "KR 99 16i 41",
+    "telefono": "4860033",
+    "latitud": 4.6717139,
+    "longitud": -74.1461771,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 269,
+    "nombre": "Hospital Militar Central",
+    "tipo": "hospital",
+    "direccion": "TV 3C 49 02",
+    "telefono": "3486868 ext: 3001/3002 3158653821",
+    "latitud": 4.6356644,
+    "longitud": -74.0623356,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 304,
+    "nombre": "Hospital Occidente de Kennedy",
+    "tipo": "hospital",
+    "direccion": "TV 74 F 40 B 54 SUR",
+    "telefono": "3849160",
+    "latitud": 4.6163925,
+    "longitud": -74.153393,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 306,
+    "nombre": "Hospital Pediátrico Tintal",
+    "tipo": "hospital",
+    "direccion": "CL 10 86 58",
+    "telefono": "5550950",
+    "latitud": 4.6509488,
+    "longitud": -74.1489846,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 365,
+    "nombre": "Hospital Universitario Barrios Unidos Mederi",
+    "tipo": "hospital",
+    "direccion": "Cl 66A 52 25",
+    "telefono": "4285088 Ext. 11568, 11574",
+    "latitud": 4.6637963,
+    "longitud": -74.080112,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 270,
+    "nombre": "Hospital Universitario Barrios Unidos-Mederi",
+    "tipo": "hospital",
+    "direccion": "CL 66 A 52 25",
+    "telefono": "5600520 ext. 4140. 6303068",
+    "latitud": 4.6637963,
+    "longitud": -74.080112,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 237,
+    "nombre": "Hospital Universitario Clínica San Rafael",
+    "tipo": "hospital",
+    "direccion": "KR 8 17 45 SUR",
+    "telefono": "7464714 EXT. 2740",
+    "latitud": 4.5766551,
+    "longitud": -74.0913143,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 368,
+    "nombre": "Hospital Universitario Mayor Mederi",
+    "tipo": "hospital",
+    "direccion": "Cl 24 29   45 /61",
+    "telefono": "4285088 Ext. 11540-11541",
+    "latitud": 4.6234265,
+    "longitud": -74.0822033,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 271,
+    "nombre": "Hospital Universitario Mayor-Mederi",
+    "tipo": "hospital",
+    "direccion": "CL 24 29 45",
+    "telefono": "7055999 Ext 4140",
+    "latitud": 4.6234265,
+    "longitud": -74.0822033,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 369,
+    "nombre": "Hospital Universitario Nacional De Colombia",
+    "tipo": "hospital",
+    "direccion": "Cl 44 59   75 piso 1",
+    "telefono": "3904888  Ext. 12007-12211, 12215",
+    "latitud": 4.6490282,
+    "longitud": -74.0955909,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 262,
+    "nombre": "Hospital Universitario San Ignacio",
+    "tipo": "hospital",
+    "direccion": "KR 7 40 62",
+    "telefono": "5946161",
+    "latitud": 4.6295568,
+    "longitud": -74.0654449,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 370,
+    "nombre": "Hospital Universitario San Ignacio",
+    "tipo": "hospital",
+    "direccion": "Kr 7 40   62 2 piso H",
+    "telefono": "5946161 Ext. 2420",
+    "latitud": 4.6295568,
+    "longitud": -74.0654449,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 308,
+    "nombre": "Hospital de Bosa",
+    "tipo": "hospital",
+    "direccion": "CL 73 Sur 100 A 53",
+    "telefono": "6013849160",
+    "latitud": 4.635132,
+    "longitud": -74.2063625,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 375,
+    "nombre": "INSTITUTO NACIONAL DE CANCEROLOGIA - E.S.E.",
+    "tipo": "hospital",
+    "direccion": "AC 1 9 85",
+    "telefono": "4320160 Ext. 5362 - 5358",
+    "latitud": 4.5883309,
+    "longitud": -74.0845416,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 371,
+    "nombre": "Instituto De Diagnóstico Médico S.A. Sede Clínica Nueva El Lago",
+    "tipo": "hospital",
+    "direccion": "Cl 76 15   55 Sótano 1 ( S1 3 S1 4 S1 5) Sótano 2 y Piso 1 (P1 15)",
+    "telefono": "2342110 ext. 1482",
+    "latitud": 4.6629438,
+    "longitud": -74.0596767,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 372,
+    "nombre": "Instituto De Ortopedia Infantil Roosevelt",
+    "tipo": "hospital",
+    "direccion": "Av. Circunvalar 17  50",
+    "telefono": "3534000 Ext. 399-351-",
+    "latitud": 4.5992191,
+    "longitud": -74.0658253,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 373,
+    "nombre": "Instituto Del Corazón De Bucaramanga Sede Bogotá",
+    "tipo": "hospital",
+    "direccion": "Av Caracas 34   47",
+    "telefono": "7430972 - 7431660 Ext. 107",
+    "latitud": 4.6226775,
+    "longitud": -74.0694001,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 374,
+    "nombre": "Instituto Médico De Especialistas Clínica De Especialistas Centroodontológico",
+    "tipo": "hospital",
+    "direccion": "Av Caracas 30 51",
+    "telefono": "2323100 Ext, 137-2327495 (directo)",
+    "latitud": 4.6184295,
+    "longitud": -74.0721085,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 240,
+    "nombre": "Instituto Nacional de Cancerología",
+    "tipo": "hospital",
+    "direccion": "Cl 1 9 85",
+    "telefono": "0913905012 Ext. 2000 - 2001",
+    "latitud": 4.5883309,
+    "longitud": -74.0845416,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 376,
+    "nombre": "Laboratorio Clínico Daniel Gamboa Sede Garper",
+    "tipo": "hospital",
+    "direccion": "Cl 27 24   40 piso 1 Interior 2 y 3",
+    "telefono": "2454906- Ext. 103-114",
+    "latitud": 4.6229319,
+    "longitud": -74.0768528,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 377,
+    "nombre": "Los Cobos Medical Center",
+    "tipo": "hospital",
+    "direccion": "AK 9 131 A   02  piso 5",
+    "telefono": "4285088 Ext.  16303/16302",
+    "latitud": 4.7104401,
+    "longitud": -74.032306,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 310,
+    "nombre": "Loscobos Medical Center SAS - Loscobos",
+    "tipo": "hospital",
+    "direccion": "AK 9 131 A 40",
+    "telefono": "7457581 ext 2257",
+    "latitud": 4.7102272,
+    "longitud": -74.0328025,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 378,
+    "nombre": "Medicentro Familiar IPS SAS",
+    "tipo": "hospital",
+    "direccion": "Cl 20 98   62",
+    "telefono": "2673050 Ext. 112",
+    "latitud": 4.6743934,
+    "longitud": -74.1421255,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 273,
+    "nombre": "Medicentro Familiar Ips SAS",
+    "tipo": "hospital",
+    "direccion": "CL 20 98 62",
+    "telefono": "3108062745-3118895118",
+    "latitud": 4.6743934,
+    "longitud": -74.1421255,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 379,
+    "nombre": "National Clinics Centenario SAS",
+    "tipo": "hospital",
+    "direccion": "Cl 13 17   21 piso 1",
+    "telefono": "7460111 Ext. 1106 - 1107- (analista lab)",
+    "latitud": 4.6074235,
+    "longitud": -74.0827083,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 380,
+    "nombre": "Proseguir Sede 3",
+    "tipo": "hospital",
+    "direccion": "Kr 16 59   54",
+    "telefono": "5557080 Ext. 1015 - 1016",
+    "latitud": 4.6471556,
+    "longitud": -74.0672468,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 381,
+    "nombre": "Red Humana S.A.S.",
+    "tipo": "hospital",
+    "direccion": "Kr 45 A 94   71 Sotano 2 94 07",
+    "telefono": "2095042 Ext. 2223 - 2232",
+    "latitud": 4.6831398,
+    "longitud": -74.0589488,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 383,
+    "nombre": "SOCIEDAD DE CIRUGIA DE BOGOTA - HOSPITAL DE SAN JOSE",
+    "tipo": "hospital",
+    "direccion": "CL 10 18 75",
+    "telefono": "3538000 Ext. 478 - 458",
+    "latitud": 4.6033403,
+    "longitud": -74.0863669,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 246,
+    "nombre": "Salud Sura Calle 100 Bogotá",
+    "tipo": "hospital",
+    "direccion": "Cl 100 19 A 35",
+    "telefono": "(1) 487 38 88 / 3164625445",
+    "latitud": 4.6871906,
+    "longitud": -74.053555,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 382,
+    "nombre": "Santa Laura IPS SAS",
+    "tipo": "hospital",
+    "direccion": "Kr 17 23   44",
+    "telefono": "7454381-3504270650",
+    "latitud": 4.6133538,
+    "longitud": -74.0758825,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 312,
+    "nombre": "Sociedad Medica Alcalá SAS",
+    "tipo": "hospital",
+    "direccion": "AK 19 135 24",
+    "telefono": "3232255717-3114849286",
+    "latitud": 4.7200343,
+    "longitud": -74.0464644,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 385,
+    "nombre": "Sociedad Medica De Ortopedia Y Accidentes Laborales",
+    "tipo": "hospital",
+    "direccion": "Cl 6 A 70   06",
+    "telefono": "7423099 Ext. 102-204",
+    "latitud": 4.6305247,
+    "longitud": -74.1309164,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 384,
+    "nombre": "Sociedad Médica Alcalá SAS",
+    "tipo": "hospital",
+    "direccion": "Av 19 135   24",
+    "telefono": "3907469 Ext. 1025",
+    "latitud": 4.7200343,
+    "longitud": -74.0464644,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 251,
+    "nombre": "Sociedad de Cirugía de Bogotá - Hospital de San José",
+    "tipo": "hospital",
+    "direccion": "CL 10 18 75",
+    "telefono": "3538000 ext 523 o 509",
+    "latitud": 4.6033403,
+    "longitud": -74.0863669,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 400,
+    "nombre": "UNIDAD DE SERVICIOS DE SALUD SANTA CLARA",
+    "tipo": "hospital",
+    "direccion": "KR 15 1 59 SUR",
+    "telefono": "3282828 Ext.265-242",
+    "latitud": 4.5904076,
+    "longitud": -74.0905305,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 386,
+    "nombre": "Unidad De Cuidados Paliativos Presentes S.A.S",
+    "tipo": "hospital",
+    "direccion": "Kr 18 140   27",
+    "telefono": "5717820-5895432",
+    "latitud": 4.7232145,
+    "longitud": -74.0450581,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 402,
+    "nombre": "Unidad De Servicios De Salud -Tunjuelito Subred Integrada de Servicios de Salud Sur E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Cl 52 Sur 14   16",
+    "telefono": "4853551 Ext. 105",
+    "latitud": 4.5635893,
+    "longitud": -74.1262838,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 395,
+    "nombre": "Unidad De Servicios De Salud La Victoria Subred Integrada de Servicios de Salud Centro Oriente E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Dg 39 Sur 3   20 Este  Laboratorio Clinico",
+    "telefono": "3282828 ext. 14793-14792-14791",
+    "latitud": 4.561746,
+    "longitud": -74.0968314,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 396,
+    "nombre": "Unidad De Servicios De Salud Materno Infantil Subred Integrada de Servicios de Salud Centro Oriente E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Kr 10 1 66 SUR piso 1 al lado del parqueadero",
+    "telefono": "2971310-2971315- Ext. 161",
+    "latitud": 4.5871744,
+    "longitud": -74.0861947,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 397,
+    "nombre": "Unidad De Servicios De Salud Meissen Subred Integrada de Servicios de Salud Sur E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Cra 18 N 60 G   20 Sur Fente a la UMHES Meissen entrada consulta externa.",
+    "telefono": "7300000 Ext. 51731",
+    "latitud": 4.5587299,
+    "longitud": -74.1371419,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 399,
+    "nombre": "Unidad De Servicios De Salud San Blas Subred Centro Oriente E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Tv 5 Este 19   50 Sur",
+    "telefono": "2332993 , o",
+    "latitud": 4.5697921,
+    "longitud": -74.0832821,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 403,
+    "nombre": "Unidad De Servicios De Salud-Jorge Eliecer Gaitán Subred Integrada de Servicios de Salud Centro Oriente E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Cl 6 4 A   26 Este",
+    "telefono": "3280964 Referencia Sub Red C Oriente",
+    "latitud": 4.5899198,
+    "longitud": -74.0698729,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 387,
+    "nombre": "Unidad de Servicios de Salud - Hospital El Tunal Subred Integrada de Servicios de Salud Sur E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Kr 20 42 Sur   47",
+    "telefono": "7300000 Ext. 1131",
+    "latitud": 4.5761254,
+    "longitud": -74.1216702,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 297,
+    "nombre": "Unidad de Servicios de Salud Ambulatoria Tunjuelito",
+    "tipo": "hospital",
+    "direccion": "AK 14 51 21 SUR",
+    "telefono": "7300000 Opción 0",
+    "latitud": 4.5584629,
+    "longitud": -74.1233518,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 388,
+    "nombre": "Unidad de Servicios de Salud Bosa Subred Integrada de Servicios de Salud Sur Occidente E.S.E.",
+    "tipo": "hospital",
+    "direccion": "CL 65 D SUR 79 C 90 Bosa Centro",
+    "telefono": "4399090 Ext. 4066",
+    "latitud": 4.6068095,
+    "longitud": -74.185582,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 288,
+    "nombre": "Unidad de Servicios de Salud Centro de Servicios Especializado",
+    "tipo": "hospital",
+    "direccion": "KR 104 152C 50",
+    "telefono": "4431790",
+    "latitud": 4.7549194,
+    "longitud": -74.0959097,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 293,
+    "nombre": "Unidad de Servicios de Salud Chapinero",
+    "tipo": "hospital",
+    "direccion": "CL 66 15 41",
+    "telefono": "4431790",
+    "latitud": 4.653493,
+    "longitud": -74.0656786,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 389,
+    "nombre": "Unidad de Servicios de Salud Chapinero Subred Integrada de Servicios de Salud Norte E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Cl 66 15  41",
+    "telefono": "4431790 Ext. lab. 1054-1056",
+    "latitud": 4.653493,
+    "longitud": -74.0656786,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 283,
+    "nombre": "Unidad de Servicios de Salud Chircales",
+    "tipo": "hospital",
+    "direccion": "TV 5 L BIS 48 F 69 SUR",
+    "telefono": "3282828 EXT 21341, 21181,21621",
+    "latitud": 4.5576802,
+    "longitud": -74.112214,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 281,
+    "nombre": "Unidad de Servicios de Salud Diana Turbay",
+    "tipo": "hospital",
+    "direccion": "KR 1f 48x 40 sur",
+    "telefono": "3282828",
+    "latitud": 4.5455475,
+    "longitud": -74.106451,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 391,
+    "nombre": "Unidad de Servicios de Salud El Tintal - Patio Bonito Subred Integrada de Servicios de Salud Sur Occidente E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Cl. 10 86   58/90",
+    "telefono": "4399090 EXT. 4066-Institucional 3108669572",
+    "latitud": 4.6509489,
+    "longitud": -74.1489846,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 295,
+    "nombre": "Unidad de Servicios de Salud El Tunal",
+    "tipo": "hospital",
+    "direccion": "KR 20 47B 35 SUR",
+    "telefono": "7300000 Opción 0",
+    "latitud": 4.5733984,
+    "longitud": -74.1287784,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 290,
+    "nombre": "Unidad de Servicios de Salud Emaus",
+    "tipo": "hospital",
+    "direccion": "CL 64 C 121 76",
+    "telefono": "4431790",
+    "latitud": 4.7152863,
+    "longitud": -74.1404327,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 392,
+    "nombre": "Unidad de Servicios de Salud Emaus Subred Integrada de Servicios de Salud Norte E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Cl 64 C 121 76 1er piso",
+    "telefono": "4431790 ext. 2601",
+    "latitud": 4.7152863,
+    "longitud": -74.1404327,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 291,
+    "nombre": "Unidad de Servicios de Salud Engativá Calle 80",
+    "tipo": "hospital",
+    "direccion": "TV 100 A 80 A 50",
+    "telefono": "4431790",
+    "latitud": 4.7112614,
+    "longitud": -74.1094256,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 393,
+    "nombre": "Unidad de Servicios de Salud Engativá Calle 80 Subred Integrada de Servicios de Salud Norte E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Tv 100 A 80 A   50",
+    "telefono": "4431790  Ext. lab. 2064",
+    "latitud": 4.7112614,
+    "longitud": -74.1094256,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 394,
+    "nombre": "Unidad de Servicios de Salud Fontibón Subred Integrada de Servicios de Salud Sur Occidente E.S.E",
+    "tipo": "hospital",
+    "direccion": "Kr 99 16 I   05",
+    "telefono": "4860033 Ext. 4016",
+    "latitud": 4.6713294,
+    "longitud": -74.146287,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 289,
+    "nombre": "Unidad de Servicios de Salud Gaitana I",
+    "tipo": "hospital",
+    "direccion": "TV 126 134 88",
+    "telefono": "4431790",
+    "latitud": 4.7401984,
+    "longitud": -74.1092949,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 299,
+    "nombre": "Unidad de Servicios de Salud Jerusalén",
+    "tipo": "hospital",
+    "direccion": "CL 77 85 B 13 SUR",
+    "telefono": "7300000 Opción 0",
+    "latitud": 4.5721476,
+    "longitud": -74.1633605,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 284,
+    "nombre": "Unidad de Servicios de Salud Jorge Eliecer Gaitán",
+    "tipo": "hospital",
+    "direccion": "KR 4 A ESTE 5 20",
+    "telefono": "3282828 ETX 16912, 16611,16571",
+    "latitud": 4.5901097,
+    "longitud": -74.0699223,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 294,
+    "nombre": "Unidad de Servicios de Salud Meissen",
+    "tipo": "hospital",
+    "direccion": "KR 18 B 60 G 36 SUR",
+    "telefono": "7300000 Opción 0",
+    "latitud": 4.5595546,
+    "longitud": -74.1387034,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 298,
+    "nombre": "Unidad de Servicios de Salud Nazareth",
+    "tipo": "hospital",
+    "direccion": "Corregimiento de Nazareth de Sumapaz",
+    "telefono": "3108879305",
+    "latitud": 4.172265,
+    "longitud": -74.1468665,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 398,
+    "nombre": "Unidad de Servicios de Salud Occidente de Kennedy Subred Integrada de Servicios de Salud Sur Occidente E.S.E",
+    "tipo": "hospital",
+    "direccion": "Tv 74 F 40 B   54 Sur",
+    "telefono": "4399090 Ext-4064",
+    "latitud": 4.6163925,
+    "longitud": -74.153393,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 287,
+    "nombre": "Unidad de Servicios de Salud Olaya",
+    "tipo": "hospital",
+    "direccion": "KR 21 22 51 SUR",
+    "telefono": "3282828 EXT 24192,24191,24851",
+    "latitud": 4.58373,
+    "longitud": -74.1057716,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 285,
+    "nombre": "Unidad de Servicios de Salud Perseverancia",
+    "tipo": "hospital",
+    "direccion": "KR 5 33 A 45",
+    "telefono": "3282828 ETX 25181,25191",
+    "latitud": 4.6199868,
+    "longitud": -74.0655101,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 286,
+    "nombre": "Unidad de Servicios de Salud Samper Mendoza",
+    "tipo": "hospital",
+    "direccion": "KR 22 22 A 26",
+    "telefono": "3282828 EXT 19191,19181,19611",
+    "latitud": 4.6167629,
+    "longitud": -74.0816098,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 282,
+    "nombre": "Unidad de Servicios de Salud San Blas",
+    "tipo": "hospital",
+    "direccion": "TV 5 ESTE 19 50 SUR",
+    "telefono": "3282828 EXT 13192, 13941,13620",
+    "latitud": 4.5697921,
+    "longitud": -74.0832821,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 301,
+    "nombre": "Unidad de Servicios de Salud San Juan de Sumapaz",
+    "tipo": "hospital",
+    "direccion": "Corregimiento San Juan de Sumapáz",
+    "telefono": "3219007751",
+    "latitud": 4.0290296,
+    "longitud": -74.3151314,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 280,
+    "nombre": "Unidad de Servicios de Salud Santa Clara Hospital Universitario",
+    "tipo": "hospital",
+    "direccion": "KR 14 B 1 45 SUR",
+    "telefono": "3282828 ext 18191, 18000, 18151",
+    "latitud": 4.5912873,
+    "longitud": -74.0924293,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 302,
+    "nombre": "Unidad de Servicios de Salud Santa Librada I",
+    "tipo": "hospital",
+    "direccion": "KR 9 B 75 49 SUR",
+    "telefono": "7300000 Opción 0",
+    "latitud": 4.5146565,
+    "longitud": -74.1134818,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 292,
+    "nombre": "Unidad de Servicios de Salud Simón Bolívar",
+    "tipo": "hospital",
+    "direccion": "CL 165 7 06",
+    "telefono": "4431790",
+    "latitud": 4.7424298,
+    "longitud": -74.0230248,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 401,
+    "nombre": "Unidad de Servicios de Salud Simón Bolívar Subred Integrada de Servicios de Salud Norte E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Cl 165 7 06 1er piso",
+    "telefono": "4431790 Ext. 1798",
+    "latitud": 4.7424298,
+    "longitud": -74.0230248,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 300,
+    "nombre": "Unidad de Servicios de Salud Usme",
+    "tipo": "hospital",
+    "direccion": "KR 13 135 A 42 SUR",
+    "telefono": "7300000 Opción 0",
+    "latitud": 4.4731312,
+    "longitud": -74.1217762,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 279,
+    "nombre": "Unidad de Servicios de Salud Victoria",
+    "tipo": "hospital",
+    "direccion": "DG 39 SUR 3 20 ESTE",
+    "telefono": "3282828 EXT 14131, 14132, 14192",
+    "latitud": 4.5527689,
+    "longitud": -74.0944106,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 296,
+    "nombre": "Unidad de Servicios de Salud Vista Hermosa",
+    "tipo": "hospital",
+    "direccion": "KR 18 C 66 A 55 SUR",
+    "telefono": "7300000 Opción 0",
+    "latitud": 4.5526586,
+    "longitud": -74.1446934,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 390,
+    "nombre": "Unidad de Servicios de Salud de Suba Subred Integrada de Servicios de Salud Norte E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Kr 104 152 C 50",
+    "telefono": "4431790 Ext. lab. 3036-3032",
+    "latitud": 4.7549194,
+    "longitud": -74.0959097,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 316,
+    "nombre": "Unidad de Urgencias Puente Aranda",
+    "tipo": "hospital",
+    "direccion": "KR 62 14 41",
+    "telefono": "6466060",
+    "latitud": 4.6345546,
+    "longitud": -74.1124406,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 265,
+    "nombre": "Virrey Solis I.P.S S.A. Américas",
+    "tipo": "hospital",
+    "direccion": "AV LAS AMERICAS 66 A 27",
+    "telefono": "4473535 EXT 278, 476, 248",
+    "latitud": 4.6277124,
+    "longitud": -74.12139,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 263,
+    "nombre": "Virrey Solis Ips S.A - Clínica Suba",
+    "tipo": "hospital",
+    "direccion": "AC 145 95 B 22",
+    "telefono": "4473535 EXT 278, 476, 248",
+    "latitud": 4.7409148,
+    "longitud": -74.0885887,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 264,
+    "nombre": "Virrey Solis Ips.S.A. Calle 98",
+    "tipo": "hospital",
+    "direccion": "KR 49 98 A 28",
+    "telefono": "4473535 EXT 278, 476, 248",
+    "latitud": 4.6868129,
+    "longitud": -74.0607537,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 54,
+    "nombre": "CAI 20 de Julio",
+    "tipo": "police",
+    "direccion": "CL 22A SUR KR 7",
+    "telefono": "3115488954",
+    "latitud": 4.572588,
+    "longitud": -74.092548,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 106,
+    "nombre": "CAI 7 de Agosto",
+    "tipo": "police",
+    "direccion": "CL 64 28B 09",
+    "telefono": "3112307059",
+    "latitud": 4.6582842,
+    "longitud": -74.0770707,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 105,
+    "nombre": "CAI Alcázares",
+    "tipo": "police",
+    "direccion": "CL 71 AK 24",
+    "telefono": "3108747279",
+    "latitud": 4.6617694,
+    "longitud": -74.0682397,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 81,
+    "nombre": "CAI Alhambra",
+    "tipo": "police",
+    "direccion": "AC 116 KR 54B",
+    "telefono": "3012088717",
+    "latitud": 4.701034,
+    "longitud": -74.065331,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 63,
+    "nombre": "CAI Altamira",
+    "tipo": "police",
+    "direccion": "CL 48 SUR 13D ESTE",
+    "telefono": "3015806836",
+    "latitud": 4.5370259,
+    "longitud": -74.0860377,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 82,
+    "nombre": "CAI Andes",
+    "tipo": "police",
+    "direccion": "AV SUBA 104 10",
+    "telefono": "3507652000",
+    "latitud": 4.692092,
+    "longitud": -74.066182,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 142,
+    "nombre": "CAI Antonia Santos",
+    "tipo": "police",
+    "direccion": "KR 81G CL 63 SUR",
+    "telefono": "3012978925",
+    "latitud": 4.612973,
+    "longitud": -74.187222,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 53,
+    "nombre": "CAI Antonio José de Sucre",
+    "tipo": "police",
+    "direccion": "KR 5 BIS 111 25 SUR",
+    "telefono": "3212235405",
+    "latitud": 4.4907139,
+    "longitud": -74.114806,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 107,
+    "nombre": "CAI Arborizadora Alta",
+    "tipo": "police",
+    "direccion": "KR 42 CL 73 SUR",
+    "telefono": "3177094092",
+    "latitud": 4.5684167,
+    "longitud": -74.162976,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 181,
+    "nombre": "CAI Aures",
+    "tipo": "police",
+    "direccion": "KR 101 131C 38",
+    "telefono": "3208531982",
+    "latitud": 4.734326,
+    "longitud": -74.096124,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 169,
+    "nombre": "CAI Avenida Chile",
+    "tipo": "police",
+    "direccion": "AV CHILE KR 7",
+    "telefono": "3222243706",
+    "latitud": 4.6552427,
+    "longitud": -74.0559432,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 87,
+    "nombre": "CAI Bachué",
+    "tipo": "police",
+    "direccion": "KR 95D 88 65",
+    "telefono": "3058177306",
+    "latitud": 4.716035,
+    "longitud": -74.102335,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 126,
+    "nombre": "CAI Bellavista",
+    "tipo": "police",
+    "direccion": "CL 42A SUR 95 01",
+    "telefono": "3146777612",
+    "latitud": 4.6439283,
+    "longitud": -74.1754924,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 51,
+    "nombre": "CAI Bello Horizonte",
+    "tipo": "police",
+    "direccion": "KR 3A ESTE 31C 07 SUR",
+    "telefono": "3208443083",
+    "latitud": 4.5592383,
+    "longitud": -74.0915325,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 75,
+    "nombre": "CAI Bolivia",
+    "tipo": "police",
+    "direccion": "AK 10 CL 7",
+    "telefono": "3103854262",
+    "latitud": 4.5956521,
+    "longitud": -74.0803076,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 141,
+    "nombre": "CAI Brasilia",
+    "tipo": "police",
+    "direccion": "KR 87J CL 49C 25 SUR",
+    "telefono": "3504161440",
+    "latitud": 4.6300574,
+    "longitud": -74.1791363,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 131,
+    "nombre": "CAI Britalia",
+    "tipo": "police",
+    "direccion": "CL 46 SUR 80D 63",
+    "telefono": "3105375816",
+    "latitud": 4.6210179,
+    "longitud": -74.1691532,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 130,
+    "nombre": "CAI Caldas",
+    "tipo": "police",
+    "direccion": "TV 80G DG 38 SUR",
+    "telefono": "3105812915",
+    "latitud": 4.6330657,
+    "longitud": -74.1555849,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 58,
+    "nombre": "CAI Candelaria",
+    "tipo": "police",
+    "direccion": "AV CIUDAD DE VILLAVICENCIO KR 43C",
+    "telefono": "3008085957",
+    "latitud": 4.5732943,
+    "longitud": -74.1531695,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 127,
+    "nombre": "CAI Castilla",
+    "tipo": "police",
+    "direccion": "CL 9 78C 14",
+    "telefono": "3112724318",
+    "latitud": 4.6423648,
+    "longitud": -74.1411824,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 71,
+    "nombre": "CAI Centenario",
+    "tipo": "police",
+    "direccion": "KR 24 CL 24 SUR",
+    "telefono": "3223121321",
+    "latitud": 4.5845274,
+    "longitud": -74.1072154,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 70,
+    "nombre": "CAI Chapinero",
+    "tipo": "police",
+    "direccion": "CL 60 KR 9",
+    "telefono": "3104938271",
+    "latitud": 4.6457726,
+    "longitud": -74.0622038,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 124,
+    "nombre": "CAI Ciudad Berna",
+    "tipo": "police",
+    "direccion": "CL 11 SUR 10 03",
+    "telefono": "3165387983",
+    "latitud": 4.582117,
+    "longitud": -74.0902792,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 102,
+    "nombre": "CAI Ciudad Salitre",
+    "tipo": "police",
+    "direccion": "CL 25 CRA 68D",
+    "telefono": "3002360741",
+    "latitud": 4.6560373,
+    "longitud": -74.1081138,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 86,
+    "nombre": "CAI Ciudadela Colsubsidio",
+    "tipo": "police",
+    "direccion": "KR 111C CL 86A",
+    "telefono": "3102570046",
+    "latitud": 4.7242611,
+    "longitud": -74.1125307,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 148,
+    "nombre": "CAI Claret",
+    "tipo": "police",
+    "direccion": "AC 44 SUR KR 27",
+    "telefono": "3505645524",
+    "latitud": 4.583296,
+    "longitud": -74.127269,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 65,
+    "nombre": "CAI Codito",
+    "tipo": "police",
+    "direccion": "KR 4 CL 187A",
+    "telefono": "3012123642",
+    "latitud": 4.7639232,
+    "longitud": -74.0242048,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 85,
+    "nombre": "CAI Colina Campestre",
+    "tipo": "police",
+    "direccion": "CL 131 58 02",
+    "telefono": "3142953375",
+    "latitud": 4.7213222,
+    "longitud": -74.0676794,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 174,
+    "nombre": "CAI Colseguros",
+    "tipo": "police",
+    "direccion": "KR 10 17 54",
+    "telefono": "3214134308",
+    "latitud": 4.6054588,
+    "longitud": -74.0744463,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 109,
+    "nombre": "CAI Compartir",
+    "tipo": "police",
+    "direccion": "CL 66 BIS SUR 18T 14",
+    "telefono": "3505922233",
+    "latitud": 4.5572278,
+    "longitud": -74.146446,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 193,
+    "nombre": "CAI Contador",
+    "tipo": "police",
+    "direccion": "AK 19 136 31",
+    "telefono": "3148671231",
+    "latitud": 4.7206134,
+    "longitud": -74.046903,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 113,
+    "nombre": "CAI Danubio Azul",
+    "tipo": "police",
+    "direccion": "DG 59 SUR KR 2C BIS",
+    "telefono": "3118848016",
+    "latitud": 4.537335,
+    "longitud": -74.1133779,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 136,
+    "nombre": "CAI Delicias",
+    "tipo": "police",
+    "direccion": "AV BOYACA 44 03 SUR",
+    "telefono": "6017109606",
+    "latitud": 4.599088,
+    "longitud": -74.1451654,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 185,
+    "nombre": "CAI Diana Turbay",
+    "tipo": "police",
+    "direccion": "CL 48X SUR KR 1",
+    "telefono": "3007815456",
+    "latitud": 4.5453966,
+    "longitud": -74.1056347,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 190,
+    "nombre": "CAI Distrital",
+    "tipo": "police",
+    "direccion": "CL 1C SUR KR 8",
+    "telefono": "3173488350",
+    "latitud": 4.5856207,
+    "longitud": -74.0845506,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 74,
+    "nombre": "CAI Dorado",
+    "tipo": "police",
+    "direccion": "CL 1A BIS KR 8 ESTE",
+    "telefono": "3014410910",
+    "latitud": 4.5805761,
+    "longitud": -74.0723034,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 79,
+    "nombre": "CAI El Pinar",
+    "tipo": "police",
+    "direccion": "AC 153 KR 92",
+    "telefono": "3102349011",
+    "latitud": 4.7497206,
+    "longitud": -74.0830786,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 120,
+    "nombre": "CAI El Tejar",
+    "tipo": "police",
+    "direccion": "AV 1 MAYO AK 68",
+    "telefono": "3203402192",
+    "latitud": 4.6091213,
+    "longitud": -74.1281939,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 165,
+    "nombre": "CAI El Virrey",
+    "tipo": "police",
+    "direccion": "KR 15 CL 88",
+    "telefono": "3152201698",
+    "latitud": 4.6732056,
+    "longitud": -74.0539944,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 89,
+    "nombre": "CAI Engativá",
+    "tipo": "police",
+    "direccion": "KR 123 64 65",
+    "telefono": "3186808876",
+    "latitud": 4.715744,
+    "longitud": -74.141697,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 166,
+    "nombre": "CAI Estadero",
+    "tipo": "police",
+    "direccion": "AK 11 CL 87A",
+    "telefono": "3503771153",
+    "latitud": 4.6703535,
+    "longitud": -74.0499992,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 151,
+    "nombre": "CAI Federmán",
+    "tipo": "police",
+    "direccion": "KR 45 58A 10",
+    "telefono": "3168045986",
+    "latitud": 4.6494093,
+    "longitud": -74.0831216,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 93,
+    "nombre": "CAI Florida",
+    "tipo": "police",
+    "direccion": "KR 90 CL 69A",
+    "telefono": "3212145123",
+    "latitud": 4.6936875,
+    "longitud": -74.1109902,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 80,
+    "nombre": "CAI Fontanar del Río",
+    "tipo": "police",
+    "direccion": "KR 136A AC 145",
+    "telefono": "3053164863",
+    "latitud": 4.7538771,
+    "longitud": -74.1102505,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 84,
+    "nombre": "CAI Gaitana",
+    "tipo": "police",
+    "direccion": "CL 139 126C 02",
+    "telefono": "3103206664",
+    "latitud": 4.7453849,
+    "longitud": -74.1079655,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 152,
+    "nombre": "CAI Galerías",
+    "tipo": "police",
+    "direccion": "AC 53 25 01",
+    "telefono": "3124946705",
+    "latitud": 4.6416965,
+    "longitud": -74.0745348,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 159,
+    "nombre": "CAI Galán",
+    "tipo": "police",
+    "direccion": "KR 56 CL 4",
+    "telefono": "3105838571",
+    "latitud": 4.6202172,
+    "longitud": -74.1190017,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 72,
+    "nombre": "CAI Girardot",
+    "tipo": "police",
+    "direccion": "CL 2A 1A 20",
+    "telefono": "3116208734",
+    "latitud": 4.5871906,
+    "longitud": -74.0753643,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 160,
+    "nombre": "CAI Gorgonzola",
+    "tipo": "police",
+    "direccion": "AC 6 TV 42A",
+    "telefono": "3208841536",
+    "latitud": 4.619104,
+    "longitud": -74.106276,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 171,
+    "nombre": "CAI Granada",
+    "tipo": "police",
+    "direccion": "KR 4 64 22",
+    "telefono": "3176071957",
+    "latitud": 4.6469743,
+    "longitud": -74.0567216,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 45,
+    "nombre": "CAI Granjas",
+    "tipo": "police",
+    "direccion": "KR 69B CL 21A",
+    "telefono": "3132505220",
+    "latitud": 4.6514774,
+    "longitud": -74.1179637,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 55,
+    "nombre": "CAI Guacamayas",
+    "tipo": "police",
+    "direccion": "KR 2A CL 37B SUR",
+    "telefono": "3128171222",
+    "latitud": 4.555436,
+    "longitud": -74.0973372,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 73,
+    "nombre": "CAI Guavio",
+    "tipo": "police",
+    "direccion": "CL 6 3 67 ESTE",
+    "telefono": "3113684086",
+    "latitud": 4.5892331,
+    "longitud": -74.0715853,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 125,
+    "nombre": "CAI Guaymaral",
+    "tipo": "police",
+    "direccion": "PARQUE 10 URBANIZACIÓN TORREMOLINOS",
+    "telefono": "3206829947",
+    "latitud": 4.7962978,
+    "longitud": -74.0582776,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 50,
+    "nombre": "CAI Gustavo Restrepo",
+    "tipo": "police",
+    "direccion": "CL 31A SUR KR 13A BIS",
+    "telefono": "3194661479",
+    "latitud": 4.5765438,
+    "longitud": -74.1102928,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 101,
+    "nombre": "CAI Hayuelos",
+    "tipo": "police",
+    "direccion": "AC 22 KR 80D",
+    "telefono": "3197763384",
+    "latitud": 4.661898,
+    "longitud": -74.127171,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 91,
+    "nombre": "CAI Jaboque",
+    "tipo": "police",
+    "direccion": "KR 110 BIS CL 67A",
+    "telefono": "3108592359",
+    "latitud": 4.7034792,
+    "longitud": -74.1291355,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 47,
+    "nombre": "CAI Juan Rey",
+    "tipo": "police",
+    "direccion": "KR 15 ESTE CL 74 SUR",
+    "telefono": "3208067575",
+    "latitud": 4.517569,
+    "longitud": -74.09001,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 59,
+    "nombre": "CAI La Alquería",
+    "tipo": "police",
+    "direccion": "CL 43 SUR KR 52C",
+    "telefono": "3202214831",
+    "latitud": 4.59621,
+    "longitud": -74.135443,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 115,
+    "nombre": "CAI La Aurora",
+    "tipo": "police",
+    "direccion": "CL 71F SUR AV BOYACA",
+    "telefono": "3152061538",
+    "latitud": 4.5198267,
+    "longitud": -74.1216334,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 164,
+    "nombre": "CAI La Calera",
+    "tipo": "police",
+    "direccion": "KM 3 VIA LA CALERA",
+    "telefono": "3102806149",
+    "latitud": 4.675961,
+    "longitud": -74.0267437,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 150,
+    "nombre": "CAI La Esmeralda",
+    "tipo": "police",
+    "direccion": "CL 44C KR 54",
+    "telefono": "3143874740",
+    "latitud": 4.646207,
+    "longitud": -74.090647,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 146,
+    "nombre": "CAI La Estación",
+    "tipo": "police",
+    "direccion": "AUTOPISTA SUR 63 09 SUR",
+    "telefono": "3187276454",
+    "latitud": 4.5973506,
+    "longitud": -74.1800829,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 112,
+    "nombre": "CAI La Joya",
+    "tipo": "police",
+    "direccion": "CL 80A SUR TV 18B BIS B",
+    "telefono": "3174301725",
+    "latitud": 4.5373094,
+    "longitud": -74.1443786,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 140,
+    "nombre": "CAI La Libertad",
+    "tipo": "police",
+    "direccion": "AC 59C SUR KR 88C",
+    "telefono": "3138016591",
+    "latitud": 4.626118,
+    "longitud": -74.191785,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 57,
+    "nombre": "CAI La Victoria",
+    "tipo": "police",
+    "direccion": "CL 46A SUR KR 3F ESTE",
+    "telefono": "3202214831",
+    "latitud": 4.5442126,
+    "longitud": -74.0955844,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 41,
+    "nombre": "CAI Laches",
+    "tipo": "police",
+    "direccion": "DG 3C 8 05 ESTE",
+    "telefono": "3204577446",
+    "latitud": 4.5853069,
+    "longitud": -74.0677543,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 179,
+    "nombre": "CAI Las Cruces",
+    "tipo": "police",
+    "direccion": "KR 8 CL 2",
+    "telefono": "3057673707",
+    "latitud": 4.5895212,
+    "longitud": -74.0814602,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 67,
+    "nombre": "CAI Las Ferias",
+    "tipo": "police",
+    "direccion": "AVENIDA CHILE KR 69J",
+    "telefono": "3212029221",
+    "latitud": 4.6829476,
+    "longitud": -74.0903809,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 145,
+    "nombre": "CAI Laureles",
+    "tipo": "police",
+    "direccion": "KR 80J CL 72C SUR",
+    "telefono": "3102397847",
+    "latitud": 4.6081499,
+    "longitud": -74.1975298,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 64,
+    "nombre": "CAI Libertadores",
+    "tipo": "police",
+    "direccion": "CL 56 SUR 14A 11 ESTE",
+    "telefono": "3044726023",
+    "latitud": 4.5325829,
+    "longitud": -74.0871395,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 69,
+    "nombre": "CAI Lisboa",
+    "tipo": "police",
+    "direccion": "CL 130 AK 7",
+    "telefono": "3213454983",
+    "latitud": 4.708471,
+    "longitud": -74.0289326,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 183,
+    "nombre": "CAI Lomas",
+    "tipo": "police",
+    "direccion": "KR 9G 37 90",
+    "telefono": "3204455042",
+    "latitud": 4.5641026,
+    "longitud": -74.1072092,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 184,
+    "nombre": "CAI Los Molinos",
+    "tipo": "police",
+    "direccion": "KR 5U CL 49D BIS SUR",
+    "telefono": "3013221938",
+    "latitud": 4.5550263,
+    "longitud": -74.1176405,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 170,
+    "nombre": "CAI Lourdes",
+    "tipo": "police",
+    "direccion": "CL 64 KR 10",
+    "telefono": "3203065712",
+    "latitud": 4.6498079,
+    "longitud": -74.0619152,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 110,
+    "nombre": "CAI Lucero",
+    "tipo": "police",
+    "direccion": "DG 64A BIS SUR 17G 68",
+    "telefono": "3106139297",
+    "latitud": 4.5538899,
+    "longitud": -74.1408466,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 98,
+    "nombre": "CAI Macarena",
+    "tipo": "police",
+    "direccion": "KR 114 16 99",
+    "telefono": "3115125590",
+    "latitud": 4.6816888,
+    "longitud": -74.1544278,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 60,
+    "nombre": "CAI Marsella",
+    "tipo": "police",
+    "direccion": "CL 9A KR 70",
+    "telefono": "3203975418",
+    "latitud": 4.6354251,
+    "longitud": -74.1294764,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 78,
+    "nombre": "CAI Mazurén",
+    "tipo": "police",
+    "direccion": "KR 54 163 11",
+    "telefono": "3102766633",
+    "latitud": 4.7463514,
+    "longitud": -74.0540928,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 139,
+    "nombre": "CAI Metrovivienda",
+    "tipo": "police",
+    "direccion": "KR 97C CL 70A SUR",
+    "telefono": "3203230403",
+    "latitud": 4.6329817,
+    "longitud": -74.2014823,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 68,
+    "nombre": "CAI Mirador",
+    "tipo": "police",
+    "direccion": "KM 3 VIA CHOACHI",
+    "telefono": "3214407794",
+    "latitud": 4.5916204,
+    "longitud": -74.0645251,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 100,
+    "nombre": "CAI Modelia",
+    "tipo": "police",
+    "direccion": "KR 74 AV ESPERANZA",
+    "telefono": "3204236251",
+    "latitud": 4.6650411,
+    "longitud": -74.1183741,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 149,
+    "nombre": "CAI Modelo",
+    "tipo": "police",
+    "direccion": "AK 68 56B 41",
+    "telefono": "3012487001",
+    "latitud": 4.6678946,
+    "longitud": -74.0795228,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 176,
+    "nombre": "CAI Monserrate",
+    "tipo": "police",
+    "direccion": "AV CIRCUNVALAR CL 20",
+    "telefono": "3138991429",
+    "latitud": 4.604057,
+    "longitud": -74.061927,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 161,
+    "nombre": "CAI Navarra",
+    "tipo": "police",
+    "direccion": "AUTOPISTA NORTE 106B 96",
+    "telefono": "3148671231",
+    "latitud": 4.6955862,
+    "longitud": -74.0552523,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 95,
+    "nombre": "CAI Normandía",
+    "tipo": "police",
+    "direccion": "AV BOYACA CL 52 BIS",
+    "telefono": "3108763045",
+    "latitud": 4.6702241,
+    "longitud": -74.1075064,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 180,
+    "nombre": "CAI Nuevo Porvenir",
+    "tipo": "police",
+    "direccion": "KR 5B ESTE 100 20 SUR",
+    "telefono": "3134126735",
+    "latitud": 4.4917154,
+    "longitud": -74.1045547,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 138,
+    "nombre": "CAI Oneida",
+    "tipo": "police",
+    "direccion": "AV 1 DE MAYO KR 35B SUR",
+    "telefono": "3245609465",
+    "latitud": 4.6190505,
+    "longitud": -74.1451328,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 167,
+    "nombre": "CAI Oxy",
+    "tipo": "police",
+    "direccion": "AK 11 CL 77",
+    "telefono": "3148054884",
+    "latitud": 4.6618614,
+    "longitud": -74.0557753,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 186,
+    "nombre": "CAI Palermo Sur",
+    "tipo": "police",
+    "direccion": "TV 2D BIS CL 52 SUR",
+    "telefono": "3168103987",
+    "latitud": 4.542213,
+    "longitud": -74.1106395,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 155,
+    "nombre": "CAI Paloquemao",
+    "tipo": "police",
+    "direccion": "KR 25 15 97",
+    "telefono": "3132224889",
+    "latitud": 4.6129749,
+    "longitud": -74.086497,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 108,
+    "nombre": "CAI Paraíso",
+    "tipo": "police",
+    "direccion": "CL 71P SUR 27L 15",
+    "telefono": "3155446711",
+    "latitud": 4.549306,
+    "longitud": -74.1632883,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 129,
+    "nombre": "CAI Patio Bonito",
+    "tipo": "police",
+    "direccion": "KR 87 CL 26 SUR",
+    "telefono": "3195296462",
+    "latitud": 4.639022,
+    "longitud": -74.161127,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 62,
+    "nombre": "CAI Perdomo",
+    "tipo": "police",
+    "direccion": "DG 62A SUR KR 72",
+    "telefono": "3504910683",
+    "latitud": 4.5914678,
+    "longitud": -74.1677462,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 144,
+    "nombre": "CAI Piamonte",
+    "tipo": "police",
+    "direccion": "KR 78C 69B 19 SUR",
+    "telefono": "3202765298",
+    "latitud": 4.6022354,
+    "longitud": -74.1902945,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 49,
+    "nombre": "CAI Plaza de Las Américas",
+    "tipo": "police",
+    "direccion": "AV BOYACA AV 1 DE MAYO",
+    "telefono": "3186958587",
+    "latitud": 4.6191533,
+    "longitud": -74.1390275,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 104,
+    "nombre": "CAI Polo Club",
+    "tipo": "police",
+    "direccion": "AK 24 CL 86A",
+    "telefono": "3116657394",
+    "latitud": 4.6749779,
+    "longitud": -74.0627535,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 158,
+    "nombre": "CAI Puente Aranda",
+    "tipo": "police",
+    "direccion": "KR 55 CL 15",
+    "telefono": "3203402192",
+    "latitud": 4.6315209,
+    "longitud": -74.1084136,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 90,
+    "nombre": "CAI Quirigua",
+    "tipo": "police",
+    "direccion": "AC 80 TV 94",
+    "telefono": "3117005000",
+    "latitud": 4.7062653,
+    "longitud": -74.1072044,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 56,
+    "nombre": "CAI Ramajal",
+    "tipo": "police",
+    "direccion": "CL 30C SUR KR 9A ESTE",
+    "telefono": "3015153248",
+    "latitud": 4.5580651,
+    "longitud": -74.0831417,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 123,
+    "nombre": "CAI Restrepo",
+    "tipo": "police",
+    "direccion": "TV 18 BIS CL 13A SUR",
+    "telefono": "3506447836",
+    "latitud": 4.5868239,
+    "longitud": -74.0978712,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 156,
+    "nombre": "CAI Ricaurte",
+    "tipo": "police",
+    "direccion": "KR 28 9 85",
+    "telefono": "3232524202",
+    "latitud": 4.6089704,
+    "longitud": -74.0935056,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 83,
+    "nombre": "CAI Rincón",
+    "tipo": "police",
+    "direccion": "KR 93 CL 128C",
+    "telefono": "3144552494",
+    "latitud": 4.7235438,
+    "longitud": -74.0916281,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 103,
+    "nombre": "CAI Rionegro",
+    "tipo": "police",
+    "direccion": "CL 94 65A 15",
+    "telefono": "3152797733",
+    "latitud": 4.6846159,
+    "longitud": -74.0720263,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 132,
+    "nombre": "CAI Roma",
+    "tipo": "police",
+    "direccion": "AK 80 DG 55A SUR",
+    "telefono": "3135735383",
+    "latitud": 4.6134368,
+    "longitud": -74.1756025,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 168,
+    "nombre": "CAI Rosales",
+    "tipo": "police",
+    "direccion": "AV CIRCUNVALAR 76 11",
+    "telefono": "3205765899",
+    "latitud": 4.6561324,
+    "longitud": -74.0490729,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 177,
+    "nombre": "CAI Rosario",
+    "tipo": "police",
+    "direccion": "AV JIMENEZ KR 5",
+    "telefono": "3138116186",
+    "latitud": 4.6005189,
+    "longitud": -74.0714275,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 97,
+    "nombre": "CAI Sabana Grande",
+    "tipo": "police",
+    "direccion": "KR 106 CL 14A",
+    "telefono": "3204420054",
+    "latitud": 4.6707182,
+    "longitud": -74.1564901,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 154,
+    "nombre": "CAI Samper Mendoza",
+    "tipo": "police",
+    "direccion": "CL 24 KR 19B",
+    "telefono": "3233631147",
+    "latitud": 4.6184331,
+    "longitud": -74.0785106,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 189,
+    "nombre": "CAI San Carlos",
+    "tipo": "police",
+    "direccion": "DG 51 SUR 18 A 40",
+    "telefono": "3143257135",
+    "latitud": 4.5672988,
+    "longitud": -74.1296923,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 172,
+    "nombre": "CAI San Diego",
+    "tipo": "police",
+    "direccion": "KR 7 AC 26",
+    "telefono": "3115308363",
+    "latitud": 4.6120244,
+    "longitud": -74.0698312,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 52,
+    "nombre": "CAI San Francisco",
+    "tipo": "police",
+    "direccion": "KR 20C CL 67 SUR",
+    "telefono": "3227216919",
+    "latitud": 4.5628183,
+    "longitud": -74.1490788,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 182,
+    "nombre": "CAI San Jorge",
+    "tipo": "police",
+    "direccion": "DG 45F SUR 13G 40",
+    "telefono": "3023589287",
+    "latitud": 4.5695009,
+    "longitud": -74.121795,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 143,
+    "nombre": "CAI San José",
+    "tipo": "police",
+    "direccion": "CL 80 SUR KR 79A",
+    "telefono": "3213426829",
+    "latitud": 4.6111507,
+    "longitud": -74.2062695,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 76,
+    "nombre": "CAI San José de Bavaria",
+    "tipo": "police",
+    "direccion": "CL 169B AV BOYACÁ",
+    "telefono": "3123510972",
+    "latitud": 4.7555339,
+    "longitud": -74.0651379,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 153,
+    "nombre": "CAI San Luis",
+    "tipo": "police",
+    "direccion": "KR 18 CL 60",
+    "telefono": "3133489231",
+    "latitud": 4.648052,
+    "longitud": -74.068764,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 178,
+    "nombre": "CAI San Victorino",
+    "tipo": "police",
+    "direccion": "AV CARACAS CL 10",
+    "telefono": "3508395780",
+    "latitud": 4.6014326,
+    "longitud": -74.0812072,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 163,
+    "nombre": "CAI Santa Bárbara",
+    "tipo": "police",
+    "direccion": "KR 6 CL 116",
+    "telefono": "3115158664",
+    "latitud": 4.6931129,
+    "longitud": -74.0312858,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 157,
+    "nombre": "CAI Santa Isabel",
+    "tipo": "police",
+    "direccion": "AK 27 CL 1G",
+    "telefono": "",
+    "latitud": 4.5989013,
+    "longitud": -74.0999818,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 116,
+    "nombre": "CAI Santa Librada",
+    "tipo": "police",
+    "direccion": "KR 8 80 10 SUR",
+    "telefono": "3222370712",
+    "latitud": 4.5097502,
+    "longitud": -74.1093988,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 114,
+    "nombre": "CAI Santa Marta",
+    "tipo": "police",
+    "direccion": "KR 11 CL 67A BIS SUR",
+    "telefono": "3213444669",
+    "latitud": 4.5306569,
+    "longitud": -74.1174564,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 94,
+    "nombre": "CAI Santa María del Lago",
+    "tipo": "police",
+    "direccion": "KR 76 75 26",
+    "telefono": "3215651860",
+    "latitud": 4.693595,
+    "longitud": -74.0966202,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 119,
+    "nombre": "CAI Santa Matilde",
+    "tipo": "police",
+    "direccion": "AC 8 SUR KR 35A",
+    "telefono": "3124182807",
+    "latitud": 4.601347,
+    "longitud": -74.1104656,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 99,
+    "nombre": "CAI Santander",
+    "tipo": "police",
+    "direccion": "KR 96C CL 20D",
+    "telefono": "3233627881",
+    "latitud": 4.6711239,
+    "longitud": -74.1381347,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 48,
+    "nombre": "CAI Santo Domingo",
+    "tipo": "police",
+    "direccion": "CL 69A SUR KR 77C",
+    "telefono": "3007865927",
+    "latitud": 4.5777774,
+    "longitud": -74.1793802,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 88,
+    "nombre": "CAI Serena",
+    "tipo": "police",
+    "direccion": "AC 90 AV CIUDAD DE CALI",
+    "telefono": "3053721066",
+    "latitud": 4.7100297,
+    "longitud": -74.0942492,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 133,
+    "nombre": "CAI Socorro",
+    "tipo": "police",
+    "direccion": "CL 49 SUR 77P 52",
+    "telefono": "3135676992",
+    "latitud": 4.6079602,
+    "longitud": -74.1660743,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 61,
+    "nombre": "CAI Soledad",
+    "tipo": "police",
+    "direccion": "AK 24 CL 41",
+    "telefono": "3147300919",
+    "latitud": 4.6313744,
+    "longitud": -74.0749769,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 137,
+    "nombre": "CAI Techo",
+    "tipo": "police",
+    "direccion": "KR 78B CL 6 SUR",
+    "telefono": "3104197022",
+    "latitud": 4.626064,
+    "longitud": -74.147315,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 173,
+    "nombre": "CAI Telecom",
+    "tipo": "police",
+    "direccion": "CL 32 KR 13 41",
+    "telefono": "3125182544",
+    "latitud": 4.6185205,
+    "longitud": -74.069319,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 46,
+    "nombre": "CAI Teusaquillo",
+    "tipo": "police",
+    "direccion": "KR 16 AC 34",
+    "telefono": "3173744038",
+    "latitud": 4.6236185,
+    "longitud": -74.0713654,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 42,
+    "nombre": "CAI Tierra Linda",
+    "tipo": "police",
+    "direccion": "CL 127C KR 49",
+    "telefono": "3132246669",
+    "latitud": 4.711654,
+    "longitud": -74.057354,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 134,
+    "nombre": "CAI Timiza",
+    "tipo": "police",
+    "direccion": "CL 43 SUR KR 73A",
+    "telefono": "3115220044",
+    "latitud": 4.6076837,
+    "longitud": -74.1578399,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 128,
+    "nombre": "CAI Tintal",
+    "tipo": "police",
+    "direccion": "CL 6D KR 87A",
+    "telefono": "3134070555",
+    "latitud": 4.6448283,
+    "longitud": -74.1546159,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 192,
+    "nombre": "CAI Toberín",
+    "tipo": "police",
+    "direccion": "CL 164 KR 16C",
+    "telefono": "3222087457",
+    "latitud": 4.7436896,
+    "longitud": -74.0396955,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 175,
+    "nombre": "CAI Torres Blancas",
+    "tipo": "police",
+    "direccion": "KR 3 22 55",
+    "telefono": "3008546787",
+    "latitud": 4.606159,
+    "longitud": -74.0667651,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 188,
+    "nombre": "CAI Tunal",
+    "tipo": "police",
+    "direccion": "AK 24 CL 48C SUR",
+    "telefono": "3052912972",
+    "latitud": 4.5766343,
+    "longitud": -74.130474,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 162,
+    "nombre": "CAI Unicentro",
+    "tipo": "police",
+    "direccion": "CL 122 20 15",
+    "telefono": "3175112473",
+    "latitud": 4.702021,
+    "longitud": -74.051274,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 118,
+    "nombre": "CAI Usme",
+    "tipo": "police",
+    "direccion": "KR 14A CL 137B SUR",
+    "telefono": "3013869851",
+    "latitud": 4.4719044,
+    "longitud": -74.1254482,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 122,
+    "nombre": "CAI Valvanera",
+    "tipo": "police",
+    "direccion": "CL 17A SUR 24G 18",
+    "telefono": "3003549145",
+    "latitud": 4.5893914,
+    "longitud": -74.1047534,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 187,
+    "nombre": "CAI Venecia",
+    "tipo": "police",
+    "direccion": "TV 44 DG 50B SUR",
+    "telefono": "3115417845",
+    "latitud": 4.5899713,
+    "longitud": -74.1383982,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 66,
+    "nombre": "CAI Verbenal",
+    "tipo": "police",
+    "direccion": "CL 187 19 22",
+    "telefono": "3115920934",
+    "latitud": 4.7644416,
+    "longitud": -74.0403485,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 96,
+    "nombre": "CAI Versalles",
+    "tipo": "police",
+    "direccion": "KR 109 CL 23 31",
+    "telefono": "3174404861",
+    "latitud": 4.6850396,
+    "longitud": -74.1434996,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 135,
+    "nombre": "CAI Villa Claudia",
+    "tipo": "police",
+    "direccion": "KR 68I CL 34 SUR",
+    "telefono": "3195381383",
+    "latitud": 4.6099657,
+    "longitud": -74.1354617,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 44,
+    "nombre": "CAI Villa Luz",
+    "tipo": "police",
+    "direccion": "KR 77A CL 64B",
+    "telefono": "3125596896",
+    "latitud": 4.6813063,
+    "longitud": -74.1075877,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 121,
+    "nombre": "CAI Villa Mayor",
+    "tipo": "police",
+    "direccion": "CL 36 SUR KR 34C",
+    "telefono": "3232924935",
+    "latitud": 4.5920772,
+    "longitud": -74.1205888,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 191,
+    "nombre": "CAI Villa Nidia",
+    "tipo": "police",
+    "direccion": "CL 163A 6A 25",
+    "telefono": "3504884036",
+    "latitud": 4.7377754,
+    "longitud": -74.0225707,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 77,
+    "nombre": "CAI Villa del Prado",
+    "tipo": "police",
+    "direccion": "AUTOPISTA NORTE CL 172",
+    "telefono": "3214665109",
+    "latitud": 4.7533193,
+    "longitud": -74.0469735,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 147,
+    "nombre": "CAI Villa del Rio",
+    "tipo": "police",
+    "direccion": "CL 57B SUR AV CIUDAD DE VILLAVICENCIO",
+    "telefono": "3217780737",
+    "latitud": 4.599805,
+    "longitud": -74.1624973,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 43,
+    "nombre": "CAI Villas de Granada",
+    "tipo": "police",
+    "direccion": "KR 112A 77A 30",
+    "telefono": "3044812664",
+    "latitud": 4.7169208,
+    "longitud": -74.1229528,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 111,
+    "nombre": "CAI Vista Hermosa",
+    "tipo": "police",
+    "direccion": "DG 71B SUR 18I 60",
+    "telefono": "3208315146",
+    "latitud": 4.5469785,
+    "longitud": -74.1493146,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 117,
+    "nombre": "CAI Yomasa",
+    "tipo": "police",
+    "direccion": "CL 91 SUR 5 33",
+    "telefono": "3206829947",
+    "latitud": 4.5016335,
+    "longitud": -74.1099034,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 92,
+    "nombre": "CAI Álamos",
+    "tipo": "police",
+    "direccion": "TV 93 CL 64G",
+    "telefono": "3183894034",
+    "latitud": 4.690173,
+    "longitud": -74.117279,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 214,
+    "nombre": "Estación de Policía Aeropuerto",
+    "tipo": "police",
+    "direccion": "AV EL DORADO 103 09",
+    "telefono": "4397070",
+    "latitud": 4.6949316,
+    "longitud": -74.1417761,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 217,
+    "nombre": "Estación de Policía Antonio Nariño",
+    "tipo": "police",
+    "direccion": "KR 24 18 90 SUR",
+    "telefono": "3502150333",
+    "latitud": 4.585608,
+    "longitud": -74.1031345,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 218,
+    "nombre": "Estación de Policía Barrios Unidos",
+    "tipo": "police",
+    "direccion": "AVENIDA CHILE 62 81",
+    "telefono": "3002326359",
+    "latitud": 4.673812,
+    "longitud": -74.0818618,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 219,
+    "nombre": "Estación de Policía Bosa",
+    "tipo": "police",
+    "direccion": "CL 65 SUR 77N 23",
+    "telefono": "3502150329",
+    "latitud": 4.6001566,
+    "longitud": -74.1867872,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 231,
+    "nombre": "Estación de Policía Candelaria",
+    "tipo": "police",
+    "direccion": "KR 7 6A 12",
+    "telefono": "3203088721",
+    "latitud": 4.5914188,
+    "longitud": -74.0789156,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 211,
+    "nombre": "Estación de Policía Chapinero",
+    "tipo": "police",
+    "direccion": "KR 2 56 40",
+    "telefono": "3143550776",
+    "latitud": 4.6416127,
+    "longitud": -74.0583903,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 220,
+    "nombre": "Estación de Policía Ciudad Bolívar",
+    "tipo": "police",
+    "direccion": "DG 70 SUR 54 22",
+    "telefono": "3203016935",
+    "latitud": 4.5774782,
+    "longitud": -74.1646586,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 221,
+    "nombre": "Estación de Policía Engativá",
+    "tipo": "police",
+    "direccion": "KR 78A 70 54",
+    "telefono": "3502150296",
+    "latitud": 4.690011,
+    "longitud": -74.102676,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 222,
+    "nombre": "Estación de Policía Fontibón",
+    "tipo": "police",
+    "direccion": "KR 98 16B 50",
+    "telefono": "3203121620",
+    "latitud": 4.6676885,
+    "longitud": -74.1487251,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 223,
+    "nombre": "Estación de Policía Kennedy",
+    "tipo": "police",
+    "direccion": "CL 41D SUR 78N 05",
+    "telefono": "3503150315",
+    "latitud": 4.6195532,
+    "longitud": -74.159572,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 224,
+    "nombre": "Estación de Policía Los Mártires",
+    "tipo": "police",
+    "direccion": "KR 24 12 32",
+    "telefono": "3103469776",
+    "latitud": 4.6089279,
+    "longitud": -74.0886263,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 225,
+    "nombre": "Estación de Policía Puente Aranda",
+    "tipo": "police",
+    "direccion": "KR 39 10 25",
+    "telefono": "3203078648",
+    "latitud": 4.6175541,
+    "longitud": -74.102759,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 213,
+    "nombre": "Estación de Policía Rafael Uribe Uribe",
+    "tipo": "police",
+    "direccion": "CL 27 SUR 24H 39",
+    "telefono": "3203024427",
+    "latitud": 4.5853832,
+    "longitud": -74.1105563,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 212,
+    "nombre": "Estación de Policía San Cristóbal",
+    "tipo": "police",
+    "direccion": "AV 1 DE MAYO 1 90 ESTE",
+    "telefono": "3502150328",
+    "latitud": 4.5700271,
+    "longitud": -74.0858675,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 216,
+    "nombre": "Estación de Policía Santa Fe",
+    "tipo": "police",
+    "direccion": "KR 5 29 40",
+    "telefono": "3203021449",
+    "latitud": 4.615283,
+    "longitud": -74.066364,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 226,
+    "nombre": "Estación de Policía Suba",
+    "tipo": "police",
+    "direccion": "KR 92 146C 49",
+    "telefono": "314357195",
+    "latitud": 4.7414138,
+    "longitud": -74.0853113,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 215,
+    "nombre": "Estación de Policía Terminal",
+    "tipo": "police",
+    "direccion": "DG 22A 68D 90 MODULO 5 LOCAL 101",
+    "telefono": "4233630",
+    "latitud": 4.6511306,
+    "longitud": -74.1145403,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 227,
+    "nombre": "Estación de Policía Teusaquillo",
+    "tipo": "police",
+    "direccion": "KR 13 40A 26",
+    "telefono": "3203051839",
+    "latitud": 4.6275009,
+    "longitud": -74.0666437,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 228,
+    "nombre": "Estación de Policía Tunjuelito",
+    "tipo": "police",
+    "direccion": "AK JORGE GAITAN CORTES 48C 09 SUR",
+    "telefono": "3203074859",
+    "latitud": 4.5860513,
+    "longitud": -74.1333183,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 229,
+    "nombre": "Estación de Policía Usaquén",
+    "tipo": "police",
+    "direccion": "CL 165 8A 43",
+    "telefono": "3203026487",
+    "latitud": 4.7415374,
+    "longitud": -74.026732,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 230,
+    "nombre": "Estación de Policía Usme",
+    "tipo": "police",
+    "direccion": "KR 14 99 55 SUR",
+    "telefono": "3203027759",
+    "latitud": 4.5010078,
+    "longitud": -74.1177457,
+    "fuente": "IDECA / Datos Abiertos Bogota"
+  }
+]
