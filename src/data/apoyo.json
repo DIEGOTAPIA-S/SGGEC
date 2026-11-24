@@ -4028,5 +4028,625 @@
     "latitud": 4.5010078,
     "longitud": -74.1177457,
     "fuente": "IDECA / Datos Abiertos Bogota"
+  },
+  {
+    "id": 1001,
+    "nombre": "Hospital Departamental de Villavicencio E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Cl. 37A # 28-53, Barzal Alto, Villavicencio",
+    "telefono": "(608) 6818686",
+    "latitud": 4.1456,
+    "longitud": -73.6397,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1002,
+    "nombre": "Clínica Meta",
+    "tipo": "hospital",
+    "direccion": "Cl. 33 # 36-50, Barzal, Villavicencio",
+    "telefono": "(608) 6614400",
+    "latitud": 4.144,
+    "longitud": -73.6361,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1003,
+    "nombre": "Clínica Primavera",
+    "tipo": "hospital",
+    "direccion": "Cra. 40 # 33B-05, Barzal, Villavicencio",
+    "telefono": "(608) 6610444",
+    "latitud": 4.1432,
+    "longitud": -73.6395,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1004,
+    "nombre": "Cuerpo Voluntario de Bomberos de Villavicencio",
+    "tipo": "fire_station",
+    "direccion": "Av. 40 # 35A-55, Villavicencio",
+    "telefono": "119 / (608) 6623176",
+    "latitud": 4.1412,
+    "longitud": -73.6335,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1005,
+    "nombre": "Policía Metropolitana Villavicencio / CAI Centro - Gobernación",
+    "tipo": "police",
+    "direccion": "Cra. 33 # 38-10, Parque Los Libertadores, Villavicencio",
+    "telefono": "123 / (608) 6611717",
+    "latitud": 4.151,
+    "longitud": -73.6379,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1006,
+    "nombre": "CAI Barzal - Policía Nacional Villavicencio",
+    "tipo": "police",
+    "direccion": "Cl. 35 con Cra. 38, Parque del Hacha / Barzal, Villavicencio",
+    "telefono": "123 / 3213941479",
+    "latitud": 4.1451,
+    "longitud": -73.6375,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1011,
+    "nombre": "Clínica General del Norte",
+    "tipo": "hospital",
+    "direccion": "Cra. 48 # 70-38, Barranquilla",
+    "telefono": "(605) 3091999",
+    "latitud": 10.9965,
+    "longitud": -74.8041,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1012,
+    "nombre": "Clínica del Caribe",
+    "tipo": "hospital",
+    "direccion": "Cl. 80 # 49C-65, Barranquilla",
+    "telefono": "(605) 3853435",
+    "latitud": 11.0019,
+    "longitud": -74.8112,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1013,
+    "nombre": "Clínica Reina Catalina",
+    "tipo": "hospital",
+    "direccion": "Cl. 82 # 47-12, Barranquilla",
+    "telefono": "(605) 3784000",
+    "latitud": 11.0005,
+    "longitud": -74.8154,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1014,
+    "nombre": "Cuerpo Oficial de Bomberos Barranquilla - Estación Central 11 de Noviembre",
+    "tipo": "fire_station",
+    "direccion": "Cra. 55 # 52-06, Barranquilla",
+    "telefono": "119 / (605) 3440615",
+    "latitud": 10.9938,
+    "longitud": -74.7895,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1015,
+    "nombre": "CAI Prado / Policía Metropolitana de Barranquilla",
+    "tipo": "police",
+    "direccion": "Cra. 54 con Cl. 75, Alto Prado, Barranquilla",
+    "telefono": "123 / (605) 3530322",
+    "latitud": 11.0032,
+    "longitud": -74.8025,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1021,
+    "nombre": "Nuevo Hospital Bocagrande",
+    "tipo": "hospital",
+    "direccion": "Cl. 5 # 6-59, Castillogrande / Bocagrande, Cartagena",
+    "telefono": "(605) 6502800",
+    "latitud": 10.3951,
+    "longitud": -75.5562,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1022,
+    "nombre": "Medihelp Services Clínica",
+    "tipo": "hospital",
+    "direccion": "Cra. 6 # 5-161, Bocagrande, Cartagena",
+    "telefono": "(605) 6652255",
+    "latitud": 10.3968,
+    "longitud": -75.5594,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1023,
+    "nombre": "Estación de Policía Bocagrande / CAI Laguito",
+    "tipo": "police",
+    "direccion": "Av. San Martín Cra. 2 # 8-14, Bocagrande, Cartagena",
+    "telefono": "123 / (605) 6655320",
+    "latitud": 10.4021,
+    "longitud": -75.5568,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1024,
+    "nombre": "Cuerpo de Bomberos de Cartagena - Estación Bocagrande / Manga",
+    "tipo": "fire_station",
+    "direccion": "Manga, Av. Jiménez, Cartagena",
+    "telefono": "119 / (605) 6609166",
+    "latitud": 10.4125,
+    "longitud": -75.5398,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1025,
+    "nombre": "Hospital Serena del Mar (Zona Norte / Las Ramblas)",
+    "tipo": "hospital",
+    "direccion": "Vía al Mar Km 8, Serena del Mar, Cartagena",
+    "telefono": "(605) 6428484",
+    "latitud": 10.5092,
+    "longitud": -75.4685,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1026,
+    "nombre": "Estación de Policía Zona Norte / CAI Manzanillo del Mar",
+    "tipo": "police",
+    "direccion": "Vía al Mar - Sector Las Ramblas, Cartagena",
+    "telefono": "123 / 3145948210",
+    "latitud": 10.5175,
+    "longitud": -75.4691,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1027,
+    "nombre": "Punto de Respuesta Bomberos Zona Norte Cartagena",
+    "tipo": "fire_station",
+    "direccion": "Anillo Vial Zona Norte, Cartagena",
+    "telefono": "119 / (605) 6609166",
+    "latitud": 10.505,
+    "longitud": -75.472,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1031,
+    "nombre": "Clínica Bucaramanga",
+    "tipo": "hospital",
+    "direccion": "Cra. 33 # 53-27, Cabecera del Llano, Bucaramanga",
+    "telefono": "(607) 6436131",
+    "latitud": 7.1149,
+    "longitud": -73.1101,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1032,
+    "nombre": "Clínica San Luis",
+    "tipo": "hospital",
+    "direccion": "Cl. 48 # 25-56, Bucaramanga",
+    "telefono": "(607) 6430026",
+    "latitud": 7.1182,
+    "longitud": -73.1176,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1033,
+    "nombre": "Hospital Universitario de Santander (HUS)",
+    "tipo": "hospital",
+    "direccion": "Cra. 33 # 28-126, Bucaramanga",
+    "telefono": "(607) 6346110",
+    "latitud": 7.1311,
+    "longitud": -73.1115,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1034,
+    "nombre": "Bomberos de Bucaramanga - Estación Central",
+    "tipo": "fire_station",
+    "direccion": "Cl. 44 # 10-13, Bucaramanga",
+    "telefono": "119 / (607) 6525266",
+    "latitud": 7.1189,
+    "longitud": -73.1285,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1035,
+    "nombre": "CAI Sotomayor / Policía Metropolitana de Bucaramanga",
+    "tipo": "police",
+    "direccion": "Cra. 29 con Cl. 52, Sotomayor, Bucaramanga",
+    "telefono": "123 / (607) 6854700",
+    "latitud": 7.1162,
+    "longitud": -73.1135,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1041,
+    "nombre": "Clínica Imbanaco Grupo Quirónsalud",
+    "tipo": "hospital",
+    "direccion": "Cra. 38A # 5A-100, Tequendama, Cali",
+    "telefono": "(602) 3821000",
+    "latitud": 3.4251,
+    "longitud": -76.5425,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1042,
+    "nombre": "Hospital Universitario del Valle Evaristo García",
+    "tipo": "hospital",
+    "direccion": "Cl. 5 # 36-08, San Fernando, Cali",
+    "telefono": "(602) 6206000",
+    "latitud": 3.4312,
+    "longitud": -76.5448,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1043,
+    "nombre": "Clínica Sebastián de Belalcázar (Colsanitas)",
+    "tipo": "hospital",
+    "direccion": "Av. 4 Norte # 7N-81, Cali",
+    "telefono": "(602) 4851133",
+    "latitud": 3.4556,
+    "longitud": -76.5359,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1044,
+    "nombre": "Benemérito Cuerpo de Bomberos Voluntarios de Cali - Estación Alameda / Sur",
+    "tipo": "fire_station",
+    "direccion": "Cl. 9 # 32A-16, Cali",
+    "telefono": "119 / (602) 8821252",
+    "latitud": 3.4285,
+    "longitud": -76.5361,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1045,
+    "nombre": "Estación de Policía El Lido / CAI Panamericano",
+    "tipo": "police",
+    "direccion": "Cra. 42 con Cl. 5B, Tequendama, Cali",
+    "telefono": "123 / (602) 8826100",
+    "latitud": 3.4198,
+    "longitud": -76.5452,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1051,
+    "nombre": "Clínica Universidad de La Sabana",
+    "tipo": "hospital",
+    "direccion": "Autopista Norte Km 7, La Caro, Chía",
+    "telefono": "(601) 8617777",
+    "latitud": 4.8642,
+    "longitud": -74.0315,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1052,
+    "nombre": "Hospital San Antonio de Chía E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Cra. 10 # 8-24, Centro, Chía",
+    "telefono": "(601) 8630828",
+    "latitud": 4.8589,
+    "longitud": -74.0581,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1053,
+    "nombre": "Clínica de Marly - Jorge Cavelier Gaviria (Chía)",
+    "tipo": "hospital",
+    "direccion": "Av. Pradilla # 5E-26, Chía",
+    "telefono": "(601) 3436600",
+    "latitud": 4.8648,
+    "longitud": -74.0419,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1054,
+    "nombre": "Cuerpo Voluntario de Bomberos de Chía",
+    "tipo": "fire_station",
+    "direccion": "Variante Chía - Cota, Chía",
+    "telefono": "119 / (601) 8855742",
+    "latitud": 4.8625,
+    "longitud": -74.0512,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1055,
+    "nombre": "Estación de Policía de Chía",
+    "tipo": "police",
+    "direccion": "Cl. 11 # 11-25, Parque Principal, Chía",
+    "telefono": "123 / (601) 8844444",
+    "latitud": 4.8621,
+    "longitud": -74.0592,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1061,
+    "nombre": "Hospital Federico Lleras Acosta E.S.E.",
+    "tipo": "hospital",
+    "direccion": "Cl. 33 # 4A-50, Barrio La Francia, Ibagué",
+    "telefono": "(608) 2739805",
+    "latitud": 4.4418,
+    "longitud": -75.2225,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1062,
+    "nombre": "Clínica Tolima",
+    "tipo": "hospital",
+    "direccion": "Cra. 1 # 12-22, Centro, Ibagué",
+    "telefono": "(608) 2708000",
+    "latitud": 4.4451,
+    "longitud": -75.2392,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1063,
+    "nombre": "Clínica Keralty / Medicadiz Ibagué",
+    "tipo": "hospital",
+    "direccion": "Cl. 32 # 4B-25, Cádiz, Ibagué",
+    "telefono": "(608) 2770205",
+    "latitud": 4.4426,
+    "longitud": -75.2241,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1064,
+    "nombre": "Cuerpo Oficial de Bomberos de Ibagué - Estación Centro / Norte",
+    "tipo": "fire_station",
+    "direccion": "Cl. 19 con Cra. 5, Ibagué",
+    "telefono": "119 / (608) 2611419",
+    "latitud": 4.4442,
+    "longitud": -75.2321,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1065,
+    "nombre": "Comando Policía Metropolitana de Ibagué / CAI Estadio",
+    "tipo": "police",
+    "direccion": "Cra. 4B con Cl. 37, Ibagué",
+    "telefono": "123 / (608) 2640119",
+    "latitud": 4.4398,
+    "longitud": -75.2195,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1071,
+    "nombre": "S.E.S. Hospital Universitario de Caldas",
+    "tipo": "hospital",
+    "direccion": "Cl. 48 # 25-71, Manizales",
+    "telefono": "(606) 8782500",
+    "latitud": 5.0628,
+    "longitud": -75.4991,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1072,
+    "nombre": "Clínica Santillana / Avidanti Manizales",
+    "tipo": "hospital",
+    "direccion": "Cra. 24 # 56-50, Belén, Manizales",
+    "telefono": "(606) 8932828",
+    "latitud": 5.0589,
+    "longitud": -75.4902,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1073,
+    "nombre": "Cuerpo Oficial de Bomberos de Manizales - Estación Fundadores / Palogrande",
+    "tipo": "fire_station",
+    "direccion": "Av. Santander Cra. 23 # 64B-33, Manizales",
+    "telefono": "119 / (606) 8874390",
+    "latitud": 5.0558,
+    "longitud": -75.4859,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1074,
+    "nombre": "CAI El Cable / Policía Metropolitana de Manizales",
+    "tipo": "police",
+    "direccion": "Av. Lindsay Cra. 23 # 65-10, Sector El Cable, Manizales",
+    "telefono": "123 / (606) 8851245",
+    "latitud": 5.0551,
+    "longitud": -75.4852,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1081,
+    "nombre": "Clínica Medellín - Sede El Poblado",
+    "tipo": "hospital",
+    "direccion": "Cl. 7 # 39-290, El Poblado, Medellín",
+    "telefono": "(604) 4446152",
+    "latitud": 6.2089,
+    "longitud": -75.5672,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1082,
+    "nombre": "Clínica Rosario - Sede El Tesoro",
+    "tipo": "hospital",
+    "direccion": "Cra. 20 # 2 Sur-185, El Poblado, Medellín",
+    "telefono": "(604) 3269100",
+    "latitud": 6.1975,
+    "longitud": -75.5582,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1083,
+    "nombre": "Hospital General de Medellín Luz Castro de Gutiérrez",
+    "tipo": "hospital",
+    "direccion": "Cra. 48 # 32-102, Medellín",
+    "telefono": "(604) 3847300",
+    "latitud": 6.2338,
+    "longitud": -75.5742,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1084,
+    "nombre": "Cuerpo Oficial de Bomberos de Medellín - Estación Guayabal / Poblado",
+    "tipo": "fire_station",
+    "direccion": "Cra. 52 # 14-120, Medellín",
+    "telefono": "123 / (604) 3855555",
+    "latitud": 6.2192,
+    "longitud": -75.5791,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1085,
+    "nombre": "Estación de Policía El Poblado / CAI Parque El Poblado",
+    "tipo": "police",
+    "direccion": "Cl. 9 con Cra. 43A, El Poblado, Medellín",
+    "telefono": "123 / (604) 2660413",
+    "latitud": 6.2098,
+    "longitud": -75.5681,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1091,
+    "nombre": "Hospital Universitario Hernando Moncaleano Perdomo de Neiva",
+    "tipo": "hospital",
+    "direccion": "Cl. 9 # 15-25, Neiva",
+    "telefono": "(608) 8715907",
+    "latitud": 2.9285,
+    "longitud": -75.2782,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1092,
+    "nombre": "Clínica Medilaser Neiva",
+    "tipo": "hospital",
+    "direccion": "Cra. 7 # 11-65, Centro / Quirinal, Neiva",
+    "telefono": "(608) 8724100",
+    "latitud": 2.9318,
+    "longitud": -75.2869,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1093,
+    "nombre": "Clínica Uros",
+    "tipo": "hospital",
+    "direccion": "Cra. 6 # 16-35, Quirinal, Neiva",
+    "telefono": "(608) 8718130",
+    "latitud": 2.9355,
+    "longitud": -75.2875,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1094,
+    "nombre": "Cuerpo Oficial de Bomberos de Neiva",
+    "tipo": "fire_station",
+    "direccion": "Cra. 14 con Cl. 8, Neiva",
+    "telefono": "119 / (608) 8712119",
+    "latitud": 2.9279,
+    "longitud": -75.2801,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1095,
+    "nombre": "Comando Policía Metropolitana de Neiva / CAI Quirinal",
+    "tipo": "police",
+    "direccion": "Cl. 21 # 12-50, Quirinal, Neiva",
+    "telefono": "123 / (608) 8712703",
+    "latitud": 2.9391,
+    "longitud": -75.2835,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1101,
+    "nombre": "Hospital Universitario San Jorge de Pereira",
+    "tipo": "hospital",
+    "direccion": "Cra. 4 # 24-88, Pereira",
+    "telefono": "(606) 3240800",
+    "latitud": 4.8128,
+    "longitud": -75.6915,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1102,
+    "nombre": "Clínica Los Rosales",
+    "tipo": "hospital",
+    "direccion": "Cra. 9 # 25-25, Pereira",
+    "telefono": "(606) 3355500",
+    "latitud": 4.8095,
+    "longitud": -75.6932,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1103,
+    "nombre": "Clínica Comfamiliar Risaralda",
+    "tipo": "hospital",
+    "direccion": "Av. Circunvalar # 3-01, Pereira",
+    "telefono": "(606) 3135600",
+    "latitud": 4.8058,
+    "longitud": -75.6845,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1104,
+    "nombre": "Cuerpo Oficial de Bomberos de Pereira - Estación Central",
+    "tipo": "fire_station",
+    "direccion": "Cl. 20 # 11-45, Centro, Pereira",
+    "telefono": "119 / (606) 3248990",
+    "latitud": 4.8065,
+    "longitud": -75.6902,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1105,
+    "nombre": "CAI Parque La Libertad / Policía Metropolitana de Pereira",
+    "tipo": "police",
+    "direccion": "Cl. 19 con Cra. 13, Pereira",
+    "telefono": "123 / (606) 3149750",
+    "latitud": 4.8049,
+    "longitud": -75.6885,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1111,
+    "nombre": "Hospital Regional de la Orinoquía E.S.E. (HORO)",
+    "tipo": "hospital",
+    "direccion": "Cl. 15 # 7-95, Yopal, Casanare",
+    "telefono": "(608) 6344650",
+    "latitud": 5.3442,
+    "longitud": -72.4045,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1112,
+    "nombre": "Clínica Casanare",
+    "tipo": "hospital",
+    "direccion": "Cl. 13 # 29-36, Yopal, Casanare",
+    "telefono": "(608) 6357850",
+    "latitud": 5.3358,
+    "longitud": -72.3905,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1113,
+    "nombre": "Centro Médico y de Urgencias GYomedical Yopal",
+    "tipo": "hospital",
+    "direccion": "Cra. 20 # 27-45, Yopal, Casanare",
+    "telefono": "(608) 6334511",
+    "latitud": 5.3315,
+    "longitud": -72.3882,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1114,
+    "nombre": "Cuerpo de Bomberos Voluntarios de Yopal",
+    "tipo": "fire_station",
+    "direccion": "Cra. 21 # 30-15, Yopal, Casanare",
+    "telefono": "119 / 3208532940",
+    "latitud": 5.3302,
+    "longitud": -72.3879,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
+  },
+  {
+    "id": 1115,
+    "nombre": "Comando Departamento de Policía Casanare / CAI Estación Yopal",
+    "tipo": "police",
+    "direccion": "Diagonal 15 (Av. de la Cultura) # 14-05, Yopal",
+    "telefono": "123 / 3213945317",
+    "latitud": 5.3401,
+    "longitud": -72.3958,
+    "fuente": "Directorio Oficial Red de Apoyo SGCN"
   }
 ]

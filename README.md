@@ -19,11 +19,11 @@ Esta versión está diseñada para funcionar de forma **100% aislada (Air-gapped
 ---
 
 ## 💻 Instrucciones para USUARIOS (Uso en PC del Trabajo)
-Para utilizar la aplicación en cualquier computador de la compañía, **NO requiere instalar absolutamente nada** (Ni Node.js, ni bases de datos).
+Para utilizar la aplicación en cualquier computador de la compañía, **NO requiere instalar absolutamente nada** (Ni Node.js, ni bases de datos, ni servidores locales).
 
 1. Abra la carpeta `dist`.
-2. Haga **doble clic** en el archivo `SGCN-App.html`.
-3. El sistema se abrirá automáticamente en su navegador web (Chrome, Edge, etc.) y estará listo para usarse.
+2. Haga **doble clic** en el archivo `SGCN-App.html` (o `index.html`).
+3. El sistema se abrirá automáticamente en su navegador web (Chrome, Edge, etc.) con cartografía **Esri ArcGIS World Street Map** compatible con ejecución local (`file:///`) y estará listo para usarse.
 
 ---
 
@@ -39,4 +39,4 @@ Esta sección es **exclusiva para los ingenieros que deseen auditar el código f
    ```bash
    npm run build
    ```
-4. El ejecutable autónomo se generará en la ruta: `dist/SGCN-App.html`
+4. El ejecutable autónomo se generará automáticamente en `dist/SGCN-App.html` y `dist/index.html`.

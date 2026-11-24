@@ -369,7 +369,10 @@ const AdminPanel = () => {
                                         </label>
                                         <div className="h-64 rounded-lg overflow-hidden border border-slate-300 shadow-inner mb-3 relative">
                                             <MapContainer center={mapCenter} zoom={11} style={{ height: '100%', width: '100%' }}>
-                                                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                                                <TileLayer
+                                                    attribution='Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+                                                    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+                                                />
                                                 <MapFollower center={mapCenter} />
                                                 <AdminSearchControl
                                                     onLocationFound={(data) => {
