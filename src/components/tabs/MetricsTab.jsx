@@ -21,8 +21,8 @@ const MetricsTab = ({ showCharts, onToggleCharts, showMetricsPanel, onToggleMetr
             </button>
         </div>
         <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '6px', textAlign: 'justify', lineHeight: 1.5 }}>
-            <strong>Análisis de impacto:</strong> gráficas de sedes afectadas por el evento activo.<br />
-            <strong>Dashboard de métricas:</strong> eventos históricos, colaboradores por gerencia, modalidad y más.
+            <strong>Análisis de impacto:</strong> gráficas de sedes afectadas por el polígono o evento activo.<br />
+            <strong>Dashboard de métricas:</strong> cobertura nacional de sedes y red de apoyo, distribución de personal cargado en memoria y eventos de la sesión activa.
         </p>
     </div>
 );
