@@ -4,10 +4,10 @@ const LOCAL_STORAGE_KEY = 'sgcn_eventos';
 
 export const getEventos = async () => {
     try {
-        const data = localStorage.getItem(LOCAL_STORAGE_KEY);
+        const data = sessionStorage.getItem(LOCAL_STORAGE_KEY);
         return data ? JSON.parse(data) : [];
     } catch (error) {
-        console.error("Error reading local storage eventos:", error);
+        console.error("Error reading session storage eventos:", error);
         return [];
     }
 };
@@ -32,7 +32,7 @@ export const createEvento = async (eventoData) => {
         };
 
         events.unshift(newEvent); // Agregar al principio
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(events));
+        sessionStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(events));
         return newEvent;
     } catch (error) {
         console.error("Error creating local evento:", error);
@@ -42,7 +42,7 @@ export const createEvento = async (eventoData) => {
 
 export const deleteEventos = async () => {
     try {
-        localStorage.removeItem(LOCAL_STORAGE_KEY);
+        sessionStorage.removeItem(LOCAL_STORAGE_KEY);
         return { status: 'success', message: 'Historial eliminado.' };
     } catch (error) {
         console.error("Error deleting local eventos:", error);

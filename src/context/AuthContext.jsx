@@ -7,8 +7,8 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const savedUser = localStorage.getItem('user_name');
-        const savedRole = localStorage.getItem('role');
+        const savedUser = sessionStorage.getItem('user_name');
+        const savedRole = sessionStorage.getItem('role');
 
         if (savedUser) {
             setUser({ name: savedUser, role: savedRole });
@@ -29,13 +29,13 @@ export const AuthProvider = ({ children }) => {
     };
 
     const saveAuthData = (name, role) => {
-        localStorage.setItem('user_name', name);
-        localStorage.setItem('role', role);
+        sessionStorage.setItem('user_name', name);
+        sessionStorage.setItem('role', role);
         setUser({ name, role });
     };
 
     const logout = async () => {
-        localStorage.clear();
+        sessionStorage.clear();
         setUser(null);
     };
 

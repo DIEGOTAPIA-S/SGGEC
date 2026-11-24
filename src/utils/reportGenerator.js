@@ -287,18 +287,17 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
             currentY += 5;
 
             const colabBody = affectedColaboradores.map(c => [
-                (c.nombres || '') + ' ' + (c.apellidos || ''),
-                c.cargo || '',
-                c.area || '',
-                c.sede_nombre || 'N/A',
-                c.email || 'N/A',
-                c.telefono || 'N/A',
-                (c.contacto_emergencia_nombre ? `${c.contacto_emergencia_nombre} - ${c.contacto_emergencia_telefono || ''}` : 'N/A')
+                c.identificacion || `ID-${c.id}`,
+                `${c.nombres || 'Colaborador'} ${c.apellidos || c.id}`,
+                c.area || 'N/A',
+                c.gerencia || 'N/A',
+                c.modalidad || 'Presencial',
+                c.sede_nombre || 'N/A'
             ]);
 
             autoTable(doc, {
                 startY: currentY,
-                head: [['Nombre', 'Cargo', 'Area', 'Sede', 'Email', 'Teléfono', 'Emergencia']],
+                head: [['ID (Fila Excel)', 'Identificador', 'Área', 'Gerencia', 'Modalidad', 'Sede Asignada']],
                 body: colabBody,
                 theme: 'striped',
                 headStyles: { fillColor: [59, 130, 246], textColor: 255 }, // Blue

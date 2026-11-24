@@ -4,33 +4,22 @@ export const downloadColaboradoresCSV = (colaboradores, filename = 'colaboradore
         return;
     }
 
-    // Columnas ordenadas y con nombres claros para Excel
-    // Incluye los nuevos campos: Contacto de Emergencia y Estado (Activo)
+    // Columnas anonimizadas (Cumplimiento estricto PII - sin nombres, cédulas, teléfonos ni correos)
     const headers = [
-        "Identificacion", "Nombres", "Apellidos", "Cargo", "Area", "Gerencia",
-        "Modalidad", "Compañia", "Sede_Asignada", "Ciudad",
-        "Direccion", "Telefono", "Email",
-        "Contacto_Emergencia_Nombre", "Contacto_Emergencia_Telefono",
-        "Activo"
+        "Identificacion", "Identificador_Anonimo", "Area", "Gerencia",
+        "Modalidad", "Compañia", "Sede_Asignada", "Ciudad", "Activo"
     ];
 
     // Mapa de columna → campo en el objeto del colaborador
     const fieldMap = {
         "Identificacion": "identificacion",
-        "Nombres": "nombres",
-        "Apellidos": "apellidos",
-        "Cargo": "cargo",
+        "Identificador_Anonimo": (c) => `${c.nombres || 'Colaborador'} ${c.apellidos || c.id}`,
         "Area": "area",
         "Gerencia": "gerencia",
         "Modalidad": "modalidad",
         "Compañia": "compania",
         "Sede_Asignada": (c) => c.sede_nombre || '',
         "Ciudad": "ciudad",
-        "Direccion": "direccion",
-        "Telefono": "telefono",
-        "Email": "email",
-        "Contacto_Emergencia_Nombre": "contacto_emergencia_nombre",
-        "Contacto_Emergencia_Telefono": "contacto_emergencia_telefono",
         "Activo": (c) => c.activo !== undefined ? (c.activo ? 'Sí' : 'No') : 'Sí',
     };
 

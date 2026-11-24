@@ -79,8 +79,8 @@ const useReporting = (user, affectedSedes, nearbySedes, affectedColaboradores, e
                 }
             } else {
                 // Si ni siquiera dibujó polígono, usar la posición actual guardada del mapa
-                const savedLat = parseFloat(localStorage.getItem('map_lat'));
-                const savedLng = parseFloat(localStorage.getItem('map_lng'));
+                const savedLat = parseFloat(sessionStorage.getItem('map_lat'));
+                const savedLng = parseFloat(sessionStorage.getItem('map_lng'));
                 if (savedLat && savedLng) {
                     referenceCenter = { lat: savedLat, lon: savedLng };
                     if (!reportInfrastructure || reportInfrastructure.length === 0) {

@@ -34,9 +34,9 @@ const MapPositionSaver = () => {
     useEffect(() => {
         const savePosition = () => {
             const center = map.getCenter();
-            localStorage.setItem('map_lat', center.lat);
-            localStorage.setItem('map_lng', center.lng);
-            localStorage.setItem('map_zoom', map.getZoom());
+            sessionStorage.setItem('map_lat', center.lat);
+            sessionStorage.setItem('map_lng', center.lng);
+            sessionStorage.setItem('map_zoom', map.getZoom());
         };
         map.on('moveend', savePosition);
         map.on('zoomend', savePosition);
@@ -113,10 +113,10 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation }) => {
         }
     }, [sedes]);
 
-    // Restaurar la última posición guardada en localStorage (o inicio por defecto: Bogotá)
-    const savedLat = parseFloat(localStorage.getItem('map_lat')) || 4.6097;
-    const savedLng = parseFloat(localStorage.getItem('map_lng')) || -74.0817;
-    const savedZoom = parseInt(localStorage.getItem('map_zoom')) || 6;
+    // Restaurar la última posición guardada en sessionStorage (o inicio por defecto: Bogotá)
+    const savedLat = parseFloat(sessionStorage.getItem('map_lat')) || 4.6097;
+    const savedLng = parseFloat(sessionStorage.getItem('map_lng')) || -74.0817;
+    const savedZoom = parseInt(sessionStorage.getItem('map_zoom')) || 6;
 
     return (
         <div className="card" style={{ height: '100%', width: '100%', padding: 0, overflow: 'hidden', borderRadius: '0' }}>

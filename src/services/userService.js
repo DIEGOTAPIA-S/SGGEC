@@ -8,7 +8,7 @@ const defaultUsers = [
 
 const getAll = () => {
     try {
-        const stored = localStorage.getItem(LOCAL_KEY);
+        const stored = sessionStorage.getItem(LOCAL_KEY);
         return stored ? JSON.parse(stored) : defaultUsers;
     } catch {
         return defaultUsers;
@@ -16,7 +16,7 @@ const getAll = () => {
 };
 
 const save = (users) => {
-    localStorage.setItem(LOCAL_KEY, JSON.stringify(users));
+    sessionStorage.setItem(LOCAL_KEY, JSON.stringify(users));
 };
 
 export const getUsers = async () => {
