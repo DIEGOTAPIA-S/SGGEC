@@ -184,7 +184,7 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, buffer
                                     color: 'white',
                                     background: sede.status === 'affected' ? '#ef4444' : (sede.status === 'nearby' ? '#f59e0b' : '#3b82f6')
                                 }}>
-                                    {sede.status === 'affected' ? '⚠️ Afectada' : (sede.status === 'nearby' ? '⚠️ Cercana (2km)' : '✅ Operativa')}
+                                    {sede.status === 'affected' ? '⚠️ Afectada' : (sede.status === 'nearby' ? `⚠️ Cercana (< ${bufferRadiusKm < 1 ? `${bufferRadiusKm * 1000}m` : `${bufferRadiusKm}km`})` : '✅ Operativa')}
                                 </span>
                             </div>
                         </Popup>

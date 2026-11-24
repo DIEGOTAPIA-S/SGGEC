@@ -4,9 +4,10 @@ import { downloadColaboradoresCSV } from '../utils/exportUtils';
 /**
  * Banner de alerta de riesgo que aparece cuando hay sedes o colaboradores afectados.
  */
-const RiskAlertBanner = ({ affectedSedes, nearbySedes, affectedColaboradores, zones = [], onGenerateReport }) => {
+const RiskAlertBanner = ({ affectedSedes, nearbySedes, affectedColaboradores, zones = [], bufferRadiusKm = 2, onGenerateReport }) => {
     const hasSedeImpact = affectedSedes.length > 0 || nearbySedes.length > 0 || affectedColaboradores.length > 0;
     const hasZones = zones && zones.length > 0;
+    const radiusLabel = bufferRadiusKm < 1 ? `${bufferRadiusKm * 1000}m` : `${bufferRadiusKm}km`;
 
     if (!hasSedeImpact && !hasZones) return null;
 
@@ -49,10 +50,15 @@ const RiskAlertBanner = ({ affectedSedes, nearbySedes, affectedColaboradores, zo
                     <h5 className="m-0 text-red-900 font-bold text-lg flex items-center gap-2">
                         Zona de Riesgo Activa
                     </h5>
-                    <div className="text-sm text-red-700/80 flex gap-6 mt-1 font-medium">
+                    <div className="text-sm text-red-700/80 flex flex-wrap gap-6 mt-1 font-medium">
                         <div className="flex items-center gap-2">
-                            <span className="text-red-500">🏢</span> <strong>{affectedSedes.length}</strong> Sedes afectadas
+                            <span className="text-red-500">🏢</span> <strong>{affectedSedes.length}</strong> Sedes directas
                         </div>
+                        {nearbySedes.length > 0 && (
+                            <div className="flex items-center gap-2 text-amber-800">
+                                <span>⚠️</span> <strong>{nearbySedes.length}</strong> Sedes cercanas (&lt; {radiusLabel})
+                            </div>
+                        )}
                         <div className="flex items-center gap-2">
                             <span className="text-red-500">👥</span> <strong>{affectedColaboradores.length}</strong> Colaboradores en zona afectada
                         </div>

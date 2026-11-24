@@ -62,13 +62,15 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
         const colabCount = Array.isArray(affectedColaboradores) ? affectedColaboradores.length : 0;
         const presencial = affectedColaboradores.filter(c => c.modalidad !== 'Remoto').length;
         const remoto = affectedColaboradores.filter(c => c.modalidad === 'Remoto').length;
+        const radiusVal = options.bufferRadiusKm || 2;
+        const radiusLabel = radiusVal < 1 ? `${radiusVal * 1000}m` : `${radiusVal}km`;
 
         autoTable(doc, {
             startY: currentY,
             head: [['Resumen de Impacto', 'Cantidad / Detalle']],
             body: [
                 ['Sedes Afectadas (Zona Directa)', affCount],
-                ['Sedes Cercanas (Radio 2km)', nearCount],
+                [`Sedes Cercanas (Radio ${radiusLabel})`, nearCount],
                 ['Colaboradores en Zona de Riesgo', `${colabCount} (Presencial: ${presencial}, Remoto: ${remoto})`]
             ],
             theme: 'grid',
@@ -360,7 +362,7 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
 
         // Render Tables
         renderTable('Sedes Afectadas (Zona Directa)', affectedSedes, [220, 38, 38]); // Red
-        renderTable('Sedes Cercanas (< 2km)', nearbySedes, [234, 88, 12]); // Orange
+        renderTable(`Sedes Cercanas (< ${radiusLabel})`, nearbySedes, [234, 88, 12]); // Orange
 
         // Si no hay sedes dentro del polígono ni a <2km, pero hay una zona marcada (ej. impacto de movilidad en la ciudad),
         // mostramos las sedes de Colmédica más cercanas al evento como referencia operativa

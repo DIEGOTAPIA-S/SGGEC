@@ -227,11 +227,12 @@ const MapDashboard = () => {
                 <Sidebar
                     className="glass-panel border-none"
                     zones={analysis.zones}
+                    bufferRadiusKm={bufferRadiusKm}
                     affectedSedes={analysis.affectedSedes}
                     affectedColaboradores={analysis.affectedColaboradores}
                     nearbySedes={analysis.nearbySedes}
                     onSave={handleSaveEvent}
-                    onGenerateReport={() => reporting.handleGenerateReport({ includeColaboradoresList: true }, sedesWithStatus)}
+                    onGenerateReport={() => reporting.handleGenerateReport({ includeColaboradoresList: true, bufferRadiusKm }, sedesWithStatus)}
                     onExportScenario={handleExportScenario}
                     onImportScenario={handleImportScenario}
                     onShowList={() => setShowList(true)}
@@ -334,7 +335,8 @@ const MapDashboard = () => {
                         nearbySedes={analysis.nearbySedes} 
                         affectedColaboradores={analysis.affectedColaboradores}
                         zones={analysis.zones}
-                        onGenerateReport={() => reporting.handleGenerateReport({ includeColaboradoresList: true }, sedesWithStatus)}
+                        bufferRadiusKm={bufferRadiusKm}
+                        onGenerateReport={() => reporting.handleGenerateReport({ includeColaboradoresList: true, bufferRadiusKm }, sedesWithStatus)}
                     />
 
                     <div className="p-8">
@@ -344,7 +346,7 @@ const MapDashboard = () => {
                                 eventDetails={eventDetails} 
                                 onChange={(e) => setEventDetails(prev => ({...prev, [e.target.name]: e.target.value}))} 
                                 onSave={handleSaveEvent}
-                                onGenerateReport={() => reporting.handleGenerateReport({ includeColaboradoresList: true }, sedesWithStatus)}
+                                onGenerateReport={() => reporting.handleGenerateReport({ includeColaboradoresList: true, bufferRadiusKm }, sedesWithStatus)}
                                 bufferRadiusKm={bufferRadiusKm}
                                 onBufferRadiusChange={setBufferRadiusKm}
                             />

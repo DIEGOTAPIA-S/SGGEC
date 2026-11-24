@@ -9,6 +9,7 @@ import { read, utils } from 'xlsx';
 const DataTab = ({
     sedes = [],
     zones = [],
+    bufferRadiusKm = 2,
     onColaboradoresLoaded,
     onClearColaboradores,
     affectedSedes,
@@ -225,7 +226,7 @@ const DataTab = ({
                         </h5>
                         <div style={{ fontSize: '0.9rem', marginBottom: '12px', color: textColor }}>
                             <div style={{ marginBottom: '4px' }}>🗺️ <strong>{zones ? zones.length : 0}</strong> Zonas/polígonos trazados en mapa</div>
-                            <div style={{ marginBottom: '4px' }}>🏢 <strong>{affectedSedes.length}</strong> Sedes directas / <strong>{nearbySedes.length}</strong> Cercanas (&lt;2km)</div>
+                            <div style={{ marginBottom: '4px' }}>🏢 <strong>{affectedSedes.length}</strong> Sedes directas / <strong>{nearbySedes.length}</strong> Cercanas (&lt;{bufferRadiusKm < 1 ? `${bufferRadiusKm * 1000}m` : `${bufferRadiusKm}km`})</div>
                             <div>👥 <strong>{affectedColaboradores.length}</strong> Colaboradores en zona trazada</div>
                         </div>
                         <p style={{ fontSize: '0.78rem', color: titleColor, fontStyle: 'italic', marginBottom: '12px' }}>
