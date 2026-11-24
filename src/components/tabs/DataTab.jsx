@@ -8,6 +8,7 @@ import { read, utils } from 'xlsx';
  */
 const DataTab = ({
     sedes = [],
+    zones = [],
     onColaboradoresLoaded,
     onClearColaboradores,
     affectedSedes,
@@ -205,35 +206,47 @@ const DataTab = ({
                 </button>
             </div>
 
-            {/* Zona de reporte activa */}
-            {(affectedSedes.length > 0 || nearbySedes.length > 0) && (
-                <div style={{ padding: '15px', background: '#ffe4e6', borderRadius: '8px', border: '1px solid #fca5a5', marginTop: '10px' }}>
-                    <h5 style={{ margin: '0 0 10px', color: '#b91c1c', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '1rem' }}>
-                        🚨 Zona de Riesgo Activa
-                    </h5>
-                    <div style={{ fontSize: '0.95rem', marginBottom: '15px', color: '#7f1d1d' }}>
-                        <div style={{ marginBottom: '5px' }}>🏢 <strong>{affectedSedes.length}</strong> Sedes afectadas</div>
-                        <div>👥 <strong>{affectedColaboradores.length}</strong> Colaboradores en zona afectada</div>
+            {/* Zona de reporte y generación de informes (Siempre disponible) */}
+            {(() => {
+                const hasSedeImpact = affectedSedes.length > 0 || nearbySedes.length > 0 || affectedColaboradores.length > 0;
+                const hasZones = zones && zones.length > 0;
+                const boxBg = hasSedeImpact ? '#ffe4e6' : (hasZones ? '#fffbeb' : '#f0f9ff');
+                const boxBorder = hasSedeImpact ? '#fca5a5' : (hasZones ? '#fde68a' : '#bae6fd');
+                const titleColor = hasSedeImpact ? '#b91c1c' : (hasZones ? '#b45309' : '#0369a1');
+                const textColor = hasSedeImpact ? '#7f1d1d' : (hasZones ? '#78350f' : '#0c4a6e');
+
+                return (
+                    <div style={{ padding: '15px', background: boxBg, borderRadius: '8px', border: `1px solid ${boxBorder}`, marginTop: '10px' }}>
+                        <h5 style={{ margin: '0 0 10px', color: titleColor, display: 'flex', alignItems: 'center', gap: '5px', fontSize: '1rem' }}>
+                            {hasSedeImpact ? '🚨 Zona de Riesgo Activa' : (hasZones ? '⚠️ Zona Marcada (Sin Sedes en Polígono)' : '📄 Generación de Informes')}
+                        </h5>
+                        <div style={{ fontSize: '0.9rem', marginBottom: '12px', color: textColor }}>
+                            <div style={{ marginBottom: '4px' }}>🗺️ <strong>{zones ? zones.length : 0}</strong> Zonas/polígonos trazados en mapa</div>
+                            <div style={{ marginBottom: '4px' }}>🏢 <strong>{affectedSedes.length}</strong> Sedes directas / <strong>{nearbySedes.length}</strong> Cercanas (&lt;2km)</div>
+                            <div>👥 <strong>{affectedColaboradores.length}</strong> Colaboradores en zona trazada</div>
+                        </div>
+                        <p style={{ fontSize: '0.78rem', color: titleColor, fontStyle: 'italic', marginBottom: '12px' }}>
+                            {hasSedeImpact
+                                ? '* Las sedes, colaboradores y red de apoyo cercana se incluirán en el PDF.'
+                                : '* Puede generar el informe PDF de movilidad o prevención incluso si ninguna sede está dentro del polígono.'}
+                        </p>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                            <button
+                                onClick={() => onSave()}
+                                style={{ background: '#3b82f6', color: 'white', padding: '10px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 600, boxShadow: '0 4px 6px -1px rgba(59, 130, 246, 0.2)' }}
+                            >
+                                Guardar Evento
+                            </button>
+                            <button
+                                onClick={() => onGenerateReport({ includeColaboradoresList: true })}
+                                style={{ background: '#10b981', color: 'white', padding: '10px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 600, boxShadow: '0 4px 6px -1px rgba(16, 185, 129, 0.2)' }}
+                            >
+                                Generar Informe
+                            </button>
+                        </div>
                     </div>
-                    <p style={{ fontSize: '0.8rem', color: '#991b1b', fontStyle: 'italic', marginBottom: '15px' }}>
-                        * Estos datos serán incluidos automáticamente en el reporte.
-                    </p>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                        <button
-                            onClick={() => onSave()}
-                            style={{ background: '#3b82f6', color: 'white', padding: '10px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 600, boxShadow: '0 4px 6px -1px rgba(59, 130, 246, 0.2)' }}
-                        >
-                            Guardar Evento
-                        </button>
-                        <button
-                            onClick={() => onGenerateReport({ includeColaboradoresList: true })}
-                            style={{ background: '#10b981', color: 'white', padding: '10px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 600, boxShadow: '0 4px 6px -1px rgba(16, 185, 129, 0.2)' }}
-                        >
-                            Generar Informe
-                        </button>
-                    </div>
-                </div>
-            )}
+                );
+            })()}
         </div>
     );
 };

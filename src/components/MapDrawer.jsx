@@ -13,7 +13,7 @@ import SettingsTab from './tabs/SettingsTab';
 const MapDrawer = ({
     activeTab, onClose,
     // Data
-    affectedSedes, nearbySedes, affectedColaboradores,
+    affectedSedes, nearbySedes, affectedColaboradores, zones,
     colaboradores, sedes, earthquakeAlerts,
     // Actions
     onSave, onGenerateReport, onShowList, onShowHistory,
@@ -79,6 +79,7 @@ const MapDrawer = ({
                 return (
                     <DataTab
                         sedes={sedes}
+                        zones={zones}
                         affectedSedes={affectedSedes}
                         nearbySedes={nearbySedes}
                         affectedColaboradores={affectedColaboradores}

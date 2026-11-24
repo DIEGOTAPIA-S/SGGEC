@@ -6,7 +6,7 @@ const NIVELES = [
     { value: 'rojo', label: '🔴 Rojo — Crítico / Continuidad afectada', bg: '#fee2e2', border: '#ef4444', text: '#991b1b' },
 ];
 
-const EventRegistrationPanel = ({ eventDetails, onChange, onSave }) => {
+const EventRegistrationPanel = ({ eventDetails, onChange, onSave, onGenerateReport }) => {
     const nivelActual = NIVELES.find(n => n.value === (eventDetails.nivel_alerta || 'verde'));
 
     return (
@@ -83,17 +83,34 @@ const EventRegistrationPanel = ({ eventDetails, onChange, onSave }) => {
                         5. Guardar.
                     </p>
 
-                    <button
-                        onClick={onSave}
-                        style={{
-                            background: '#0f172a', color: 'white', border: 'none',
-                            padding: '12px', borderRadius: '6px', cursor: 'pointer',
-                            fontWeight: 'bold', display: 'flex', alignItems: 'center',
-                            justifyContent: 'center', gap: '8px', marginTop: 'auto'
-                        }}
-                    >
-                        💾 Guardar Evento
-                    </button>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: 'auto' }}>
+                        <button
+                            onClick={onSave}
+                            style={{
+                                background: '#0f172a', color: 'white', border: 'none',
+                                padding: '12px', borderRadius: '6px', cursor: 'pointer',
+                                fontWeight: 'bold', display: 'flex', alignItems: 'center',
+                                justifyContent: 'center', gap: '8px'
+                            }}
+                        >
+                            💾 Guardar Evento
+                        </button>
+                        {onGenerateReport && (
+                            <button
+                                type="button"
+                                onClick={onGenerateReport}
+                                style={{
+                                    background: '#10b981', color: 'white', border: 'none',
+                                    padding: '12px', borderRadius: '6px', cursor: 'pointer',
+                                    fontWeight: 'bold', display: 'flex', alignItems: 'center',
+                                    justifyContent: 'center', gap: '8px',
+                                    boxShadow: '0 4px 6px -1px rgba(16, 185, 129, 0.25)'
+                                }}
+                            >
+                                📥 Generar Informe PDF
+                            </button>
+                        )}
+                    </div>
                 </div>
 
                 {/* Columna 2: Descripción */}

@@ -363,6 +363,52 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
         renderTable('Sedes Afectadas (Zona Directa)', affectedSedes, [220, 38, 38]); // Red
         renderTable('Sedes Cercanas (< 2km)', nearbySedes, [234, 88, 12]); // Orange
 
+        // Si no hay sedes dentro del polígono ni a <2km, pero hay una zona marcada (ej. impacto de movilidad en la ciudad),
+        // mostramos las sedes de Colmédica más cercanas al evento como referencia operativa
+        if ((!affectedSedes || affectedSedes.length === 0) && (!nearbySedes || nearbySedes.length === 0) && options.referenceCenter && Array.isArray(allSedes) && allSedes.length > 0) {
+            const getDistKm = (lat1, lon1, lat2, lon2) => {
+                const R = 6371;
+                const dLat = (lat2 - lat1) * Math.PI / 180;
+                const dLon = (lon2 - lon1) * Math.PI / 180;
+                const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            };
+
+            const closestSedes = allSedes
+                .map(s => ({
+                    ...s,
+                    distKm: getDistKm(options.referenceCenter.lat, options.referenceCenter.lon, parseFloat(s.latitud), parseFloat(s.longitud))
+                }))
+                .filter(s => s.distKm <= 25) // Sedes en la misma ciudad / área metropolitana (<= 25 km)
+                .sort((a, b) => a.distKm - b.distKm)
+                .slice(0, 5);
+
+            if (closestSedes.length > 0) {
+                if (currentY > 240) { doc.addPage(); currentY = 20; }
+                doc.setFontSize(12);
+                doc.setTextColor(15, 23, 42);
+                doc.text("Sedes en la Ciudad / Área de Influencia (Monitoreo de Movilidad)", 14, currentY);
+                currentY += 4;
+
+                autoTable(doc, {
+                    startY: currentY,
+                    head: [['Sede Colmédica', 'Ciudad', 'Dirección', 'Distancia a Zona Marcada']],
+                    body: closestSedes.map(s => [
+                        s.nombre,
+                        s.ciudad,
+                        s.direccion,
+                        `${s.distKm.toFixed(2)} km (Fuera de polígono directo)`
+                    ]),
+                    theme: 'grid',
+                    headStyles: { fillColor: [3, 105, 161], textColor: 255, fontStyle: 'bold' },
+                    styles: { fontSize: 8, cellPadding: 2 }
+                });
+                currentY = (doc.lastAutoTable ? doc.lastAutoTable.finalY : currentY) + 12;
+            }
+        }
+
         // --- Red de Apoyo Table (Grouped by Sede) ---
         const reportInfrastructure = infrastructurePoints;
 
@@ -439,31 +485,47 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
                     currentY = (doc.lastAutoTable ? doc.lastAutoTable.finalY : currentY) + 10;
                 });
             } else {
-                // Fallback if no specific sede context
+                // Fallback if no specific sede context (e.g. mobility event marked away from sedes)
+                if (currentY > 240) { doc.addPage(); currentY = 20; }
                 doc.setFontSize(11);
-                doc.setTextColor(15, 23, 42);
-                doc.text("Red de Apoyo Visible en el Mapa", 14, currentY);
+                doc.setTextColor(30, 64, 175);
+                doc.text("Red de Apoyo Cercana a la Zona del Evento", 14, currentY);
                 currentY += 5;
 
-                const infraBody = reportInfrastructure.slice(0, 10).map(p => [
+                let sortedInfra = [...reportInfrastructure];
+                if (options.referenceCenter) {
+                    sortedInfra = sortedInfra.map(p => ({
+                        ...p,
+                        dist: getDistance(options.referenceCenter.lat, options.referenceCenter.lon, p.lat, p.lon)
+                    })).sort((a, b) => {
+                        if (a.isOfficial && !b.isOfficial) return -1;
+                        if (!a.isOfficial && b.isOfficial) return 1;
+                        return a.dist - b.dist;
+                    });
+                }
+
+                const infraBody = sortedInfra.slice(0, 6).map(p => [
                     p.type === 'police' ? 'Policia' : (p.type === 'fire_station' ? 'Bomberos' : 'Salud'),
-                    p.name,
+                    p.isOfficial ? `${p.name} (OFICIAL)` : p.name,
                     p.phone && p.phone !== 'No registrado' && p.phone !== 'Sin datos' ? p.phone : (p.telefono || 'Sin tel.'),
-                    p.address || p.direccion || '-'
+                    p.address || p.direccion || '-',
+                    p.dist !== undefined ? `${p.dist.toFixed(2)} km` : '-'
                 ]);
 
                 autoTable(doc, {
                     startY: currentY,
-                    head: [['Tipo', 'Nombre / Descripcion', 'Contacto', 'Dirección']],
+                    head: [['Tipo', 'Nombre / Descripción', 'Contacto', 'Dirección', 'Distancia a Zona']],
                     body: infraBody,
                     theme: 'striped',
                     headStyles: { fillColor: [75, 85, 99], textColor: 255 },
-                    styles: { fontSize: 8 },
+                    styles: { fontSize: 7.5 },
                     columnStyles: {
-                        0: { fontStyle: 'bold', width: 30 },
-                        2: { width: 40 }
+                        0: { fontStyle: 'bold', width: 25 },
+                        2: { width: 35 },
+                        4: { width: 25 }
                     }
                 });
+                currentY = (doc.lastAutoTable ? doc.lastAutoTable.finalY : currentY) + 10;
             }
         }
 

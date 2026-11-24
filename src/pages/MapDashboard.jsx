@@ -54,7 +54,7 @@ const MapDashboard = () => {
         nivel_alerta: 'verde',
     });
 
-    const reporting = useReporting(user, analysis.affectedSedes, analysis.nearbySedes, analysis.affectedColaboradores, eventDetails, []);
+    const reporting = useReporting(user, analysis.affectedSedes, analysis.nearbySedes, analysis.affectedColaboradores, eventDetails, infrastructurePoints, analysis.zones, sedes);
 
     // Timer de inactividad
     const [showIdleWarning, setShowIdleWarning] = useState(false);
@@ -172,11 +172,12 @@ const MapDashboard = () => {
                 {/* Sidebar Glass */}
                 <Sidebar
                     className="glass-panel border-none"
+                    zones={analysis.zones}
                     affectedSedes={analysis.affectedSedes}
                     affectedColaboradores={analysis.affectedColaboradores}
                     nearbySedes={analysis.nearbySedes}
                     onSave={handleSaveEvent}
-                    onGenerateReport={() => reporting.handleGenerateReport({}, sedesWithStatus)}
+                    onGenerateReport={() => reporting.handleGenerateReport({ includeColaboradoresList: true }, sedesWithStatus)}
                     onShowList={() => setShowList(true)}
                     onShowHistory={() => setShowHistory(true)}
                     onToggleCharts={() => setShowCharts(!showCharts)}
@@ -262,7 +263,9 @@ const MapDashboard = () => {
                     <RiskAlertBanner 
                         affectedSedes={analysis.affectedSedes} 
                         nearbySedes={analysis.nearbySedes} 
-                        affectedColaboradores={analysis.affectedColaboradores} 
+                        affectedColaboradores={analysis.affectedColaboradores}
+                        zones={analysis.zones}
+                        onGenerateReport={() => reporting.handleGenerateReport({ includeColaboradoresList: true }, sedesWithStatus)}
                     />
 
                     <div className="p-8">
@@ -271,7 +274,8 @@ const MapDashboard = () => {
                              <EventRegistrationPanel 
                                 eventDetails={eventDetails} 
                                 onChange={(e) => setEventDetails(prev => ({...prev, [e.target.name]: e.target.value}))} 
-                                onSave={handleSaveEvent} 
+                                onSave={handleSaveEvent}
+                                onGenerateReport={() => reporting.handleGenerateReport({ includeColaboradoresList: true }, sedesWithStatus)}
                             />
                         </div>
 
