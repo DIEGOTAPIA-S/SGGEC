@@ -3,64 +3,66 @@ import { CircleMarker, Popup } from 'react-leaflet';
 import axios from 'axios';
 
 /**
- * EarthquakeLayer — Capa de sismos en Colombia.
+ * EarthquakeLayer — Capa de sismos en Colombia (USGS Earthquake API Oficial).
  *
  * Diseño:
- * - El MONITOREO (fetch al USGS) siempre está activo → el contador en la Sidebar
- *   se actualiza aunque la capa no esté visible en el mapa.
+ * - Utiliza la API oficial de USGS (https://earthquake.usgs.gov/fdsnws/event/1/query)
+ *   filtrada para las coordenadas de Colombia (-4.5 a 13.5 Lat, -82.0 a -66.5 Lon),
+ *   que cuenta con cabeceras CORS (*) compatibles con ejecución local (file:///).
+ * - El MONITOREO siempre está activo → el contador en la Sidebar se actualiza
+ *   aunque la capa no esté visible en el mapa.
  * - El DIBUJO de círculos en el mapa solo ocurre cuando visible=true.
- *
- * Esto corrige la regresión donde al ocultar la capa se perdía el contador.
  */
 const EarthquakeLayer = ({ visible, onAlertsUpdate }) => {
     const [earthquakes, setEarthquakes] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const SGC_API_URL = "https://archive.sgc.gov.co/feed/v1.0/summary/five_days_all.json";
-
     // Monitoreo SIEMPRE activo (independiente de visible)
-    // Actualiza el contador en la Sidebar aunque la capa esté oculta
     useEffect(() => {
         const fetchEarthquakes = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(SGC_API_URL);
+                // Consultar sismos recientes en el cuadrante de Colombia (últimos 7 días para asegurar datos visibles en monitoreo)
+                const startTime = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+                const USGS_COLOMBIA_URL = `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${startTime}&minlatitude=-4.5&maxlatitude=13.5&minlongitude=-82.0&maxlongitude=-66.5&orderby=time&limit=50`;
+
+                const response = await axios.get(USGS_COLOMBIA_URL);
                 if (!response.data || !response.data.features) return;
 
-                const now = new Date();
-                const twentyFourHoursAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-
-                const colQuakes = response.data.features.filter(q => {
-                    const [lat, lon] = q.geometry.coordinates;
-                    const place = q.properties.place || '';
-                    const isColombia = place.toLowerCase().includes('colombia');
-                    
-                    // Colombia continental simplificado para el feed local
-                    const inMainland = (lat >= -4.5 && lat <= 13.5) && (lon >= -79.5 && lon <= -66.5);
-                    const inIslands = (lat >= 11.5 && lat <= 15.0) && (lon >= -82.0 && lon <= -78.0);
-                    
-                    // Filtro de 24 horas
-                    const quakeTime = new Date(q.properties.utcTime + " UTC"); // Forzamos UTC ya que el feed viene en ese formato
-                    const isRecent = quakeTime >= twentyFourHoursAgo;
-
-                    return (isColombia || inMainland || inIslands) && isRecent;
+                const colQuakes = response.data.features.map(q => {
+                    // USGS entrega geometry.coordinates en orden GeoJSON estándar: [Lon, Lat, Depth]
+                    const [lon, lat, depth] = q.geometry.coordinates;
+                    const timeMs = q.properties.time;
+                    const localTimeStr = timeMs ? new Date(timeMs).toLocaleString('es-CO') : 'Reciente';
+                    return {
+                        id: q.id,
+                        lat,
+                        lon,
+                        depth: depth ?? 0,
+                        mag: q.properties.mag ?? 0,
+                        magType: q.properties.magType || 'ML',
+                        place: q.properties.place || 'Colombia',
+                        localTime: localTimeStr,
+                        status: q.properties.status || 'reviewed',
+                        url: q.properties.url || `https://earthquake.usgs.gov/earthquakes/eventpage/${q.id}`
+                    };
                 });
 
                 setEarthquakes(colQuakes);
 
-                // Notificar al Dashboard para el contador en la Sidebar
+                // Notificar al Dashboard para el contador en la Sidebar (espera coordinates: [Lat, Lon])
                 if (onAlertsUpdate) {
-                    const alerts = colQuakes.map(f => ({
-                        mag: f.properties.mag,
-                        place: f.properties.place,
-                        time: f.properties.utcTime, // SGC usa utcTime o localTime como string
-                        id: f.id,
-                        coordinates: f.geometry.coordinates // [Lat, Lon, Depth]
+                    const alerts = colQuakes.map(q => ({
+                        mag: q.mag,
+                        place: q.place,
+                        time: q.localTime,
+                        id: q.id,
+                        coordinates: [q.lat, q.lon, q.depth]
                     }));
                     onAlertsUpdate(alerts);
                 }
             } catch (error) {
-                console.error("Error fetching SGC earthquake data:", error);
+                console.error("Error fetching USGS earthquake data:", error);
             } finally {
                 setLoading(false);
             }
@@ -78,7 +80,7 @@ const EarthquakeLayer = ({ visible, onAlertsUpdate }) => {
 
     const getColor = (mag) => {
         if (mag >= 5.0) return '#dc2626'; // Rojo - Fuerte
-        if (mag >= 3.0) return '#ea580c'; // Naranja - Medio
+        if (mag >= 4.0) return '#ea580c'; // Naranja - Medio
         return '#ca8a04'; // Amarillo - Leve
     };
 
@@ -89,33 +91,33 @@ const EarthquakeLayer = ({ visible, onAlertsUpdate }) => {
             {earthquakes.map((quake) => (
                 <CircleMarker
                     key={quake.id}
-                    center={[quake.geometry.coordinates[0], quake.geometry.coordinates[1]]} // SGC: [Lat, Lon]
+                    center={[quake.lat, quake.lon]}
                     pathOptions={{
-                        color: getColor(quake.properties.mag),
-                        fillColor: getColor(quake.properties.mag),
-                        fillOpacity: 0.6,
-                        weight: 1
+                        color: getColor(quake.mag),
+                        fillColor: getColor(quake.mag),
+                        fillOpacity: 0.65,
+                        weight: 1.5
                     }}
-                    radius={getRadius(quake.properties.mag)}
+                    radius={getRadius(quake.mag)}
                 >
                     <Popup>
                         <div className="p-2 min-w-[220px]">
                             <h3 className="font-bold text-slate-800 text-lg border-b pb-1 mb-2">
-                                ⚡ Sismo Detectado (SGC)
+                                ⚡ Sismo Detectado (USGS)
                             </h3>
                             <div className="space-y-1 text-sm text-slate-600">
-                                <p><strong className="text-slate-900">Magnitud:</strong> {quake.properties.mag} {quake.properties.magType}</p>
-                                <p><strong className="text-slate-900">Ubicación:</strong> {quake.properties.place}</p>
-                                <p><strong className="text-slate-900">Hora Local:</strong> {quake.properties.localTime}</p>
-                                <p><strong className="text-slate-900">Profundidad:</strong> {quake.geometry.coordinates[2]} km</p>
-                                <p><strong className="text-slate-900">Estado:</strong> {quake.properties.status === 'manual' ? 'Revisado' : 'Automático'}</p>
+                                <p><strong className="text-slate-900">Magnitud:</strong> {quake.mag} {quake.magType}</p>
+                                <p><strong className="text-slate-900">Ubicación:</strong> {quake.place}</p>
+                                <p><strong className="text-slate-900">Fecha/Hora:</strong> {quake.localTime}</p>
+                                <p><strong className="text-slate-900">Profundidad:</strong> {quake.depth} km</p>
+                                <p><strong className="text-slate-900">Estado:</strong> {quake.status === 'reviewed' ? 'Revisado' : 'Automático'}</p>
                                 <a
-                                    href={`https://www.sgc.gov.co/sismos/sismos/${quake.id}.html`}
+                                    href={quake.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="block mt-3 text-blue-600 hover:underline font-medium"
                                 >
-                                    Ver detalle en SGC ↗
+                                    Ver detalle oficial en USGS ↗
                                 </a>
                             </div>
                         </div>

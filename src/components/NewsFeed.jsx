@@ -27,28 +27,19 @@ const NewsFeed = ({ isOpen, onClose, onCrisisDetected }) => {
     const fetchNews = async (query) => {
         setLoading(true);
         setError(false);
-        try {
-            const targetUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=es-419&gl=CO&ceid=CO:es-419`;
-            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 8000);
-            const response = await fetch(proxyUrl, { signal: controller.signal });
-            clearTimeout(timeoutId);
-            const json = await response.json();
-            
+        const targetUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=es-419&gl=CO&ceid=CO:es-419`;
+
+        const parseXmlItems = (xmlText) => {
             const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(json.contents, "text/xml");
+            const xmlDoc = parser.parseFromString(xmlText, "text/xml");
             const items = xmlDoc.getElementsByTagName("item");
-            
-            const parsedNews = Array.from(items).map(item => {
+            return Array.from(items).map(item => {
                 const rawTitle = item.getElementsByTagName("title")[0]?.textContent || '';
                 const parts = rawTitle.split(' - ');
                 const title = parts.slice(0, -1).join(' - ') || rawTitle;
                 const source = parts[parts.length - 1] || item.getElementsByTagName("source")[0]?.textContent || 'Google News';
-                
                 const rawDesc = item.getElementsByTagName("description")[0]?.textContent || '';
                 const summary = rawDesc.replace(/<[^>]*>?/gm, '');
-
                 return {
                     title,
                     link: item.getElementsByTagName("link")[0]?.textContent || '',
@@ -57,7 +48,54 @@ const NewsFeed = ({ isOpen, onClose, onCrisisDetected }) => {
                     published: item.getElementsByTagName("pubDate")[0]?.textContent || new Date().toISOString()
                 };
             });
-            
+        };
+
+        try {
+            let parsedNews = [];
+
+            // Intento 1: rss2json API
+            try {
+                const controller1 = new AbortController();
+                const t1 = setTimeout(() => controller1.abort(), 5000);
+                const r1 = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(targetUrl)}`, { signal: controller1.signal });
+                clearTimeout(t1);
+                if (r1.ok) {
+                    const data = await r1.json();
+                    if (data && Array.isArray(data.items) && data.items.length > 0) {
+                        parsedNews = data.items.map(it => {
+                            const rawTitle = it.title || '';
+                            const parts = rawTitle.split(' - ');
+                            const title = parts.slice(0, -1).join(' - ') || rawTitle;
+                            const source = parts[parts.length - 1] || it.author || 'Google News';
+                            const summary = (it.description || '').replace(/<[^>]*>?/gm, '');
+                            return {
+                                title,
+                                link: it.link || '',
+                                summary: summary.length > 200 ? summary.substring(0, 200) + '...' : summary,
+                                source,
+                                published: it.pubDate || new Date().toISOString()
+                            };
+                        });
+                    }
+                }
+            } catch {
+                // Continuar al siguiente método
+            }
+
+            // Intento 2: allorigins JSON wrapper
+            if (parsedNews.length === 0) {
+                const controller2 = new AbortController();
+                const t2 = setTimeout(() => controller2.abort(), 6000);
+                const r2 = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`, { signal: controller2.signal });
+                clearTimeout(t2);
+                if (r2.ok) {
+                    const json = await r2.json();
+                    if (json && json.contents) {
+                        parsedNews = parseXmlItems(json.contents);
+                    }
+                }
+            }
+
             if (parsedNews.length === 0) {
                 setError(true);
             }
@@ -155,18 +193,43 @@ const NewsFeed = ({ isOpen, onClose, onCrisisDetected }) => {
                 {loading ? (
                     <div style={{ textAlign: 'center', padding: '20px', color: '#64748b' }}>Cargando noticias... ⏳</div>
                 ) : error ? (
-                    <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-                        <div style={{ fontSize: '3rem', marginBottom: '15px' }}>📡</div>
-                        <h4 style={{ color: '#475569', margin: '0 0 10px' }}>Sin conexión al servicio de noticias</h4>
-                        <p style={{ color: '#94a3b8', fontSize: '0.85rem', lineHeight: '1.5', margin: '0 0 20px' }}>
-                            Esta función requiere conexión a internet para consultar Google News en tiempo real.
-                            Si estás en modo offline o la red corporativa bloquea el acceso, las noticias no estarán disponibles.
+                    <div style={{ textAlign: 'center', padding: '25px 20px' }}>
+                        <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>📡</div>
+                        <h4 style={{ color: '#334155', margin: '0 0 8px' }}>Modo Local / Firewall Corporativo Activo</h4>
+                        <p style={{ color: '#64748b', fontSize: '0.82rem', lineHeight: '1.5', margin: '0 0 16px' }}>
+                            En ejecución local aislada (<code>file:///</code>) o bajo firewall corporativo, la lectura automática de RSS externo está restringida por seguridad. Puede abrir directamente el monitor oficial en vivo para esta categoría:
                         </p>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '16px' }}>
+                            <a
+                                href={`https://news.google.com/search?q=${encodeURIComponent(topics[activeTab].query)}&hl=es-419&gl=CO&ceid=CO%3Aes-419`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ background: '#2563eb', color: 'white', textDecoration: 'none', padding: '11px 16px', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', display: 'block' }}
+                            >
+                                📰 Abrir Monitor Google News: {topics[activeTab].label} ↗
+                            </a>
+                            <a
+                                href="https://www.sgc.gov.co/sismos"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ background: '#0f172a', color: 'white', textDecoration: 'none', padding: '10px 16px', borderRadius: '8px', fontWeight: 600, fontSize: '0.82rem', display: 'block' }}
+                            >
+                                🌍 Boletín Oficial Servicio Geológico Colombiano (SGC) ↗
+                            </a>
+                            <a
+                                href="https://portal.gestiondelriesgo.gov.co/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ background: '#334155', color: 'white', textDecoration: 'none', padding: '10px 16px', borderRadius: '8px', fontWeight: 600, fontSize: '0.82rem', display: 'block' }}
+                            >
+                                🚨 Portal UNGRD - Gestión del Riesgo Colombia ↗
+                            </a>
+                        </div>
                         <button
                             onClick={() => fetchNews(topics[activeTab].query)}
-                            style={{ background: '#3b82f6', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '8px', cursor: 'pointer', fontWeight: 600 }}
+                            style={{ background: 'white', color: '#475569', border: '1px solid #cbd5e1', padding: '8px 20px', borderRadius: '8px', cursor: 'pointer', fontWeight: 600, fontSize: '0.8rem' }}
                         >
-                            🔄 Reintentar
+                            🔄 Reintentar conexión RSS
                         </button>
                     </div>
                 ) : (
