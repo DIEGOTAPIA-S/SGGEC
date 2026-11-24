@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap, ZoomControl } from 'react-leaflet'; // Added useMap, ZoomControl
+import { MapContainer, TileLayer, Marker, Popup, Polygon, useMap, ZoomControl } from 'react-leaflet'; // Added Polygon, useMap, ZoomControl
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import * as turf from '@turf/turf';
@@ -48,26 +48,28 @@ const MapPositionSaver = () => {
     return null;
 };
 
-const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation }) => {
+const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, bufferRadiusKm = 2, externalZoneTrigger = null }) => {
     const [analyzedSedes, setAnalyzedSedes] = useState([]);
     const [zones, setZones] = useState([]);
+    const [programmaticPolygons, setProgrammaticPolygons] = useState([]);
 
     const handleZoneCreated = (geoJson, layer) => {
         const newZones = [...zones, geoJson];
         setZones(newZones);
-        analyzeImpact(newZones, sedes);
+        analyzeImpact(newZones, sedes, bufferRadiusKm);
     };
 
     const handleZoneDeleted = () => {
         setZones([]);
+        setProgrammaticPolygons([]);
         setAnalyzedSedes(sedes.map(s => ({ ...s, status: 'normal' })));
-        onAnalysisUpdate && onAnalysisUpdate([], []);
+        onAnalysisUpdate && onAnalysisUpdate([], [], []);
     };
 
-    const analyzeImpact = (currentZones, currentSedes) => {
+    const analyzeImpact = (currentZones, currentSedes, radiusKm = bufferRadiusKm) => {
         if (!currentZones.length || !currentSedes) {
             setAnalyzedSedes(currentSedes ? currentSedes.map(s => ({ ...s, status: 'normal' })) : []);
-            onAnalysisUpdate && onAnalysisUpdate([], []);
+            onAnalysisUpdate && onAnalysisUpdate([], [], []);
             return;
         }
 
@@ -88,10 +90,10 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation }) => {
                 status = 'affected';
                 affected.push(sede);
             } else {
-                // Simple 2km buffer check
+                // Configurable buffer check (0.5km, 1km, 2km, 5km, 10km)
                 const isNearby = currentZones.some(zone => {
                     if (zone.geometry.type !== 'Polygon') return false;
-                    const buffered = turf.buffer(zone, 2, { units: 'kilometers' });
+                    const buffered = turf.buffer(zone, radiusKm, { units: 'kilometers' });
                     return turf.booleanPointInPolygon(point, buffered);
                 });
 
@@ -109,9 +111,30 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation }) => {
 
     useEffect(() => {
         if (sedes && sedes.length > 0) {
-            analyzeImpact(zones, sedes);
+            analyzeImpact(zones, sedes, bufferRadiusKm);
         }
-    }, [sedes]);
+    }, [sedes, bufferRadiusKm]);
+
+    // Soporte para inyectar zonas automáticas (ej. Círculo de impacto por Sismo o Importación de Escenario .json)
+    useEffect(() => {
+        if (!externalZoneTrigger) return;
+        if (externalZoneTrigger.type === 'clear') {
+            handleZoneDeleted();
+            return;
+        }
+        if (externalZoneTrigger.zones && Array.isArray(externalZoneTrigger.zones)) {
+            const newZones = externalZoneTrigger.replace ? externalZoneTrigger.zones : [...zones, ...externalZoneTrigger.zones];
+            setZones(newZones);
+            const polyCoordsList = newZones
+                .filter(z => z?.geometry?.type === 'Polygon')
+                .map(z => ({
+                    coords: z.geometry.coordinates[0].map(c => [c[1], c[0]]),
+                    color: z.properties?.color || '#dc2626'
+                }));
+            setProgrammaticPolygons(polyCoordsList);
+            analyzeImpact(newZones, sedes, bufferRadiusKm);
+        }
+    }, [externalZoneTrigger]);
 
     // Restaurar la última posición guardada en sessionStorage (o inicio por defecto: Bogotá)
     const savedLat = parseFloat(sessionStorage.getItem('map_lat')) || 4.6097;
@@ -132,6 +155,14 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation }) => {
                 />
                 {children}
                 <MapDrawControl onCreated={handleZoneCreated} onDeleted={handleZoneDeleted} />
+
+                {programmaticPolygons.map((poly, idx) => (
+                    <Polygon
+                        key={`prog-poly-${idx}`}
+                        positions={poly.coords}
+                        pathOptions={{ color: poly.color, fillColor: poly.color, fillOpacity: 0.2, weight: 2 }}
+                    />
+                ))}
 
                 {(analyzedSedes.length > 0 ? analyzedSedes : sedes).map((sede) => (
                     <Marker

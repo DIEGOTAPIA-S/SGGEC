@@ -19,6 +19,7 @@ const MapDrawer = ({
     onSave, onGenerateReport, onShowList, onShowHistory,
     onSimulateAlert, onLocate,
     onColaboradoresLoaded, onClearColaboradores,
+    onExportScenario, onImportScenario,
     // Layer toggles
     showCharts, onToggleCharts,
     showMetricsPanel, onToggleMetrics,
@@ -88,6 +89,8 @@ const MapDrawer = ({
                         onGenerateReport={onGenerateReport}
                         onColaboradoresLoaded={onColaboradoresLoaded}
                         onClearColaboradores={onClearColaboradores}
+                        onExportScenario={onExportScenario}
+                        onImportScenario={onImportScenario}
                     />
                 );
             case 'settings':

@@ -6,7 +6,15 @@ const NIVELES = [
     { value: 'rojo', label: '🔴 Rojo — Crítico / Continuidad afectada', bg: '#fee2e2', border: '#ef4444', text: '#991b1b' },
 ];
 
-const EventRegistrationPanel = ({ eventDetails, onChange, onSave, onGenerateReport }) => {
+const RADIOS = [
+    { value: 0.5, label: '500 m (Puntual)' },
+    { value: 1, label: '1 km (Urbano)' },
+    { value: 2, label: '2 km (Estándar)' },
+    { value: 5, label: '5 km (Regional)' },
+    { value: 10, label: '10 km (Amplio)' },
+];
+
+const EventRegistrationPanel = ({ eventDetails, onChange, onSave, onGenerateReport, bufferRadiusKm = 2, onBufferRadiusChange }) => {
     const nivelActual = NIVELES.find(n => n.value === (eventDetails.nivel_alerta || 'verde'));
 
     return (
@@ -74,6 +82,24 @@ const EventRegistrationPanel = ({ eventDetails, onChange, onSave, onGenerateRepo
                             ))}
                         </div>
                     </div>
+
+                    {/* Radio de Amortiguación (Sedes Cercanas) — 100% Local */}
+                    {onBufferRadiusChange && (
+                        <div>
+                            <label style={{ display: 'block', marginBottom: '6px', fontWeight: '600', fontSize: '0.85rem', color: '#334155' }}>
+                                Radio de Sedes Cercanas (Anillo Naranja)
+                            </label>
+                            <select
+                                value={bufferRadiusKm}
+                                onChange={(e) => onBufferRadiusChange(parseFloat(e.target.value))}
+                                style={{ width: '100%', padding: '8px 10px', borderRadius: '6px', border: '1px solid #cbd5e1', background: '#f8fafc', fontSize: '0.85rem', fontWeight: 600, color: '#0f172a' }}
+                            >
+                                {RADIOS.map(r => (
+                                    <option key={r.value} value={r.value}>📏 {r.label}</option>
+                                ))}
+                            </select>
+                        </div>
+                    )}
 
                     <p style={{ fontSize: '0.8rem', color: '#64748b', margin: 0, lineHeight: '1.4' }}>
                         1. Seleccione el tipo.<br />

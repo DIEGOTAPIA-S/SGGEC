@@ -17,9 +17,12 @@ const DataTab = ({
     onShowHistory,
     onSave,
     onGenerateReport,
+    onExportScenario,
+    onImportScenario,
 }) => {
     const { user } = useAuth();
     const fileInputRef = useRef(null);
+    const scenarioInputRef = useRef(null);
     const [uploading, setUploading] = useState(false);
 
     const handleUploadClick = () => {
@@ -244,6 +247,42 @@ const DataTab = ({
                                 Generar Informe
                             </button>
                         </div>
+
+                        {/* Exportar / Importar Escenario (.json) entre Analistas — 100% Local */}
+                        {(onExportScenario || onImportScenario) && (
+                            <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: `1px dashed ${boxBorder}` }}>
+                                <div style={{ fontSize: '0.78rem', fontWeight: 700, color: titleColor, marginBottom: '8px' }}>
+                                    🔄 Compartir Escenario con otro Analista (.json local)
+                                </div>
+                                <input
+                                    type="file"
+                                    accept=".json"
+                                    ref={scenarioInputRef}
+                                    style={{ display: 'none' }}
+                                    onChange={(e) => {
+                                        const file = e.target.files?.[0];
+                                        if (file && onImportScenario) onImportScenario(file);
+                                        if (scenarioInputRef.current) scenarioInputRef.current.value = '';
+                                    }}
+                                />
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                                    <button
+                                        type="button"
+                                        onClick={onExportScenario}
+                                        style={{ background: 'white', color: '#334155', padding: '8px', borderRadius: '6px', border: '1px solid #cbd5e1', cursor: 'pointer', fontWeight: 600, fontSize: '0.78rem' }}
+                                    >
+                                        📤 Exportar Zona
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => scenarioInputRef.current?.click()}
+                                        style={{ background: 'white', color: '#334155', padding: '8px', borderRadius: '6px', border: '1px solid #cbd5e1', cursor: 'pointer', fontWeight: 600, fontSize: '0.78rem' }}
+                                    >
+                                        📥 Cargar Zona
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 );
             })()}

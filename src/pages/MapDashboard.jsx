@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import * as turf from '@turf/turf';
 import { useAuth } from '../context/AuthContext';
 import MapComponent from '../components/MapComponent';
 import Sidebar from '../components/Sidebar';
@@ -52,6 +53,8 @@ const MapDashboard = () => {
     const [emergencyAlert, setEmergencyAlert] = useState(null);
     const [focusLocation, setFocusLocation] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const [bufferRadiusKm, setBufferRadiusKm] = useState(2);
+    const [externalZoneTrigger, setExternalZoneTrigger] = useState(null);
 
     // Estado de Eventos (Se mantiene aquí por ser el dueño del formulario)
     const [eventDetails, setEventDetails] = useState({
@@ -156,6 +159,57 @@ const MapDashboard = () => {
         }
     };
 
+    // Exportar escenario (polígonos + descripción + radio) a un archivo .json local
+    const handleExportScenario = () => {
+        if (!analysis.zones || analysis.zones.length === 0) {
+            alert("Dibuje primero al menos una zona o polígono en el mapa para exportar el escenario.");
+            return;
+        }
+        const scenarioData = {
+            version: '2.1',
+            exportedAt: new Date().toISOString(),
+            exportedBy: user?.name || 'Analista SGCN',
+            eventDetails,
+            bufferRadiusKm,
+            zones: analysis.zones
+        };
+        const blob = new Blob([JSON.stringify(scenarioData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Escenario_SGCN_${new Date().getTime()}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+
+    // Importar escenario (.json) enviado por otro analista
+    const handleImportScenario = (file) => {
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+            try {
+                const parsed = JSON.parse(evt.target.result);
+                if (!parsed.zones || !Array.isArray(parsed.zones) || parsed.zones.length === 0) {
+                    alert("❌ El archivo JSON no contiene zonas geográficas válidas.");
+                    return;
+                }
+                if (parsed.eventDetails) setEventDetails(parsed.eventDetails);
+                if (parsed.bufferRadiusKm) setBufferRadiusKm(parsed.bufferRadiusKm);
+                setExternalZoneTrigger({ zones: parsed.zones, replace: true, timestamp: Date.now() });
+
+                // Volar al centroide de la primera zona importada
+                const centerPt = turf.centroid(parsed.zones[0]);
+                const [lon, lat] = centerPt.geometry.coordinates;
+                setFocusLocation({ coords: [lat, lon], zoom: 13, timestamp: Date.now() });
+                alert(`✅ Escenario cargado exitosamente (${parsed.zones.length} zona(s)).`);
+            } catch (err) {
+                alert("❌ Error al leer el archivo de escenario: " + err.message);
+            }
+        };
+        reader.readAsText(file);
+    };
+
     return (
         <div className="h-screen flex flex-col bg-slate-950 font-sans text-slate-100 overflow-hidden">
             {/* Banner de inactividad */}
@@ -178,6 +232,8 @@ const MapDashboard = () => {
                     nearbySedes={analysis.nearbySedes}
                     onSave={handleSaveEvent}
                     onGenerateReport={() => reporting.handleGenerateReport({ includeColaboradoresList: true }, sedesWithStatus)}
+                    onExportScenario={handleExportScenario}
+                    onImportScenario={handleImportScenario}
                     onShowList={() => setShowList(true)}
                     onShowHistory={() => setShowHistory(true)}
                     onToggleCharts={() => setShowCharts(!showCharts)}
@@ -226,7 +282,13 @@ const MapDashboard = () => {
                     {layers.showNews && <NewsFeed isOpen={true} onClose={layers.toggleNews} />}
 
                     <div id="map-capture" className="h-[65vh] min-h-[500px] relative shadow-2xl overflow-hidden border-b border-white/5">
-                        <MapComponent sedes={filteredSedes} onAnalysisUpdate={handleAnalysisUpdate} focusLocation={focusLocation}>
+                        <MapComponent
+                            sedes={filteredSedes}
+                            onAnalysisUpdate={handleAnalysisUpdate}
+                            focusLocation={focusLocation}
+                            bufferRadiusKm={bufferRadiusKm}
+                            externalZoneTrigger={externalZoneTrigger}
+                        >
                             <EarthquakeLayer
                                 visible={layers.showEarthquakes}
                                 sedes={sedes}
@@ -283,6 +345,8 @@ const MapDashboard = () => {
                                 onChange={(e) => setEventDetails(prev => ({...prev, [e.target.name]: e.target.value}))} 
                                 onSave={handleSaveEvent}
                                 onGenerateReport={() => reporting.handleGenerateReport({ includeColaboradoresList: true }, sedesWithStatus)}
+                                bufferRadiusKm={bufferRadiusKm}
+                                onBufferRadiusChange={setBufferRadiusKm}
                             />
                         </div>
 
@@ -377,7 +441,21 @@ const MapDashboard = () => {
                                 }
                             }
                             layers.setShowEarthquakes(true);
-                            setFocusLocation({ coords: [emergencyAlert.coordinates[1], emergencyAlert.coordinates[0]], zoom: 10, timestamp: Date.now() });
+                            const eqLon = emergencyAlert.coordinates[0];
+                            const eqLat = emergencyAlert.coordinates[1];
+                            // Calcular radio de impacto sísmico automático según magnitud (ej. Mag 4.0 -> 15km, Mag 5.0 -> 35km, Mag 6.0+ -> 60km)
+                            const mag = parseFloat(emergencyAlert.mag) || 4.0;
+                            const autoRadiusKm = mag >= 6.0 ? 60 : (mag >= 5.0 ? 35 : (mag >= 4.0 ? 20 : 12));
+                            const quakeCircle = turf.circle([eqLon, eqLat], autoRadiusKm, { units: 'kilometers', steps: 64 });
+                            quakeCircle.properties = { source: 'earthquake-auto', color: '#dc2626' };
+
+                            setExternalZoneTrigger({ zones: [quakeCircle], replace: true, timestamp: Date.now() });
+                            setEventDetails({
+                                type: 'Físico Ambiental',
+                                nivel_alerta: mag >= 5.0 ? 'rojo' : (mag >= 4.0 ? 'naranja' : 'amarillo'),
+                                description: `EVALUACIÓN AUTOMÁTICA DE SISMO (USGS): Magnitud ${emergencyAlert.mag} registrado en ${emergencyAlert.place} (${emergencyAlert.localTime || 'Reciente'}). Se traza automáticamente geocerca de evaluación sísmica con radio de ${autoRadiusKm} km alrededor del epicentro.${emergencyAlert.closestSedeName ? ` Sede Colmédica más próxima: ${emergencyAlert.closestSedeName} (${emergencyAlert.closestSedeCity}) a ${emergencyAlert.closestSedeDistKm} km.` : ''}`
+                            });
+                            setFocusLocation({ coords: [eqLat, eqLon], zoom: 9, timestamp: Date.now() });
                             setEmergencyAlert(null);
                         }}
                         className="w-full bg-crisis hover:bg-red-500 text-white py-3.5 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl shadow-crisis/40 transition-all hover:-translate-y-0.5 active:scale-95 cursor-pointer"
