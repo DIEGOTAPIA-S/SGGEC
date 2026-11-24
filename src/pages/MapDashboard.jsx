@@ -200,7 +200,7 @@ const MapDashboard = () => {
                     onToggleNews={layers.toggleNews}
                     showNews={layers.showNews}
 
-                    onSimulateAlert={() => setEmergencyAlert({ mag: 6.2, place: "SIMULACRO: Mesa de los Santos", coordinates: [-73.12, 6.79] })}
+                    onSimulateAlert={() => setEmergencyAlert({ id: 'sim-' + Date.now(), mag: 6.2, place: "SIMULACRO: Mesa de los Santos, Santander", localTime: new Date().toLocaleString('es-CO'), closestSedeName: "Colmédica Bucaramanga", closestSedeCity: "Bucaramanga", closestSedeDistKm: 34, isNearColmedicaCity: true, coordinates: [-73.12, 6.79] })}
                     onShowHelp={() => setShowHelp(true)}
                     onSearchColaborador={setSearchTerm}
                     colaboradores={colaboradores}
@@ -227,7 +227,14 @@ const MapDashboard = () => {
 
                     <div id="map-capture" className="h-[65vh] min-h-[500px] relative shadow-2xl overflow-hidden border-b border-white/5">
                         <MapComponent sedes={filteredSedes} onAnalysisUpdate={handleAnalysisUpdate} focusLocation={focusLocation}>
-                            <EarthquakeLayer visible={layers.showEarthquakes} onAlertsUpdate={setEarthquakeAlerts} />
+                            <EarthquakeLayer
+                                visible={layers.showEarthquakes}
+                                sedes={sedes}
+                                onAlertsUpdate={setEarthquakeAlerts}
+                                onRealEarthquakeAlert={(quakeAlert) => {
+                                    setEmergencyAlert(prev => prev || quakeAlert);
+                                }}
+                            />
                             <WeatherLayer visible={layers.showWeather} sedes={sedes} />
                             <InfrastructureLayer visible={layers.showInfrastructure} onUpdate={setInfrastructurePoints} />
                             <ColaboradoresLayer visible={layers.showColaboradores} colaboradores={colaboradores} />
@@ -322,19 +329,61 @@ const MapDashboard = () => {
 
             {showHelp && <InstructionsModal onClose={() => setShowHelp(false)} />}
 
-            {/* Alerta de Emergencia Crítica */}
+            {/* Alerta de Emergencia Sísmica Automática */}
             {emergencyAlert && (
-                <div className="fixed bottom-10 right-10 glass-panel border-l-8 border-crisis p-8 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(239,68,68,0.5)] z-[10000] max-w-sm animate-in zoom-in slide-in-from-right duration-500 overflow-hidden">
+                <div className="fixed bottom-8 right-8 glass-panel border-l-8 border-crisis p-6 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(239,68,68,0.5)] z-[10000] max-w-md animate-in zoom-in slide-in-from-right duration-500 overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-crisis/10 blur-3xl rounded-full -mr-16 -mt-16" />
-                    <div className="flex justify-between items-start mb-6 relative">
-                        <h2 className="text-crisis font-black text-2xl tracking-tighter flex items-center gap-3">🚨 SISMO DETECTADO</h2>
-                        <button onClick={() => setEmergencyAlert(null)} className="text-4xl leading-none text-white/30 hover:text-white">×</button>
+                    <div className="flex justify-between items-start mb-4 relative">
+                        <div>
+                            <h2 className="text-crisis font-black text-xl tracking-tighter flex items-center gap-2">
+                                🚨 SISMO DETECTADO EN COLOMBIA
+                            </h2>
+                            {emergencyAlert.localTime && (
+                                <p className="text-xs text-slate-300 mt-0.5">🕒 {emergencyAlert.localTime} {emergencyAlert.depth ? `• Prof: ${emergencyAlert.depth} km` : ''}</p>
+                            )}
+                        </div>
+                        <button
+                            onClick={() => {
+                                if (emergencyAlert.id) {
+                                    const seen = JSON.parse(sessionStorage.getItem('sgcn_seen_quakes') || '[]');
+                                    if (!seen.includes(emergencyAlert.id)) {
+                                        sessionStorage.setItem('sgcn_seen_quakes', JSON.stringify([...seen, emergencyAlert.id]));
+                                    }
+                                }
+                                setEmergencyAlert(null);
+                            }}
+                            className="text-3xl leading-none text-white/40 hover:text-white ml-3"
+                            title="Descartar alerta"
+                        >
+                            ×
+                        </button>
                     </div>
-                    <div className="bg-crisis/20 p-5 rounded-2xl mb-6 border border-crisis/30 relative">
-                        <p className="font-black text-white text-3xl mb-1 tracking-tight">Mag {emergencyAlert.mag}</p>
-                        <p className="text-crisis-200 text-sm font-medium uppercase tracking-widest">{emergencyAlert.place}</p>
+                    <div className="bg-crisis/20 p-4 rounded-2xl mb-4 border border-crisis/30 relative">
+                        <p className="font-black text-white text-2xl mb-1 tracking-tight">Magnitud {emergencyAlert.mag}</p>
+                        <p className="text-crisis-200 text-xs font-semibold uppercase tracking-wider">{emergencyAlert.place}</p>
+                        {emergencyAlert.closestSedeName && (
+                            <div className={`mt-3 p-2.5 rounded-xl text-xs font-bold border ${emergencyAlert.isNearColmedicaCity ? 'bg-red-950/80 border-red-400 text-red-200' : 'bg-slate-900/70 border-white/10 text-slate-200'}`}>
+                                🏢 Sede Colmédica más cercana:<br />
+                                <span className="text-white text-sm">{emergencyAlert.closestSedeName}</span> ({emergencyAlert.closestSedeCity}) a <strong>{emergencyAlert.closestSedeDistKm} km</strong> del epicentro
+                            </div>
+                        )}
                     </div>
-                    <button onClick={() => { layers.setShowEarthquakes(true); setFocusLocation({ coords: [emergencyAlert.coordinates[1], emergencyAlert.coordinates[0]], timestamp: Date.now() }); setEmergencyAlert(null); }} className="w-full bg-crisis hover:bg-red-500 text-white py-4 rounded-2xl font-black text-sm uppercase tracking-widest shadow-2xl shadow-crisis/40 transition-all hover:-translate-y-1 active:scale-95">Evaluar Afectación</button>
+                    <button
+                        onClick={() => {
+                            if (emergencyAlert.id) {
+                                const seen = JSON.parse(sessionStorage.getItem('sgcn_seen_quakes') || '[]');
+                                if (!seen.includes(emergencyAlert.id)) {
+                                    sessionStorage.setItem('sgcn_seen_quakes', JSON.stringify([...seen, emergencyAlert.id]));
+                                }
+                            }
+                            layers.setShowEarthquakes(true);
+                            setFocusLocation({ coords: [emergencyAlert.coordinates[1], emergencyAlert.coordinates[0]], zoom: 10, timestamp: Date.now() });
+                            setEmergencyAlert(null);
+                        }}
+                        className="w-full bg-crisis hover:bg-red-500 text-white py-3.5 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl shadow-crisis/40 transition-all hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                    >
+                        📍 Activar Capa y Evaluar Afectación
+                    </button>
                 </div>
             )}
         </div>

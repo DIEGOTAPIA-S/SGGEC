@@ -87,6 +87,11 @@ const LayersTab = ({
                                         </span>
                                     </div>
                                     <div style={{ fontSize: '0.85rem', color: '#1e293b', margin: '4px 0' }}>{quake.place}</div>
+                                    {quake.closestSedeName && (
+                                        <div style={{ fontSize: '0.75rem', color: quake.isNearColmedicaCity ? '#b91c1c' : '#475569', background: quake.isNearColmedicaCity ? '#fef2f2' : '#f8fafc', padding: '4px 6px', borderRadius: '4px', marginBottom: '6px', fontWeight: 600 }}>
+                                            🏢 Sede más cercana: {quake.closestSedeName} ({quake.closestSedeDistKm} km)
+                                        </div>
+                                    )}
                                     <button
                                         onClick={() => {
                                             let lat, lon;
