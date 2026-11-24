@@ -47,6 +47,12 @@ const MapDashboard = () => {
     const layers = useMapLayers();
     const analysis = useAnalysis(sedes, colaboradores);
     
+    const [infrastructurePoints, setInfrastructurePoints] = useState([]);
+    const [earthquakeAlerts, setEarthquakeAlerts] = useState([]);
+    const [emergencyAlert, setEmergencyAlert] = useState(null);
+    const [focusLocation, setFocusLocation] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
+
     // Estado de Eventos (Se mantiene aquí por ser el dueño del formulario)
     const [eventDetails, setEventDetails] = useState({
         description: '',
@@ -85,12 +91,6 @@ const MapDashboard = () => {
     const [showHistory, setShowHistory] = useState(false);
     const [showList, setShowList] = useState(false);
     const [showHelp, setShowHelp] = useState(false);
-    
-    const [infrastructurePoints, setInfrastructurePoints] = useState([]);
-    const [earthquakeAlerts, setEarthquakeAlerts] = useState([]);
-    const [emergencyAlert, setEmergencyAlert] = useState(null);
-    const [focusLocation, setFocusLocation] = useState(null);
-    const [searchTerm, setSearchTerm] = useState('');
 
     // Carga de inicial de Sedes estática local
     useEffect(() => {
