@@ -53,6 +53,8 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, buffer
     const [drawnZones, setDrawnZones] = useState([]);
     const [externalZones, setExternalZones] = useState([]);
     const [programmaticPolygons, setProgrammaticPolygons] = useState([]);
+    const [selectedDistanceLine, setSelectedDistanceLine] = useState(null);
+    const [distanceCardCollapsed, setDistanceCardCollapsed] = useState(false);
 
     const allActiveZones = [...drawnZones, ...externalZones];
 
@@ -142,59 +144,49 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, buffer
         }
     }, [externalZoneTrigger]);
 
-    // Calcular líneas punteadas automáticas de distancia desde cada zona marcada hacia las sedes afectadas/cercanas
-    // (o hacia las 2 sedes más próximas de la ciudad si no hay ninguna dentro del anillo)
-    const distanceConnectors = useMemo(() => {
+    // Calcular distancias desde la zona marcada hacia las sedes más próximas para mostrarlas en la tarjeta flotante limpia
+    // (sin saturar el mapa con líneas ni etiquetas automáticas; solo se dibuja una línea si el usuario selecciona una sede de la tarjeta)
+    const distanceSummaryList = useMemo(() => {
         if (!allActiveZones.length || !sedes || !sedes.length) return [];
 
-        const lines = [];
         const currentSedes = analyzedSedes.length > 0 ? analyzedSedes : sedes;
+        const bestBySede = new Map();
 
-        allActiveZones.forEach((zone, zIdx) => {
+        allActiveZones.forEach((zone) => {
             if (!zone || zone.geometry?.type !== 'Polygon') return;
             const centerPt = turf.centroid(zone);
             const [cLon, cLat] = centerPt.geometry.coordinates;
 
-            // Buscar sedes afectadas o cercanas a esta zona
-            let targets = currentSedes
-                .map(s => {
-                    const dKm = turf.distance(centerPt, turf.point([s.longitud, s.latitud]), { units: 'kilometers' });
-                    return { ...s, dKm };
-                })
-                .filter(s => s.status === 'affected' || s.status === 'nearby' || s.dKm <= bufferRadiusKm)
-                .sort((a, b) => a.dKm - b.dKm)
-                .slice(0, 4);
-
-            // Si ninguna sede quedó dentro del radio (ej. bloqueo de movilidad alejado en la ciudad),
-            // conectar con la sede más cercana de esa ciudad (si está a <= 25 km)
-            if (targets.length === 0) {
-                const closestInCity = currentSedes
-                    .map(s => {
-                        const dKm = turf.distance(centerPt, turf.point([s.longitud, s.latitud]), { units: 'kilometers' });
-                        return { ...s, dKm };
-                    })
-                    .filter(s => s.dKm <= 25)
-                    .sort((a, b) => a.dKm - b.dKm)
-                    .slice(0, 2);
-                targets = closestInCity;
-            }
-
-            targets.forEach((sede) => {
-                const distLabel = sede.dKm < 1 ? `${Math.round(sede.dKm * 1000)} m` : `${sede.dKm.toFixed(2)} km`;
-                lines.push({
-                    id: `dist-line-${zIdx}-${sede.id}`,
-                    positions: [
-                        [cLat, cLon],
-                        [sede.latitud, sede.longitud]
-                    ],
-                    color: sede.status === 'affected' ? '#dc2626' : (sede.status === 'nearby' ? '#ea580c' : '#2563eb'),
-                    label: `📏 ${distLabel} a ${sede.nombre.replace('Colmédica ', '')}`
-                });
+            currentSedes.forEach((s) => {
+                const dKm = turf.distance(centerPt, turf.point([s.longitud, s.latitud]), { units: 'kilometers' });
+                const prev = bestBySede.get(s.id);
+                if (!prev || dKm < prev.dKm) {
+                    bestBySede.set(s.id, {
+                        ...s,
+                        dKm,
+                        distLabel: dKm < 1 ? `${Math.round(dKm * 1000)} m` : `${dKm.toFixed(2)} km`,
+                        fromCoords: [cLat, cLon],
+                        toCoords: [s.latitud, s.longitud],
+                        color: s.status === 'affected' ? '#dc2626' : (s.status === 'nearby' ? '#ea580c' : '#2563eb')
+                    });
+                }
             });
         });
 
-        return lines;
+        const allRanked = Array.from(bestBySede.values()).sort((a, b) => a.dKm - b.dKm);
+        const impacted = allRanked.filter(s => s.status === 'affected' || s.status === 'nearby');
+        if (impacted.length > 0) {
+            return impacted.slice(0, 6);
+        }
+        // Si ninguna sede cayó dentro del radio, mostrar las 3 más cercanas de esa ciudad (<= 30 km)
+        return allRanked.filter(s => s.dKm <= 30).slice(0, 3);
     }, [allActiveZones, analyzedSedes, sedes, bufferRadiusKm]);
+
+    useEffect(() => {
+        if (allActiveZones.length === 0) {
+            setSelectedDistanceLine(null);
+        }
+    }, [allActiveZones.length]);
 
     // Restaurar la última posición guardada en sessionStorage (o inicio por defecto: Bogotá)
     const savedLat = parseFloat(sessionStorage.getItem('map_lat')) || 4.6097;
@@ -224,23 +216,22 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, buffer
                     />
                 ))}
 
-                {/* Líneas punteadas automáticas con distancia en km/m entre el incidente y las sedes */}
-                {distanceConnectors.map((line) => (
+                {/* Solo se dibuja la línea punteada hacia una sede si el usuario hace clic sobre ella en la tarjeta flotante */}
+                {selectedDistanceLine && (
                     <Polyline
-                        key={line.id}
-                        positions={line.positions}
+                        positions={[selectedDistanceLine.fromCoords, selectedDistanceLine.toCoords]}
                         pathOptions={{
-                            color: line.color,
+                            color: selectedDistanceLine.color,
                             weight: 2.5,
                             dashArray: '6, 6',
-                            opacity: 0.85
+                            opacity: 0.9
                         }}
                     >
                         <Tooltip permanent direction="center" className="distance-line-tooltip">
-                            {line.label}
+                            📏 {selectedDistanceLine.distLabel} a {selectedDistanceLine.nombre.replace('Colmédica ', '')}
                         </Tooltip>
                     </Polyline>
-                ))}
+                )}
 
                 {(analyzedSedes.length > 0 ? analyzedSedes : sedes).map((sede) => (
                     <Marker
@@ -269,6 +260,82 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, buffer
                     </Marker>
                 ))}
             </MapContainer>
+
+            {/* Tarjeta Flotante Compacta de Distancias (No invade el polígono en el mapa) */}
+            {distanceSummaryList.length > 0 && (
+                <div style={{
+                    position: 'absolute',
+                    bottom: '16px',
+                    left: '16px',
+                    zIndex: 1000,
+                    background: 'rgba(15, 23, 42, 0.92)',
+                    backdropFilter: 'blur(8px)',
+                    color: 'white',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    boxShadow: '0 8px 20px rgba(0,0,0,0.35)',
+                    width: distanceCardCollapsed ? 'auto' : '270px',
+                    overflow: 'hidden',
+                    fontSize: '0.78rem'
+                }}>
+                    <div
+                        onClick={() => setDistanceCardCollapsed(!distanceCardCollapsed)}
+                        style={{
+                            padding: '8px 12px',
+                            background: 'rgba(255,255,255,0.06)',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            cursor: 'pointer',
+                            fontWeight: 700,
+                            gap: '10px'
+                        }}
+                        title="Clic para minimizar o expandir"
+                    >
+                        <span>📏 Distancia a Sedes ({distanceSummaryList.length})</span>
+                        <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>{distanceCardCollapsed ? '▲' : '▼'}</span>
+                    </div>
+
+                    {!distanceCardCollapsed && (
+                        <div style={{ padding: '8px 10px', maxHeight: '175px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                            <div style={{ fontSize: '0.68rem', color: '#94a3b8', marginBottom: '2px' }}>
+                                Toque una sede para trazar/ocultar su línea en el mapa:
+                            </div>
+                            {distanceSummaryList.map((item) => {
+                                const isSelected = selectedDistanceLine?.id === item.id;
+                                const badgeColor = item.status === 'affected' ? '#ef4444' : (item.status === 'nearby' ? '#f59e0b' : '#3b82f6');
+                                return (
+                                    <div
+                                        key={item.id}
+                                        onClick={() => setSelectedDistanceLine(isSelected ? null : item)}
+                                        style={{
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            alignItems: 'center',
+                                            padding: '5px 8px',
+                                            borderRadius: '6px',
+                                            cursor: 'pointer',
+                                            background: isSelected ? 'rgba(59, 130, 246, 0.28)' : 'rgba(255,255,255,0.04)',
+                                            border: isSelected ? '1px solid #60a5fa' : '1px solid transparent',
+                                            transition: 'all 0.15s'
+                                        }}
+                                    >
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', overflow: 'hidden' }}>
+                                            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: badgeColor, flexShrink: 0 }} />
+                                            <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontWeight: 600 }}>
+                                                {item.nombre.replace('Colmédica ', '')}
+                                            </span>
+                                        </div>
+                                        <span style={{ fontWeight: 800, color: '#e2e8f0', marginLeft: '8px', flexShrink: 0 }}>
+                                            {item.distLabel}
+                                        </span>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };
