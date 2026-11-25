@@ -12,14 +12,13 @@ const DashboardHeader = ({ user, logout }) => {
                 </div>
                 <div>
                     <h1 className="header-title text-xl m-0 font-bold tracking-tight">Sistema de Gestión Continuidad del Negocio</h1>
-                    <span className="header-subtitle text-xs opacity-80 font-medium uppercase tracking-wider">Panel de Control Profesional</span>
+                    <span className="header-subtitle text-xs opacity-80 font-medium uppercase tracking-wider">Panel de Control</span>
                 </div>
             </div>
             
             <div className="flex items-center gap-4">
                 <div className="user-info text-right hidden sm:block">
                     <span className="font-bold text-sm block">Bienvenido, {user?.name}</span>
-                    <span className="text-[10px] opacity-75 uppercase tracking-widest">{user?.role}</span>
                 </div>
                 <div className="flex gap-2">
                     {user?.role === 'admin' && (
