@@ -4,10 +4,10 @@ const InstructionsModal = ({ onClose }) => {
     const [activeSection, setActiveSection] = useState('monitoreo');
 
     const sections = {
-        monitoreo: '🗺️ Monitoreo',
-        noticias: '📰 Sala de Noticias',
-        herramientas: '⚙️ Herramientas',
-        emergencia: '🚨 En Emergencia',
+        monitoreo: '🗺️ Capas y Monitoreo',
+        herramientas: '📐 Geocercas y Distancias',
+        reportes: '📊 Análisis y Reportes',
+        emergencia: '🚨 Protocolos y Datos',
     };
 
     return (
@@ -17,20 +17,20 @@ const InstructionsModal = ({ onClose }) => {
             alignItems: 'center', zIndex: 10000
         }}>
             <div style={{
-                background: '#f8fafc', borderRadius: '14px', width: '92%', maxWidth: '860px',
+                background: '#f8fafc', borderRadius: '14px', width: '92%', maxWidth: '880px',
                 boxShadow: '0 20px 50px rgba(0,0,0,0.25)', position: 'relative',
                 maxHeight: '90vh', display: 'flex', flexDirection: 'column', overflow: 'hidden'
             }}>
                 {/* Header */}
                 <div style={{ background: '#0f172a', padding: '20px 25px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <h2 style={{ margin: 0, color: 'white', fontSize: '1.2rem' }}>📖 Manual de Uso — SGCN v2</h2>
-                    <button onClick={onClose} style={{ 
-                        background: 'none', 
-                        border: 'none', 
-                        color: 'white', 
-                        fontSize: '2rem', 
-                        cursor: 'pointer', 
-                        lineHeight: 1, 
+                    <h2 style={{ margin: 0, color: 'white', fontSize: '1.2rem' }}>📖 Manual de Uso — SGCN v2.1</h2>
+                    <button onClick={onClose} style={{
+                        background: 'none',
+                        border: 'none',
+                        color: 'white',
+                        fontSize: '2rem',
+                        cursor: 'pointer',
+                        lineHeight: 1,
                         opacity: 0.7,
                         transition: 'opacity 0.2s',
                         padding: '5px'
@@ -38,7 +38,7 @@ const InstructionsModal = ({ onClose }) => {
                 </div>
 
                 {/* Tab Navigation */}
-                <div style={{ display: 'flex', background: '#1e293b', borderBottom: '2px solid #334155' }}>
+                <div style={{ display: 'flex', background: '#1e293b', borderBottom: '2px solid #334155', flexWrap: 'wrap' }}>
                     {Object.entries(sections).map(([key, label]) => (
                         <button
                             key={key}
@@ -57,108 +57,98 @@ const InstructionsModal = ({ onClose }) => {
                 {/* Body */}
                 <div style={{ overflowY: 'auto', flex: 1, padding: '25px' }}>
 
-                    {/* --- MONITOREO --- */}
+                    {/* --- 1. CAPAS Y MONITOREO --- */}
                     {activeSection === 'monitoreo' && (
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '18px' }}>
                             {[
-                                { icon: '⚡', color: '#dc2626', title: 'Sismos (USGS)', desc: 'Muestra los últimos terremotos en tiempo real. Alerta automática si hay un sismo > 4.5 cerca de Colombia.' },
-                                { icon: '☁️', color: '#0ea5e9', title: 'Clima (Open-Meteo)', desc: 'Visualiza íconos de clima en cada sede y activa el radar de precipitaciones para detectar riesgo por lluvia.' },
-                                { icon: '🚗', color: '#f97316', title: 'Tráfico (Waze)', desc: 'Capa visual del estado de las vías. Solo lectura. Para marcar bloqueos usa las herramientas de dibujo del mapa.' },
-                                { icon: '👥', color: '#7c3aed', title: 'Personal Georeferenciado', desc: 'Muestra los colaboradores en campo con su ubicación. Actívala para ver quién está en zona de riesgo.' },
-                                { icon: '🏥', color: '#059669', title: 'Infraestructura de Emergencia', desc: 'Visualiza hospitales, bomberos y policías cercanos a las sedes afectadas. Se incluye en el reporte PDF.' },
-                                { icon: '🔍', color: '#2563eb', title: 'Búsqueda en mapa', desc: 'Barra de búsqueda superior del mapa. Escribe una ciudad o dirección para navegar rápidamente.' },
-                                { icon: '🔥', color: '#ea580c', title: 'Mapa de Calor', desc: 'Visualiza la concentración de sedes, colaboradores o eventos como una capa de intensidad térmica sobre el mapa.' },
+                                { icon: '⚡', color: '#dc2626', title: 'Sismos en Tiempo Real (USGS)', desc: 'Monitoreo automático permanente en Colombia. Muestra alerta inmediata indicando cuál es la sede Colmédica más cercana y a cuántos kilómetros del epicentro se encuentra.' },
+                                { icon: '🚑', color: '#059669', title: 'Red de Apoyo Nacional (13 Ciudades)', desc: 'Visualiza hospitales, clínicas, estaciones de bomberos y CAI/Policía oficiales cercanos a todas las sedes de Colmédica a nivel nacional.' },
+                                { icon: '👥', color: '#7c3aed', title: 'Personal Georreferenciado (Anónimo)', desc: 'Muestra la ubicación de los colaboradores cargados desde Excel mediante identificadores anónimos (ID-1, ID-2) protegiendo sus datos personales (PII).' },
+                                { icon: '🔥', color: '#ea580c', title: 'Mapa de Calor', desc: 'Visualiza la concentración geográfica de colaboradores como una capa de intensidad térmica sobre el mapa.' },
+                                { icon: '☁️', color: '#0ea5e9', title: 'Clima y Radar de Lluvias', desc: 'Consulta la temperatura, velocidad del viento y condición meteorológica actual en cada sede junto con el radar de precipitaciones.' },
+                                { icon: '🚗', color: '#f97316', title: 'Tráfico en Vivo (Waze)', desc: 'Visor integrado para consultar congestiones, cierres viales y movilidad en tiempo real.' },
+                                { icon: '📰', color: '#2563eb', title: 'Sala de Noticias (⚙️ Ajustes)', desc: 'Monitoreo de titulares clasificados en 6 categorías: Emergencias, Factores Sociales, Físico-Ambientales, Servicios Públicos, IT y Movilidad.' },
+                                { icon: '🔍', color: '#334155', title: 'Búsqueda Universal y de Calles', desc: 'Use la lupa lateral para localizar sedes o colaboradores, o el buscador superior derecho del mapa para volar a cualquier ciudad o dirección.' },
                             ].map(item => (
-                                <div key={item.title} style={{ background: 'white', borderRadius: '10px', padding: '16px', display: 'flex', gap: '14px', boxShadow: '0 1px 4px rgba(0,0,0,0.07)', borderLeft: `4px solid ${item.color}` }}>
+                                <div key={item.title} style={{ background: 'white', borderRadius: '10px', padding: '15px', display: 'flex', gap: '14px', boxShadow: '0 1px 4px rgba(0,0,0,0.07)', borderLeft: `4px solid ${item.color}` }}>
                                     <span style={{ fontSize: '1.6rem', flexShrink: 0 }}>{item.icon}</span>
                                     <div>
-                                        <strong style={{ color: '#0f172a', fontSize: '0.95rem' }}>{item.title}</strong>
-                                        <p style={{ margin: '4px 0 0 0', color: '#64748b', fontSize: '0.83rem', lineHeight: 1.5 }}>{item.desc}</p>
+                                        <strong style={{ color: '#0f172a', fontSize: '0.93rem' }}>{item.title}</strong>
+                                        <p style={{ margin: '4px 0 0 0', color: '#64748b', fontSize: '0.82rem', lineHeight: 1.5 }}>{item.desc}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
 
-                    {/* --- SALA DE NOTICIAS --- */}
-                    {activeSection === 'noticias' && (
-                        <div>
-                            <p style={{ color: '#64748b', fontSize: '0.9rem', marginTop: 0 }}>
-                                La <strong>Sala de Noticias</strong> muestra alertas de medios en tiempo real clasificadas por tipo de riesgo. Ábrela con el botón <strong>📰</strong> en la barra lateral.
-                            </p>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
-                                {[
-                                    { icon: '🚨', color: '#dc2626', title: 'Emergencia', desc: 'Incendios, explosiones, evacuaciones, fugas de gas y colapsos en Bogotá.' },
-                                    { icon: '🤝', color: '#7c3aed', title: 'Factores Sociales', desc: 'Protestas, paros, disturbios, vandalismo, huelgas y conflictos de orden público en Colombia.' },
-                                    { icon: '🌍', color: '#16a34a', title: 'Factores Físicos/Ambientales', desc: 'Sismos, inundaciones, deslizamientos, vendavales, erupciones y sequías.' },
-                                    { icon: '🔌', color: '#d97706', title: 'Servicios Públicos', desc: 'Cortes de agua/luz, apagones, racionamiento, fallas en acueducto, gas domiciliario y empresas como EPM, Codensa, EAAB, Emcali.' },
-                                    { icon: '💻', color: '#0284c7', title: 'Noticias IT', desc: 'Ciberataques, hackeos, ransomware, brechas de seguridad, caídas de red y fallas de sistemas críticos.' },
-                                    { icon: '🚦', color: '#64748b', title: 'Movilidad', desc: 'Cierres de vías, accidentes, bloqueos y estado del Transmilenio en Bogotá.' },
-                                ].map(item => (
-                                    <div key={item.title} style={{ background: 'white', borderRadius: '10px', padding: '14px', display: 'flex', gap: '12px', boxShadow: '0 1px 4px rgba(0,0,0,0.07)', borderLeft: `4px solid ${item.color}` }}>
-                                        <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>{item.icon}</span>
-                                        <div>
-                                            <strong style={{ color: '#0f172a', fontSize: '0.9rem' }}>{item.title}</strong>
-                                            <p style={{ margin: '4px 0 0 0', color: '#64748b', fontSize: '0.82rem', lineHeight: 1.5 }}>{item.desc}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* --- HERRAMIENTAS --- */}
+                    {/* --- 2. GEOCERCAS Y DISTANCIAS --- */}
                     {activeSection === 'herramientas' && (
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                             {[
-                                { icon: '📍', color: '#7c3aed', title: 'Geocercas a Medida', desc: 'Usa el botón de Pin en el mapa para colocar 3 o más puntos. Luego presiona "Conectar Pines" para dibujar un área de impacto a medida.' },
-                                { icon: '📋', color: '#2563eb', title: 'Lista de Sedes', desc: 'Tabla completa de todas las sedes monitoreadas con su estado actual: Operativa, Afectada o Cercana.' },
-                                { icon: '📊', color: '#7c3aed', title: 'Métricas', desc: 'Gráficos de distribución de riesgo: sedes afectadas por ciudad y criticidad de los procesos.' },
-                                { icon: '📜', color: '#64748b', title: 'Historial de Eventos', desc: 'Consulta, filtra y descarga todos los eventos pasados registrados. Incluye un PDF histórico por evento.' },
-                                { icon: '📥', color: '#dc2626', title: 'Generar Reporte PDF', desc: 'Crea un informe ejecutivo con: mapa del evento, estadísticas de impacto por ciudad, sedes afectadas y red de apoyo cercana.' },
-                                { icon: '💾', color: '#059669', title: 'Guardar Evento', desc: 'Registra formalmente la incidencia. Requiere haber dibujado una zona en el mapa o seleccionado una alerta activa.' },
-                                { icon: '🔔', color: '#f97316', title: 'Simulacro de Sismo', desc: 'Genera una alerta de prueba para verificar que el sistema de notificación funciona correctamente.' },
+                                { icon: '📍', color: '#7c3aed', title: 'Geocerca con Pines (Casco Convexo)', desc: 'Active el marcador en la barra derecha del mapa, coloque 3 o más pines alrededor del área de crisis y pulse "🔗 Conectar Pines y Crear Zona" para cerrar el polígono automáticamente.' },
+                                { icon: '⬠', color: '#dc2626', title: 'Polígonos, Círculos y Rectángulos', desc: 'Dibuje una o múltiples zonas de impacto simultáneas en el mapa utilizando las herramientas de polígono libre, círculo o rectángulo.' },
+                                { icon: '📏', color: '#0284c7', title: 'Tarjeta de Distancias y Regla de Rutas', desc: 'Al trazar una zona aparece abajo a la izquierda la tarjeta "📏 Distancia a Sedes" (toque cualquier sede para ver su línea punteada en km/m). También puede usar la herramienta de Línea (╱) para medir rutas calle por calle.' },
+                                { icon: '📐', color: '#f59e0b', title: 'Radio de Sedes Cercanas Configurable', desc: 'En el panel "📝 Registro de Evento" puede ajustar el anillo naranja de sedes cercanas entre 500 m, 1 km, 2 km, 5 km o 10 km según la magnitud del evento.' },
+                                { icon: '✏️', color: '#10b981', title: 'Edición y Borrado en 1 Clic', desc: 'Use el icono ✏️ para mover vértices en tiempo real y pulse "✅ Terminar Edición y Guardar". Para limpiar el mapa rápidamente, pulse "🗑️ Borrar Zona(s) del Mapa".' },
+                                { icon: '🔄', color: '#6366f1', title: 'Compartir Escenario (.json)', desc: 'En la pestaña "💾 Datos" use "📤 Exportar Zona" y "📥 Cargar Zona" para compartir polígonos y escenarios de crisis con otros analistas.' },
                             ].map(item => (
                                 <div key={item.title} style={{ background: 'white', borderRadius: '10px', padding: '16px', display: 'flex', gap: '12px', boxShadow: '0 1px 4px rgba(0,0,0,0.07)', borderLeft: `4px solid ${item.color}` }}>
                                     <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>{item.icon}</span>
                                     <div>
                                         <strong style={{ color: '#0f172a', fontSize: '0.92rem' }}>{item.title}</strong>
-                                        <p style={{ margin: '4px 0 0 0', color: '#64748b', fontSize: '0.83rem', lineHeight: 1.5 }}>{item.desc}</p>
+                                        <p style={{ margin: '4px 0 0 0', color: '#64748b', fontSize: '0.82rem', lineHeight: 1.5 }}>{item.desc}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
 
-                    {/* --- EN EMERGENCIA --- */}
+                    {/* --- 3. ANÁLISIS Y REPORTES --- */}
+                    {activeSection === 'reportes' && (
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                            {[
+                                { icon: '📥', color: '#10b981', title: 'Reporte PDF Ejecutivo (Con o Sin Sedes en Polígono)', desc: 'Genera el documento PDF oficial con captura limpia del mapa, estadísticas, gráficas, tabla de sedes con distancia exacta al evento, colaboradores en riesgo (anonimizados) y red de apoyo cercana. Funciona también para bloqueos de movilidad alejados de las sedes.' },
+                                { icon: '📊', color: '#2563eb', title: 'Panel Unificado de Análisis y Métricas', desc: 'Desde la pestaña "📊 Métricas" despliegue el panel inferior con: % de Continuidad Operativa, Impacto por Ciudad, Estado Sedes Bogotá (17), Criticidad, Distribución de Personal (Total vs. En Riesgo) y Eventos Registrados.' },
+                                { icon: '💾', color: '#0f172a', title: 'Registro e Historial de Eventos', desc: 'Seleccione el tipo de evento, el nivel de alerta (Azul, Amarillo, Naranja o Rojo), agregue la descripción detallada y pulse "💾 Guardar Evento" para almacenarlo en el historial de la sesión.' },
+                                { icon: '📋', color: '#7c3aed', title: 'Exportación CSV de Colaboradores en Riesgo', desc: 'Cuando existen colaboradores dentro de un polígono activo, el banner superior permite descargar en un clic el listado CSV anonimizado para cruce operativo.' },
+                            ].map(item => (
+                                <div key={item.title} style={{ background: 'white', borderRadius: '10px', padding: '16px', display: 'flex', gap: '12px', boxShadow: '0 1px 4px rgba(0,0,0,0.07)', borderLeft: `4px solid ${item.color}` }}>
+                                    <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>{item.icon}</span>
+                                    <div>
+                                        <strong style={{ color: '#0f172a', fontSize: '0.92rem' }}>{item.title}</strong>
+                                        <p style={{ margin: '4px 0 0 0', color: '#64748b', fontSize: '0.82rem', lineHeight: 1.5 }}>{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* --- 4. PROTOCOLOS Y DATOS --- */}
                     {activeSection === 'emergencia' && (
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                            <div>
-                                <h3 style={{ color: '#dc2626', marginTop: 0, fontSize: '1rem' }}>🚨 Protocolo de Sismo</h3>
-                                <ol style={{ paddingLeft: '20px', color: '#475569', fontSize: '0.88rem', lineHeight: 1.8 }}>
-                                    <li>El sistema mostrará un <strong>popup rojo</strong> cuando detecte sismo &gt; 4.5.</li>
-                                    <li>Ve a <strong>Capas</strong> → activa <em>Sismos</em> y <em>Personal</em>.</li>
-                                    <li>El sistema dibujará la zona afectada automáticamente.</li>
-                                    <li><strong>🔴 Zona Roja:</strong> Afectación directa.</li>
-                                    <li><strong>🟡 Zona Amarilla:</strong> Radio cercano (&lt; 2 km).</li>
-                                    <li>Presiona <strong>Generar PDF</strong> para el informe ejecutivo.</li>
-                                    <li>Presiona <strong>Guardar Evento</strong> para registrarlo formalmente.</li>
+                            <div style={{ background: 'white', padding: '18px', borderRadius: '10px', boxShadow: '0 1px 4px rgba(0,0,0,0.07)' }}>
+                                <h3 style={{ color: '#dc2626', marginTop: 0, fontSize: '1rem' }}>🚨 Protocolo Rápido ante Sismo o Crisis</h3>
+                                <ol style={{ paddingLeft: '20px', color: '#475569', fontSize: '0.85rem', lineHeight: 1.75, marginBottom: 0 }}>
+                                    <li>Si ocurre un sismo en Colombia, aparecerá la <strong>alerta roja automática</strong> indicando la sede Colmédica más cercana.</li>
+                                    <li>Pulse <strong>"📍 Activar Capa y Evaluar Afectación"</strong>: el sistema trazará automáticamente el círculo de impacto según la magnitud y llenará la descripción del evento.</li>
+                                    <li>Para otros incidentes (bloqueos, incendios, orden público), trace la zona en el mapa y elija el <strong>Radio de Sedes Cercanas (500 m a 10 km)</strong>.</li>
+                                    <li>Verifique las distancias en la tarjeta flotante <strong>📏 Distancia a Sedes</strong>.</li>
+                                    <li>Pulse <strong>"📥 Generar Informe PDF"</strong> y <strong>"💾 Guardar Evento"</strong>.</li>
                                 </ol>
                             </div>
-                            <div>
-                                <h3 style={{ color: '#7c3aed', marginTop: 0, fontSize: '1rem' }}>👥 Gestión de Personal (Admin)</h3>
-                                <div style={{ marginBottom: '15px' }}>
-                                    <strong style={{ color: '#334155', fontSize: '0.88rem' }}>📤 Cargar personal:</strong>
-                                    <ol style={{ paddingLeft: '20px', color: '#475569', fontSize: '0.85rem', lineHeight: 1.7, marginTop: '5px' }}>
-                                        <li>Menú <strong>Datos</strong> → <em>Cargar Personal</em>.</li>
-                                        <li>Selecciona el Excel de Geocodificación.</li>
-                                        <li>El sistema procesa y georreferencia los registros.</li>
+                            <div style={{ background: 'white', padding: '18px', borderRadius: '10px', boxShadow: '0 1px 4px rgba(0,0,0,0.07)' }}>
+                                <h3 style={{ color: '#7c3aed', marginTop: 0, fontSize: '1rem' }}>🔒 Gestión de Personal y Privacidad (PII)</h3>
+                                <div style={{ marginBottom: '14px' }}>
+                                    <strong style={{ color: '#334155', fontSize: '0.86rem' }}>📤 Carga y Anonimización Automática:</strong>
+                                    <ol style={{ paddingLeft: '20px', color: '#475569', fontSize: '0.84rem', lineHeight: 1.7, marginTop: '5px' }}>
+                                        <li>Abra la pestaña <strong>💾 Datos → Cargar Personal</strong> y seleccione el archivo Excel.</li>
+                                        <li>El sistema descarta nombres, cédulas, teléfonos, correos y direcciones, asignando un código por fila (<code>ID-1</code>, <code>Colaborador 1</code>).</li>
                                     </ol>
                                 </div>
                                 <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', padding: '12px' }}>
-                                    <strong style={{ color: '#dc2626', fontSize: '0.85rem' }}>🗑️ Post-emergencia:</strong>
-                                    <p style={{ color: '#7f1d1d', fontSize: '0.82rem', margin: '5px 0 0 0', lineHeight: 1.5 }}>
-                                        Borra la base de datos personal desde <strong>Datos → Borrar Base</strong>. Esta acción es <em>irreversible</em> y protege la privacidad de los colaboradores.
+                                    <strong style={{ color: '#dc2626', fontSize: '0.85rem' }}>🗑️ Limpieza de Sesión y Timeout (30 min):</strong>
+                                    <p style={{ color: '#7f1d1d', fontSize: '0.81rem', margin: '5px 0 0 0', lineHeight: 1.5 }}>
+                                        Al finalizar, pulse <strong>Limpiar Memoria</strong> y <strong>Borrar Historial</strong> en la pestaña Datos. Además, al cerrar la pestaña o tras 30 minutos de inactividad, toda la sesión se destruye automáticamente.
                                     </p>
                                 </div>
                             </div>

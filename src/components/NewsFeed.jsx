@@ -194,10 +194,10 @@ const NewsFeed = ({ isOpen, onClose, onCrisisDetected }) => {
                     <div style={{ textAlign: 'center', padding: '20px', color: '#64748b' }}>Cargando noticias... ⏳</div>
                 ) : error ? (
                     <div style={{ textAlign: 'center', padding: '25px 20px' }}>
-                        <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>📡</div>
-                        <h4 style={{ color: '#334155', margin: '0 0 8px' }}>Modo Local / Firewall Corporativo Activo</h4>
+                        <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>📰</div>
+                        <h4 style={{ color: '#334155', margin: '0 0 8px' }}>Monitoreo de Noticias y Alertas</h4>
                         <p style={{ color: '#64748b', fontSize: '0.82rem', lineHeight: '1.5', margin: '0 0 16px' }}>
-                            En ejecución local aislada (<code>file:///</code>) o bajo firewall corporativo, la lectura automática de RSS externo está restringida por seguridad. Puede abrir directamente el monitor oficial en vivo para esta categoría:
+                            Seleccione una de las fuentes oficiales a continuación para consultar los titulares en tiempo real de esta categoría:
                         </p>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '16px' }}>
                             <a
@@ -206,7 +206,7 @@ const NewsFeed = ({ isOpen, onClose, onCrisisDetected }) => {
                                 rel="noopener noreferrer"
                                 style={{ background: '#2563eb', color: 'white', textDecoration: 'none', padding: '11px 16px', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', display: 'block' }}
                             >
-                                📰 Abrir Monitor Google News: {topics[activeTab].label} ↗
+                                📰 Abrir Google News: {topics[activeTab].label} ↗
                             </a>
                             <a
                                 href="https://www.sgc.gov.co/sismos"
@@ -214,7 +214,7 @@ const NewsFeed = ({ isOpen, onClose, onCrisisDetected }) => {
                                 rel="noopener noreferrer"
                                 style={{ background: '#0f172a', color: 'white', textDecoration: 'none', padding: '10px 16px', borderRadius: '8px', fontWeight: 600, fontSize: '0.82rem', display: 'block' }}
                             >
-                                🌍 Boletín Oficial Servicio Geológico Colombiano (SGC) ↗
+                                🌍 Servicio Geológico Colombiano (SGC) ↗
                             </a>
                             <a
                                 href="https://portal.gestiondelriesgo.gov.co/"
@@ -222,14 +222,14 @@ const NewsFeed = ({ isOpen, onClose, onCrisisDetected }) => {
                                 rel="noopener noreferrer"
                                 style={{ background: '#334155', color: 'white', textDecoration: 'none', padding: '10px 16px', borderRadius: '8px', fontWeight: 600, fontSize: '0.82rem', display: 'block' }}
                             >
-                                🚨 Portal UNGRD - Gestión del Riesgo Colombia ↗
+                                🚨 Portal UNGRD - Gestión del Riesgo ↗
                             </a>
                         </div>
                         <button
                             onClick={() => fetchNews(topics[activeTab].query)}
                             style={{ background: 'white', color: '#475569', border: '1px solid #cbd5e1', padding: '8px 20px', borderRadius: '8px', cursor: 'pointer', fontWeight: 600, fontSize: '0.8rem' }}
                         >
-                            🔄 Reintentar conexión RSS
+                            🔄 Actualizar titulares
                         </button>
                     </div>
                 ) : (
