@@ -23,16 +23,39 @@ const customPinIcon = L.divIcon({
 });
 
 // Convierte cualquier capa de Leaflet (Polygon, Rectangle, Circle) a un Polygon GeoJSON válido para Turf
+// (Ignora L.Polyline que no sea Polygon para que las líneas medidoras de ruta no se traten como polígonos cerrados)
 const layerToGeoJson = (layer) => {
     if (layer instanceof L.Circle) {
         const center = layer.getLatLng();
         const radiusKm = layer.getRadius() / 1000;
         return turf.circle([center.lng, center.lat], radiusKm, { units: 'kilometers', steps: 64 });
     }
-    if (typeof layer.toGeoJSON === 'function') {
+    if (layer instanceof L.Polygon) {
         return layer.toGeoJSON();
     }
     return null;
+};
+
+// Calcula y actualiza el tooltip permanente de distancia en una línea medidora (L.Polyline)
+const updatePolylineDistanceTooltip = (layer) => {
+    if (!(layer instanceof L.Polyline) || (layer instanceof L.Polygon)) return;
+    const latlngs = layer.getLatLngs();
+    if (!Array.isArray(latlngs) || latlngs.length < 2) return;
+
+    const coords = latlngs.map(ll => [ll.lng, ll.lat]);
+    const line = turf.lineString(coords);
+    const lenKm = turf.length(line, { units: 'kilometers' });
+    const distText = lenKm < 1 ? `${Math.round(lenKm * 1000)} m` : `${lenKm.toFixed(2)} km`;
+
+    if (layer.getTooltip()) {
+        layer.setTooltipContent(`📏 Distancia: ${distText}`);
+    } else {
+        layer.bindTooltip(`📏 Distancia: ${distText}`, {
+            permanent: true,
+            direction: 'center',
+            className: 'distance-line-tooltip'
+        }).openTooltip();
+    }
 };
 
 const MapDrawControl = ({ onZonesChange }) => {
@@ -100,7 +123,16 @@ const MapDrawControl = ({ onZonesChange }) => {
                     icon: customPinIcon,
                 },
                 circlemarker: false,
-                polyline: false,
+                polyline: {
+                    shapeOptions: {
+                        color: '#1d4ed8',
+                        weight: 3,
+                        dashArray: '8, 8',
+                        opacity: 0.9
+                    },
+                    metric: true,
+                    feet: false
+                },
                 rectangle: true,
                 circle: true,
                 polygon: {
@@ -298,17 +330,26 @@ const MapDrawControl = ({ onZonesChange }) => {
                 return;
             }
 
-            // Zonas normales (polígono, círculo, rectángulo)
+            // Zonas normales (polígono, círculo, rectángulo) o Línea medidora de distancia (Polyline)
+            if ((layer instanceof L.Polyline) && !(layer instanceof L.Polygon)) {
+                updatePolylineDistanceTooltip(layer);
+            }
             featureGroupRef.current.addLayer(layer);
             syncActiveZones();
         });
 
+        const refreshAllPolylines = () => {
+            featureGroupRef.current.getLayers().forEach(l => updatePolylineDistanceTooltip(l));
+        };
+
         map.on(L.Draw.Event.EDITED, () => {
+            refreshAllPolylines();
             syncActiveZones();
         });
 
-        // Actualizar sedes afectadas en tiempo real mientras se arrastran los vértices, el radio o el centro en modo "Edit layers"
+        // Actualizar sedes afectadas y etiquetas de distancia en tiempo real mientras se arrastran los vértices
         map.on(L.Draw.Event.EDITVERTEX, () => {
+            refreshAllPolylines();
             syncActiveZones();
         });
         map.on(L.Draw.Event.EDITRESIZE, () => {
