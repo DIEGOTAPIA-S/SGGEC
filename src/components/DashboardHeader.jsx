@@ -21,13 +21,6 @@ const DashboardHeader = ({ user, logout }) => {
                     <span className="font-bold text-sm block">Bienvenido, {user?.name}</span>
                 </div>
                 <div className="flex gap-2">
-                    {user?.role === 'admin' && (
-                        <a href="/admin" className="no-underline">
-                            <button className="bg-blue-800 hover:bg-blue-700 border border-blue-900/30 text-white px-3 py-1.5 rounded-lg cursor-pointer text-xs font-semibold flex items-center gap-2 transition-all shadow-sm">
-                                🛠️ <span className="btn-text">Admin</span>
-                            </button>
-                        </a>
-                    )}
                     <button 
                         onClick={logout} 
                         className="bg-red-600 hover:bg-red-500 border border-red-700/30 text-white px-3 py-1.5 rounded-lg cursor-pointer text-xs font-semibold flex items-center gap-2 transition-all shadow-sm"

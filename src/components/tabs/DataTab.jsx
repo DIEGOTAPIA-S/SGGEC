@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { deleteEventos } from '../../services/eventoService';
-import { read, utils } from 'xlsx';
+import { read, utils, writeFile } from 'xlsx';
 
 /**
  * DataTab — Gestión de datos local (100% en memoria) para versión portable.
@@ -28,6 +28,54 @@ const DataTab = ({
 
     const handleUploadClick = () => {
         if (fileInputRef.current) fileInputRef.current.click();
+    };
+
+    // Genera y descarga localmente una plantilla Excel (.xlsx) con las columnas exactas requeridas
+    const handleDownloadTemplate = () => {
+        const sampleRows = [
+            {
+                Identificacion: '10000001',
+                Nombres: 'Nombre Ejemplo 1',
+                Apellidos: 'Apellido Ejemplo 1',
+                Cargo: 'Analista',
+                Area: 'Operaciones',
+                Gerencia: 'Gerencia Nacional',
+                Modalidad: 'Presencial',
+                Compañia: 'Colmédica',
+                Sede_Asignada: 'Colmédica Calle 93',
+                Direccion: 'Cl. 93 #19-25, Bogotá',
+                Telefono: '3000000001',
+                Email: 'ejemplo1@colmedica.com',
+                ContactoEmergencia_Nombre: 'Contacto 1',
+                ContactoEmergencia_Telefono: '3100000001',
+                Activo: 'Sí',
+                latitud: 4.678423,
+                longitud: -74.055263
+            },
+            {
+                Identificacion: '10000002',
+                Nombres: 'Nombre Ejemplo 2',
+                Apellidos: 'Apellido Ejemplo 2',
+                Cargo: 'Profesional Salud',
+                Area: 'Asistencial',
+                Gerencia: 'Gerencia Médica',
+                Modalidad: 'Remoto',
+                Compañia: 'Colmédica',
+                Sede_Asignada: 'Colmédica Villavicencio',
+                Direccion: 'Cl 32 # 40A-31, Villavicencio',
+                Telefono: '3000000002',
+                Email: 'ejemplo2@colmedica.com',
+                ContactoEmergencia_Nombre: 'Contacto 2',
+                ContactoEmergencia_Telefono: '3100000002',
+                Activo: 'Sí',
+                latitud: 4.142414,
+                longitud: -73.638605
+            }
+        ];
+        const ws = utils.json_to_sheet(sampleRows);
+        const wb = utils.book_new();
+        utils.book_append_sheet(wb, ws, 'Colaboradores');
+        writeFile(wb, 'Plantilla_Colaboradores_SGCN.xlsx');
     };
 
     const handleFileChange = (e) => {
@@ -222,6 +270,29 @@ const DataTab = ({
                     <span>Borrar Historial</span>
                 </button>
             </div>
+
+            <button
+                type="button"
+                onClick={handleDownloadTemplate}
+                style={{
+                    width: '100%',
+                    padding: '9px 12px',
+                    borderRadius: '8px',
+                    border: '1px dashed #94a3b8',
+                    background: '#f8fafc',
+                    color: '#334155',
+                    cursor: 'pointer',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px'
+                }}
+            >
+                <span>📋</span>
+                <span>Descargar Plantilla Excel (.xlsx)</span>
+            </button>
 
             {/* Zona de reporte y generación de informes (Siempre disponible) */}
             {(() => {

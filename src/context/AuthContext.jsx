@@ -21,10 +21,8 @@ export const AuthProvider = ({ children }) => {
             return { success: false, message: 'Por favor, ingrese un nombre.' };
         }
 
-        const role = (username.toLowerCase() === 'admin' || username.toLowerCase() === 'administrador') ? 'admin' : 'analista';
         const fullName = username.trim();
-
-        saveAuthData(fullName, role);
+        saveAuthData(fullName, 'analista');
         return { success: true };
     };
 
