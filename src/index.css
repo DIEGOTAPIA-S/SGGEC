@@ -76,8 +76,23 @@ input, select, textarea {
 }
 
 .leaflet-control-container .leaflet-control {
-  @apply border-none shadow-lg rounded-xl overflow-hidden;
+  @apply border-none shadow-lg rounded-xl;
   @apply glass-card;
+  overflow: visible !important;
+}
+
+.leaflet-draw-actions {
+  right: 32px !important;
+  left: auto !important;
+  white-space: nowrap;
+  z-index: 6000 !important;
+}
+
+.leaflet-draw-actions a {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  padding: 2px 10px !important;
 }
 
 .leaflet-bar a {

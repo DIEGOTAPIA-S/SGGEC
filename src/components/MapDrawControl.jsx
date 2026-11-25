@@ -42,6 +42,8 @@ const MapDrawControl = ({ onZonesChange }) => {
     const pinsLayerRef = useRef(new L.FeatureGroup());
     const connectBtnRef = useRef(null);
     const clearAllBtnRef = useRef(null);
+    const finishEditBtnRef = useRef(null);
+    const drawControlRef = useRef(null);
 
     const onZonesChangeRef = useRef(onZonesChange);
     useEffect(() => { onZonesChangeRef.current = onZonesChange; }, [onZonesChange]);
@@ -109,7 +111,49 @@ const MapDrawControl = ({ onZonesChange }) => {
             }
         });
 
+        drawControlRef.current = drawControl;
         map.addControl(drawControl);
+
+        // --- Botón flotante "✅ Terminar Edición y Guardar" ---
+        const finishEditBtn = L.DomUtil.create('button');
+        finishEditBtn.innerHTML = '✅ Terminar Edición y Guardar';
+        finishEditBtn.style.cssText = `
+            display: none; align-items: center; gap: 6px;
+            position: absolute; bottom: 75px; left: 50%;
+            transform: translateX(-50%);
+            z-index: 5000;
+            background: #10b981;
+            color: white;
+            border: 2px solid white;
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(16,185,129,0.5);
+            white-space: nowrap;
+        `;
+        finishEditBtnRef.current = finishEditBtn;
+        map.getContainer().appendChild(finishEditBtn);
+
+        L.DomEvent.on(finishEditBtn, 'click', (e) => {
+            L.DomEvent.stopPropagation(e);
+            try {
+                const editToolbar = drawControlRef.current?._toolbars?.edit;
+                if (editToolbar && editToolbar._activeMode && editToolbar._activeMode.handler) {
+                    if (typeof editToolbar._save === 'function') {
+                        editToolbar._save();
+                    } else {
+                        editToolbar._activeMode.handler.save();
+                        editToolbar._activeMode.handler.disable();
+                    }
+                }
+            } catch (err) {
+                console.warn('Error cerrando modo edición:', err);
+            }
+            finishEditBtn.style.display = 'none';
+            syncActiveZones();
+        });
 
         // --- Botón flotante "Conectar Pines" ---
         const btn = L.DomUtil.create('button');
@@ -198,13 +242,23 @@ const MapDrawControl = ({ onZonesChange }) => {
             syncActiveZones();
         });
 
-        // Si el usuario activa el bote de basura de Leaflet Draw, limpia todas las figuras de inmediato en 1 clic
+        map.on(L.Draw.Event.EDITSTART, () => {
+            if (finishEditBtnRef.current) finishEditBtnRef.current.style.display = 'flex';
+        });
+        map.on(L.Draw.Event.EDITSTOP, () => {
+            if (finishEditBtnRef.current) finishEditBtnRef.current.style.display = 'none';
+            syncActiveZones();
+        });
+
         map.on(L.Draw.Event.DELETESTART, () => {
-            // Al tocar una figura en modo borrar, Leaflet la remueve de featureGroupRef y dispara 'layerremove'
-            // También limpiamos cualquier pin morado suelto
+            if (finishEditBtnRef.current) finishEditBtnRef.current.style.display = 'flex';
             pinsLayerRef.current.clearLayers();
             customPinsRef.current = [];
             if (connectBtnRef.current) connectBtnRef.current.style.display = 'none';
+        });
+        map.on(L.Draw.Event.DELETESTOP, () => {
+            if (finishEditBtnRef.current) finishEditBtnRef.current.style.display = 'none';
+            syncActiveZones();
         });
 
         // Si el usuario empieza a dibujar una nueva figura mientras el modo borrar estaba abierto sin darle a "Save",
@@ -279,6 +333,7 @@ const MapDrawControl = ({ onZonesChange }) => {
             map.removeControl(drawControl);
             if (connectBtnRef.current) map.getContainer().removeChild(connectBtnRef.current);
             if (clearAllBtnRef.current) map.getContainer().removeChild(clearAllBtnRef.current);
+            if (finishEditBtnRef.current) map.getContainer().removeChild(finishEditBtnRef.current);
         };
     }, [map]);
 
