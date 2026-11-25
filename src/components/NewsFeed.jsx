@@ -216,14 +216,6 @@ const NewsFeed = ({ isOpen, onClose, onCrisisDetected }) => {
                             >
                                 🌍 Servicio Geológico Colombiano (SGC) ↗
                             </a>
-                            <a
-                                href="https://portal.gestiondelriesgo.gov.co/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{ background: '#334155', color: 'white', textDecoration: 'none', padding: '10px 16px', borderRadius: '8px', fontWeight: 600, fontSize: '0.82rem', display: 'block' }}
-                            >
-                                🚨 Portal UNGRD - Gestión del Riesgo ↗
-                            </a>
                         </div>
                         <button
                             onClick={() => fetchNews(topics[activeTab].query)}

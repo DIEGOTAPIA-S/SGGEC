@@ -10,7 +10,7 @@ const SidebarDock = ({ activeTab, onTabChange }) => {
         { id: 'layers', icon: '🗺️', label: 'Capas' },
         { id: 'metrics', icon: '📊', label: 'Métricas' },
         { id: 'data', icon: '💾', label: 'Datos' },
-        { id: 'settings', icon: '⚙️', label: 'Ajustes' },
+        { id: 'settings', icon: '📰', label: 'Noticias y Ayuda' },
     ];
 
     return (

@@ -67,7 +67,7 @@ const InstructionsModal = ({ onClose }) => {
                                 { icon: '🔥', color: '#ea580c', title: 'Mapa de Calor', desc: 'Visualiza la concentración geográfica de colaboradores como una capa de intensidad térmica sobre el mapa.' },
                                 { icon: '☁️', color: '#0ea5e9', title: 'Clima y Radar de Lluvias', desc: 'Consulta la temperatura, velocidad del viento y condición meteorológica actual en cada sede junto con el radar de precipitaciones.' },
                                 { icon: '🚗', color: '#f97316', title: 'Tráfico en Vivo (Waze)', desc: 'Visor integrado para consultar congestiones, cierres viales y movilidad en tiempo real.' },
-                                { icon: '📰', color: '#2563eb', title: 'Sala de Noticias (⚙️ Ajustes)', desc: 'Monitoreo de titulares clasificados en 6 categorías: Emergencias, Factores Sociales, Físico-Ambientales, Servicios Públicos, IT y Movilidad.' },
+                                { icon: '📰', color: '#2563eb', title: 'Sala de Noticias (📰 Noticias y Ayuda)', desc: 'Monitoreo de titulares clasificados en 6 categorías: Emergencias, Factores Sociales, Físico-Ambientales, Servicios Públicos, IT y Movilidad.' },
                                 { icon: '🔍', color: '#334155', title: 'Búsqueda Universal y de Calles', desc: 'Use la lupa lateral para localizar sedes o colaboradores, o el buscador superior derecho del mapa para volar a cualquier ciudad o dirección.' },
                             ].map(item => (
                                 <div key={item.title} style={{ background: 'white', borderRadius: '10px', padding: '15px', display: 'flex', gap: '14px', boxShadow: '0 1px 4px rgba(0,0,0,0.07)', borderLeft: `4px solid ${item.color}` }}>

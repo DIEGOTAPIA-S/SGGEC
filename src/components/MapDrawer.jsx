@@ -39,7 +39,7 @@ const MapDrawer = ({
         layers: 'Capas & Visualización',
         metrics: 'Métricas',
         data: 'Datos & Reportes',
-        settings: 'Ajustes',
+        settings: 'Noticias y Guía de Uso',
     };
 
     const renderTab = () => {

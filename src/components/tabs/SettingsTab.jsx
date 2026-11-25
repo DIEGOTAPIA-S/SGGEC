@@ -5,7 +5,7 @@ import React from 'react';
  */
 const SettingsTab = ({ showNews, onToggleNews, onShowHelp }) => (
     <div>
-        <h4 style={{ margin: '0 0 15px', color: '#64748b' }}>Configuración</h4>
+        <h4 style={{ margin: '0 0 15px', color: '#64748b' }}>Monitoreo de Medios y Manual</h4>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
             <button
                 onClick={onToggleNews}
