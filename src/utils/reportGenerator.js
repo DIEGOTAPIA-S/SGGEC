@@ -335,7 +335,18 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
         }
 
 
-        // --- Common Table Logic ---
+        // Helper for Haversine distance in km
+        const calcDistKm = (lat1, lon1, lat2, lon2) => {
+            const R = 6371;
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        };
+
+        // --- Common Table Logic (Includes Distance to Event Center) ---
         const renderTable = (title, sedes, headerColor) => {
             if (!Array.isArray(sedes) || sedes.length === 0) return;
 
@@ -351,10 +362,18 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
                 const nombreSede = s.nombre || 'Sin nombre';
                 const ciudadSede = s.ciudad || '-';
                 const direccionSede = s.direccion || '-';
+
+                let distStr = '-';
+                if (options.referenceCenter && s.latitud && s.longitud) {
+                    const dKm = calcDistKm(options.referenceCenter.lat, options.referenceCenter.lon, parseFloat(s.latitud), parseFloat(s.longitud));
+                    distStr = dKm < 1 ? `${Math.round(dKm * 1000)} m` : `${dKm.toFixed(2)} km`;
+                }
+
                 const row = [];
                 row.push({ content: nombreSede, styles: { fontStyle: 'bold', valign: 'middle' } });
                 row.push({ content: ciudadSede, styles: { valign: 'middle' } });
                 row.push({ content: direccionSede, styles: { valign: 'middle' } });
+                row.push({ content: distStr, styles: { fontStyle: 'bold', halign: 'center', valign: 'middle' } });
                 tableBody.push(row);
             });
 
@@ -362,15 +381,16 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
 
             autoTable(doc, {
                 startY: currentY,
-                head: [['Sede', 'Ciudad', 'Dirección']],
+                head: [['Sede', 'Ciudad', 'Dirección', 'Distancia al Evento']],
                 body: tableBody,
                 theme: 'grid',
                 headStyles: { fillColor: headerColor, textColor: 255, fontStyle: 'bold' },
                 styles: { fontSize: 8, cellPadding: 2, overflow: 'linebreak' },
                 columnStyles: {
-                    0: { fontStyle: 'bold', width: 60 },
-                    1: { width: 40 },
-                    2: { width: 80 }
+                    0: { fontStyle: 'bold', width: 52 },
+                    1: { width: 32 },
+                    2: { width: 66 },
+                    3: { width: 32, halign: 'center' }
                 },
                 didDrawPage: (data) => {
                     currentY = data.cursor.y + 10;

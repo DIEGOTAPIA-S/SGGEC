@@ -261,12 +261,14 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, buffer
                 ))}
             </MapContainer>
 
-            {/* Tarjeta Flotante Compacta de Distancias (No invade el polígono en el mapa) */}
+            {/* Tarjeta Flotante Compacta de Distancias (No invade el polígono en el mapa y se oculta en la foto del PDF) */}
             {distanceSummaryList.length > 0 && (
-                <div style={{
-                    position: 'absolute',
-                    bottom: '16px',
-                    left: '16px',
+                <div
+                    className="pdf-ignore-control"
+                    style={{
+                        position: 'absolute',
+                        bottom: '16px',
+                        left: '16px',
                     zIndex: 1000,
                     background: 'rgba(15, 23, 42, 0.92)',
                     backdropFilter: 'blur(8px)',

@@ -25,11 +25,13 @@ const useReporting = (user, affectedSedes, nearbySedes, affectedColaboradores, e
                         quality: 0.95,
                         pixelRatio: 1.5, // Balance entre calidad y tamaño de archivo
                         filter: (node) => {
-                            // Ignorar controles de Leaflet
+                            // Ignorar controles de Leaflet, barra de búsqueda y tarjetas/botones flotantes de UI
+                            if (node && node.id === 'search-control') return false;
                             if (node && node.classList) {
                                 return !(
                                     node.classList.contains('leaflet-control-container') ||
-                                    node.classList.contains('leaflet-draw-toolbar')
+                                    node.classList.contains('leaflet-draw-toolbar') ||
+                                    node.classList.contains('pdf-ignore-control')
                                 );
                             }
                             return true;
@@ -46,6 +48,17 @@ const useReporting = (user, affectedSedes, nearbySedes, affectedColaboradores, e
             // Gestión de Infraestructura y Sedes de Referencia para el reporte
             let reportInfrastructure = infrastructurePoints;
             let referenceCenter = null;
+
+            // Calcular centroide de referencia de las zonas activas (si existen) para medir distancias exactas en las tablas del PDF
+            if (zones && zones.length > 0) {
+                try {
+                    const centerPt = turf.centroid(zones[0]);
+                    const [lon, lat] = centerPt.geometry.coordinates;
+                    referenceCenter = { lat, lon };
+                } catch (err) {
+                    console.warn("Error calculando centroide de zona:", err);
+                }
+            }
 
             if (affectedSedes.length > 0 || nearbySedes.length > 0) {
                 const targetSedes = affectedSedes.length > 0 ? affectedSedes : nearbySedes;
@@ -64,18 +77,9 @@ const useReporting = (user, affectedSedes, nearbySedes, affectedColaboradores, e
                         console.warn("Error auto-fetching infra para reporte:", infraErr);
                     }
                 }
-            } else if (zones && zones.length > 0) {
-                // Si el usuario marcó una zona alejada de cualquier sede (ej. bloqueo vial o movilidad en otra zona de Cartagena),
-                // calculamos el centroide del polígono para buscar la red de apoyo y las sedes más cercanas en la ciudad.
-                try {
-                    const centerPt = turf.centroid(zones[0]);
-                    const [lon, lat] = centerPt.geometry.coordinates;
-                    referenceCenter = { lat, lon };
-                    if (!reportInfrastructure || reportInfrastructure.length === 0) {
-                        reportInfrastructure = await fetchInfrastructureNearPoint(lat, lon, 8);
-                    }
-                } catch (err) {
-                    console.warn("Error calculando centroide de zona:", err);
+            } else if (referenceCenter) {
+                if (!reportInfrastructure || reportInfrastructure.length === 0) {
+                    reportInfrastructure = await fetchInfrastructureNearPoint(referenceCenter.lat, referenceCenter.lon, 8);
                 }
             } else {
                 // Si ni siquiera dibujó polígono, usar la posición actual guardada del mapa

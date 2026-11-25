@@ -147,7 +147,7 @@ const MapDrawControl = ({ onZonesChange }) => {
         map.addControl(drawControl);
 
         // --- Botón flotante "✅ Terminar Edición y Guardar" ---
-        const finishEditBtn = L.DomUtil.create('button');
+        const finishEditBtn = L.DomUtil.create('button', 'pdf-ignore-control');
         finishEditBtn.innerHTML = '✅ Terminar Edición y Guardar';
         finishEditBtn.style.cssText = `
             display: none; align-items: center; gap: 6px;
@@ -188,7 +188,7 @@ const MapDrawControl = ({ onZonesChange }) => {
         });
 
         // --- Botón flotante "Conectar Pines" ---
-        const btn = L.DomUtil.create('button');
+        const btn = L.DomUtil.create('button', 'pdf-ignore-control');
         btn.innerHTML = '🔗 Conectar Pines y Crear Zona';
         btn.style.cssText = `
             display: none; align-items: center; gap: 6px;
@@ -240,7 +240,7 @@ const MapDrawControl = ({ onZonesChange }) => {
         });
 
         // --- Botón de 1 clic: "🗑️ Limpiar Zona(s) / Pines" ---
-        const clearBtn = L.DomUtil.create('button');
+        const clearBtn = L.DomUtil.create('button', 'pdf-ignore-control');
         clearBtn.innerHTML = '🗑️ Borrar Zona(s) del Mapa';
         clearBtn.style.cssText = `
             display: none; align-items: center; gap: 6px;
