@@ -185,6 +185,14 @@ const MapDashboard = () => {
 
     // Importar escenario (.json) enviado por otro analista
     const handleImportScenario = (file) => {
+        if (!/\.json$/i.test(file.name)) {
+            alert("❌ Archivo no permitido: Solo se aceptan archivos de escenario (.json).");
+            return;
+        }
+        if (file.size > 5 * 1024 * 1024) {
+            alert("❌ El archivo de escenario excede el límite de seguridad de 5 MB.");
+            return;
+        }
         const reader = new FileReader();
         reader.onload = (evt) => {
             try {

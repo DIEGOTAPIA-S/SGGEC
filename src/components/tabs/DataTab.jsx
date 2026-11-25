@@ -34,6 +34,19 @@ const DataTab = ({
         const file = e.target.files[0];
         if (!file) return;
 
+        // Validación de seguridad de archivo (extensión y tamaño máximo 15 MB para evitar DoS en memoria del navegador)
+        const validExt = /\.(xlsx|xls)$/i.test(file.name);
+        if (!validExt) {
+            alert("❌ Archivo no permitido: Solo se aceptan archivos Excel (.xlsx o .xls).");
+            if (fileInputRef.current) fileInputRef.current.value = '';
+            return;
+        }
+        if (file.size > 15 * 1024 * 1024) {
+            alert("❌ El archivo excede el límite de seguridad de 15 MB.");
+            if (fileInputRef.current) fileInputRef.current.value = '';
+            return;
+        }
+
         setUploading(true);
         const reader = new FileReader();
         
