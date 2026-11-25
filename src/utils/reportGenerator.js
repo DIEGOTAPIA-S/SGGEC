@@ -87,8 +87,6 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
         const totalSedesCount = Array.isArray(allSedes) ? allSedes.length : 0;
         const affCountStats = Array.isArray(affectedSedes) ? affectedSedes.length : 0;
         const nearCountStats = Array.isArray(nearbySedes) ? nearbySedes.length : 0;
-        const allAffected = [...(affectedSedes || []), ...(nearbySedes || [])];
-        const critImpact = allAffected.filter(s => s.procesos && s.procesos.some(p => p.criticidad === 'Crítica')).length;
 
         // Section title
         doc.setFontSize(13);
@@ -96,13 +94,13 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
         doc.text("Estadísticas de Impacto", 14, currentY);
         currentY += 8;
 
-        // Draw 4 metric cards
+        // Draw 4 metric cards (4th card: Colaboradores en Riesgo)
         const cardW = (pageWidth - 28) / 4 - 3;
         const metricCards = [
             { label: 'Sedes Totales', value: totalSedesCount, color: [30, 64, 175] },
             { label: 'Afectacion Directa', value: affCountStats, color: [220, 38, 38] },
             { label: 'Sedes Cercanas', value: nearCountStats, color: [217, 119, 6] },
-            { label: 'Impacto Critico', value: critImpact, color: [234, 88, 12] },
+            { label: 'Colaboradores Riesgo', value: colabCount, color: [124, 58, 237] },
         ];
 
         metricCards.forEach((card, i) => {
@@ -121,7 +119,7 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
         currentY += 30;
 
         // ====================================================================
-        // --- NATIVE BAR CHART: Impacto por Ciudad ---
+        // --- NATIVE BAR CHART: Impacto por Ciudad + Estado Sedes Bogotá ---
         // ====================================================================
         const cityMapStats = {};
         [...(allSedes || [])].forEach(s => {
@@ -134,26 +132,20 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
 
         const cityEntries = Object.entries(cityMapStats).filter(([, v]) => v.directa > 0 || v.cercana > 0);
 
-        // Criticality data
-        const critCounts = { 'Critica': 0, 'Alta': 0, 'Media': 0, 'Baja': 0 };
-        const critColors = { 'Critica': [220, 38, 38], 'Alta': [234, 88, 12], 'Media': [234, 179, 8], 'Baja': [59, 130, 246] };
-        allAffected.forEach(sede => {
-            let maxCrit = 'Baja';
-            if (sede.procesos && sede.procesos.length > 0) {
-                const crits = sede.procesos.map(p => p.criticidad);
-                if (crits.includes('Crítica')) maxCrit = 'Critica';
-                else if (crits.includes('Alta')) maxCrit = 'Alta';
-                else if (crits.includes('Media')) maxCrit = 'Media';
-            }
-            critCounts[maxCrit]++;
-        });
+        // Datos de Bogotá (Afectadas, Cercanas, No Afectadas) + Criticidad (Opción 1: Directa = Crítica, Cercana = Preventiva)
+        const bogotaList = [...(allSedes || [])].filter(s =>
+            s.ciudad && s.ciudad.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes('bogota')
+        );
+        const bogDirect = bogotaList.filter(s => s.status === 'affected').length;
+        const bogNearby = bogotaList.filter(s => s.status === 'nearby').length;
+        const bogNormal = Math.max(0, bogotaList.length - bogDirect - bogNearby);
 
         if (currentY + 80 > 280) { doc.addPage(); currentY = 20; }
 
         // --- Chart Section Title ---
         doc.setFontSize(11);
         doc.setTextColor(15, 23, 42);
-        doc.text("Gráficas de Impacto por Ciudad", 14, currentY);
+        doc.text("Impacto por Ciudad", 14, currentY);
         currentY += 6;
 
         // --- Bar Chart Layout ---
@@ -235,44 +227,77 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
             doc.text(item.label, lx + 5.5, legendY + 2.5);
         });
 
-        // --- Criticality Panel to the right of bar chart ---
+        // --- Estado Sedes Bogotá + Criticidad Panel to the right of bar chart ---
         const critX = chartLeft + chartWidth + 8;
         const critPanelW = pageWidth - critX - 14;
 
-        doc.setFontSize(9);
+        doc.setFontSize(8.5);
         doc.setTextColor(15, 23, 42);
-        doc.text("Criticidad", critX, chartTop + 4);
+        doc.text(`Estado Sedes Bogota (${bogotaList.length})`, critX, chartTop + 3);
 
-        const critEntries = Object.entries(critCounts).filter(([, v]) => v > 0);
-        const totalAff = critEntries.reduce((sum, [, v]) => sum + v, 0) || 1;
-        let critBarY = chartTop + 9;
+        const bogEntries = [
+            { label: 'Afectadas', val: bogDirect, col: [239, 68, 68] },
+            { label: 'Cercanas', val: bogNearby, col: [245, 158, 11] },
+            { label: 'No Afectadas', val: bogNormal, col: [16, 185, 129] },
+        ];
+        const totalBog = bogotaList.length || 1;
+        let critBarY = chartTop + 6.5;
         const critBarMaxW = critPanelW - 14;
 
-        critEntries.forEach(([label, val]) => {
-            const pct = val / totalAff;
+        bogEntries.forEach(({ label, val, col }) => {
+            const pct = val / totalBog;
             const barFill = pct * critBarMaxW;
-            const col = critColors[label] || [100, 116, 139];
 
-            // Label + count
-            doc.setFontSize(7);
+            doc.setFontSize(6.5);
             doc.setTextColor(51, 65, 85);
-            doc.text(`${label} (${val})`, critX, critBarY + 2.5);
-            critBarY += 4.5;
+            doc.text(`${label} (${val})`, critX, critBarY + 2);
+            critBarY += 3.5;
 
-            // Background bar
             doc.setFillColor(240, 240, 240);
-            doc.rect(critX, critBarY, critBarMaxW, 4, 'F');
+            doc.rect(critX, critBarY, critBarMaxW, 3.2, 'F');
 
-            // Filled bar
             doc.setFillColor(col[0], col[1], col[2]);
-            doc.rect(critX, critBarY, barFill, 4, 'F');
+            doc.rect(critX, critBarY, barFill, 3.2, 'F');
 
-            // Percentage label
-            doc.setFontSize(6);
+            doc.setFontSize(5.5);
             doc.setTextColor(100, 116, 139);
-            doc.text(`${Math.round(pct * 100)}%`, critX + critBarMaxW + 1, critBarY + 3);
+            doc.text(`${Math.round(pct * 100)}%`, critX + critBarMaxW + 1, critBarY + 2.6);
 
-            critBarY += 8;
+            critBarY += 6;
+        });
+
+        // Sub-panel: Criticidad de Sedes Impactadas (Opción 1)
+        critBarY += 2;
+        doc.setFontSize(8.5);
+        doc.setTextColor(15, 23, 42);
+        doc.text("Criticidad Impacto", critX, critBarY);
+        critBarY += 3.5;
+
+        const totalImpacted = (affCountStats + nearCountStats) || 1;
+        const sevEntries = [
+            { label: 'Critica (Directa)', val: affCountStats, col: [220, 38, 38] },
+            { label: 'Preventiva (Cercana)', val: nearCountStats, col: [234, 88, 12] },
+        ];
+        sevEntries.forEach(({ label, val, col }) => {
+            const pct = (affCountStats + nearCountStats) > 0 ? (val / totalImpacted) : 0;
+            const barFill = pct * critBarMaxW;
+
+            doc.setFontSize(6.5);
+            doc.setTextColor(51, 65, 85);
+            doc.text(`${label} (${val})`, critX, critBarY + 2);
+            critBarY += 3.5;
+
+            doc.setFillColor(240, 240, 240);
+            doc.rect(critX, critBarY, critBarMaxW, 3.2, 'F');
+
+            doc.setFillColor(col[0], col[1], col[2]);
+            doc.rect(critX, critBarY, barFill, 3.2, 'F');
+
+            doc.setFontSize(5.5);
+            doc.setTextColor(100, 116, 139);
+            doc.text(`${Math.round(pct * 100)}%`, critX + critBarMaxW + 1, critBarY + 2.6);
+
+            critBarY += 6;
         });
 
         currentY = legendY + 12;

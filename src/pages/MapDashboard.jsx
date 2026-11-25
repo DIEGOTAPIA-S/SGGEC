@@ -355,7 +355,7 @@ const MapDashboard = () => {
                         {showCharts && (
                             <div className="animate-in fade-in slide-in-from-bottom duration-1000">
                                 <GlassCard title="Análisis de Impacto Georeferenciado" icon="📊" className="mb-8" light={true}>
-                                    <div id="charts-capture"><DashboardCharts sedes={sedesWithStatus} /></div>
+                                    <div id="charts-capture"><DashboardCharts sedes={sedesWithStatus} affectedColaboradores={analysis.affectedColaboradores} /></div>
                                 </GlassCard>
                                 <GlassCard title="Sedes en Punto de Control" icon="🏢" light={true}>
                                     <AffectedListTable affectedSedes={analysis.affectedSedes} nearbySedes={analysis.nearbySedes} />
@@ -374,7 +374,7 @@ const MapDashboard = () => {
 
                     {/* Captura Fantasma para PDF */}
                     <div id="charts-capture-hidden" className="absolute -top-[10000px] left-0 w-[1200px] h-[800px] z-[-1000] bg-white text-slate-900">
-                        <DashboardCharts sedes={sedesWithStatus} pdfMode={true} />
+                        <DashboardCharts sedes={sedesWithStatus} affectedColaboradores={analysis.affectedColaboradores} pdfMode={true} />
                     </div>
                 </main>
             </div>
