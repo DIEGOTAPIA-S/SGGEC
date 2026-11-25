@@ -4,7 +4,6 @@ import { useAuth } from '../context/AuthContext';
 import MapComponent from '../components/MapComponent';
 import Sidebar from '../components/Sidebar';
 import DashboardCharts from '../components/DashboardCharts';
-import MetricsDashboard from '../components/MetricsDashboard';
 import EventHistoryModal from '../components/EventHistoryModal';
 import SedeListModal from '../components/SedeListModal';
 import AffectedListTable from '../components/AffectedListTable';
