@@ -354,19 +354,17 @@ const MapDashboard = () => {
 
                         {showCharts && (
                             <div className="animate-in fade-in slide-in-from-bottom duration-1000">
-                                <GlassCard title="Análisis de Impacto Georeferenciado" icon="📊" className="mb-8" light={true}>
-                                    <div id="charts-capture"><DashboardCharts sedes={sedesWithStatus} affectedColaboradores={analysis.affectedColaboradores} /></div>
+                                <GlassCard title="Análisis de Impacto y Métricas de Continuidad" icon="📊" className="mb-8" light={true}>
+                                    <div id="charts-capture">
+                                        <DashboardCharts
+                                            sedes={sedesWithStatus}
+                                            colaboradores={colaboradores}
+                                            affectedColaboradores={analysis.affectedColaboradores}
+                                        />
+                                    </div>
                                 </GlassCard>
                                 <GlassCard title="Sedes en Punto de Control" icon="🏢" light={true}>
                                     <AffectedListTable affectedSedes={analysis.affectedSedes} nearbySedes={analysis.nearbySedes} />
-                                </GlassCard>
-                            </div>
-                        )}
-
-                        {showMetricsPanel && (
-                            <div className="animate-in zoom-in duration-500">
-                                <GlassCard title="Métricas de Continuidad de Negocio" icon="📈" light={true}>
-                                    <MetricsDashboard />
                                 </GlassCard>
                             </div>
                         )}
