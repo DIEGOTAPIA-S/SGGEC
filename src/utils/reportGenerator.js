@@ -314,21 +314,21 @@ export const generatePDFReport = (allSedes, affectedSedes, nearbySedes, eventDet
             currentY += 5;
 
             const colabBody = affectedColaboradores.map(c => [
-                c.identificacion || `ID-${c.id}`,
-                `${c.nombres || 'Colaborador'} ${c.apellidos || c.id}`,
-                c.area || 'N/A',
+                `Colaborador ${c.id}`,
+                `Fila ${c.fila_excel || (c.id + 1)}`,
+                c.compania || 'Colmédica',
                 c.gerencia || 'N/A',
-                c.modalidad || 'Presencial',
+                c.direccion || 'N/A',
                 c.sede_nombre || 'N/A'
             ]);
 
             autoTable(doc, {
                 startY: currentY,
-                head: [['ID (Fila Excel)', 'Identificador', 'Área', 'Gerencia', 'Modalidad', 'Sede Asignada']],
+                head: [['Consecutivo', 'Fila Excel', 'Compañía', 'Jerarquía / Gerencia', 'Dirección', 'Sede Cercana']],
                 body: colabBody,
                 theme: 'striped',
                 headStyles: { fillColor: [59, 130, 246], textColor: 255 }, // Blue
-                styles: { fontSize: 8 },
+                styles: { fontSize: 7.5 },
                 didDrawPage: (data) => { currentY = data.cursor.y + 10; }
             });
             currentY = (doc.lastAutoTable ? doc.lastAutoTable.finalY : currentY) + 10;

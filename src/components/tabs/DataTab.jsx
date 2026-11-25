@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { deleteEventos } from '../../services/eventoService';
 import { read, utils, writeFile } from 'xlsx';
+import { geocodeColombianAddressLocal } from '../../utils/colombianGeocoder';
 
 /**
  * DataTab — Gestión de datos local (100% en memoria) para versión portable.
@@ -30,51 +31,46 @@ const DataTab = ({
         if (fileInputRef.current) fileInputRef.current.click();
     };
 
-    // Genera y descarga localmente una plantilla Excel (.xlsx) con las columnas exactas requeridas
+    // Genera y descarga localmente una plantilla Excel (.xlsx) con las columnas de SAP soportadas
     const handleDownloadTemplate = () => {
         const sampleRows = [
             {
-                Identificacion: '10000001',
-                Nombres: 'Nombre Ejemplo 1',
-                Apellidos: 'Apellido Ejemplo 1',
-                Cargo: 'Analista',
-                Area: 'Operaciones',
-                Gerencia: 'Gerencia Nacional',
-                Modalidad: 'Presencial',
-                Compañia: 'Colmédica',
-                Sede_Asignada: 'Colmédica Calle 93',
-                Direccion: 'Cl. 93 #19-25, Bogotá',
-                Telefono: '3000000001',
-                Email: 'ejemplo1@colmedica.com',
-                ContactoEmergencia_Nombre: 'Contacto 1',
-                ContactoEmergencia_Telefono: '3100000001',
-                Activo: 'Sí',
-                latitud: 4.678423,
-                longitud: -74.055263
+                Compañia: 'Colmédica Medicina Prepagada',
+                Cedula: '10000001',
+                'ID SAP': '800001',
+                Nombres: 'PEREZ GOMEZ JUAN CARLOS',
+                Cargo: 'Analista de Operaciones',
+                Jerarquia: 'Gerencia de Operaciones',
+                Direccion: 'Cl. 140 # 11-45 Apto 402 Torre B Barrio Cedritos',
+                Celular: '3000000001',
+                Correo: 'ejemplo1@colmedica.com'
             },
             {
-                Identificacion: '10000002',
-                Nombres: 'Nombre Ejemplo 2',
-                Apellidos: 'Apellido Ejemplo 2',
-                Cargo: 'Profesional Salud',
-                Area: 'Asistencial',
-                Gerencia: 'Gerencia Médica',
-                Modalidad: 'Remoto',
-                Compañia: 'Colmédica',
-                Sede_Asignada: 'Colmédica Villavicencio',
-                Direccion: 'Cl 32 # 40A-31, Villavicencio',
-                Telefono: '3000000002',
-                Email: 'ejemplo2@colmedica.com',
-                ContactoEmergencia_Nombre: 'Contacto 2',
-                ContactoEmergencia_Telefono: '3100000002',
-                Activo: 'Sí',
-                latitud: 4.142414,
-                longitud: -73.638605
+                Compañia: 'Colmédica Medicina Prepagada',
+                Cedula: '10000002',
+                'ID SAP': '800002',
+                Nombres: 'RODRIGUEZ LOPEZ MARIA FERNANDA',
+                Cargo: 'Profesional de Salud',
+                Jerarquia: 'Gerencia Médica',
+                Direccion: 'Cl 32 # 40A-31 Casa 5 Barrio Barzal Alto, Villavicencio',
+                Celular: '3000000002',
+                Correo: 'ejemplo2@colmedica.com'
+            },
+            {
+                Compañia: 'Colmédica Medicina Prepagada',
+                Cedula: '10000003',
+                'ID SAP': '800003',
+                Nombres: 'MARTINEZ DIAZ ANDRES FELIPE',
+                Cargo: 'Ejecutivo Servicio al Cliente',
+                Jerarquia: 'Gerencia Regional Antioquia',
+                Direccion: 'Cra 43B # 14-44 Oficina 301 Barrio El Poblado, Medellín',
+                Celular: '3000000003',
+                Correo: 'ejemplo3@colmedica.com'
             }
         ];
         const ws = utils.json_to_sheet(sampleRows);
         const wb = utils.book_new();
-        utils.book_append_sheet(wb, ws, 'Colaboradores');
+        utils.book_append_sheet(wb, ws, 'Colaboradores_SAP');
         writeFile(wb, 'Plantilla_Colaboradores_SGCN.xlsx');
     };
 
@@ -106,61 +102,99 @@ const DataTab = ({
                 const worksheet = workbook.Sheets[sheetName];
                 const jsonData = utils.sheet_to_json(worksheet);
 
-                // Chequeo de columnas requeridas
-                if (jsonData.length > 0) {
-                    const firstRow = jsonData[0];
-                    const requiredCols = ['Identificacion', 'Nombres', 'Apellidos'];
-                    const missing = requiredCols.filter(col => !(col in firstRow));
-                    
-                    if (missing.length > 0) {
-                        alert(`❌ Error: El archivo Excel debe contener las columnas: ${missing.join(', ')}`);
-                        setUploading(false);
-                        return;
-                    }
+                if (jsonData.length === 0) {
+                    alert("❌ El archivo Excel está vacío.");
+                    setUploading(false);
+                    return;
                 }
 
-                // Normalización de datos en memoria local (comportamiento idéntico al Backend)
+                // Buscador flexible de columnas (ignora mayúsculas, tildes y espacios)
+                const getField = (row, candidates) => {
+                    const keys = Object.keys(row);
+                    for (const cand of candidates) {
+                        const normCand = cand.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+                        const foundKey = keys.find(k => {
+                            const normK = k.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+                            return normK === normCand || normK.includes(normCand);
+                        });
+                        if (foundKey !== undefined && row[foundKey] !== undefined && row[foundKey] !== null && String(row[foundKey]).trim() !== '') {
+                            return row[foundKey];
+                        }
+                    }
+                    return '';
+                };
+
+                // Normalización en memoria local con Anonimización PII y Geocodificación Local de Direcciones Colombianas
+                let geocodedByAddressCount = 0;
                 const parsedColaboradores = jsonData.map((row, idx) => {
-                    const id = row['Identificación'] || row['Identificacion'] || row['ID'];
-                    
-                    if (!id) return null;
+                    // Verificar que la fila no esté completamente vacía
+                    const hasAnyValue = Object.values(row).some(v => v !== null && v !== undefined && String(v).trim() !== '');
+                    if (!hasAnyValue) return null;
 
-                    // idx es el índice de la fila en el Excel (0, 1, 2...). Sumamos 1 para que empiece en 1.
-                    const numeroFila = idx + 1;
+                    // Consecutivo 1, 2, 3... y Fila real en Excel (idx + 2 porque la fila 1 es el encabezado)
+                    const consecutivo = idx + 1;
+                    const filaExcel = idx + 2;
 
+                    const rawDireccion = String(getField(row, ['Direccion', 'Dirección', 'Domicilio', 'Residencia'])).trim();
+                    const rawGerencia = String(getField(row, ['Jerarquia', 'Jerarquía', 'Gerencia', 'Dependencia', 'Vicepresidencia'])).trim();
+                    const rawArea = String(getField(row, ['Area', 'Área', 'Cargo', 'Posicion', 'Posición'])).trim();
+                    const rawCompania = String(getField(row, ['Compañia', 'Compañía', 'Compania', 'Empresa', 'Sociedad'])).trim();
+                    const rawModalidad = String(getField(row, ['Modalidad', 'Tipo Trabajo', 'Trabajo'])).trim() || 'Presencial';
+                    const rawSede = String(getField(row, ['Sede_Asignada', 'Sede', 'Centro'])).trim();
+                    const rawCiudad = String(getField(row, ['Ciudad', 'Municipio'])).trim();
+
+                    // Coordenadas explícitas (si el Excel ya las trae)
+                    let lat = parseFloat(getField(row, ['latitud', 'lat', 'latitude']));
+                    let lon = parseFloat(getField(row, ['longitud', 'lon', 'lng', 'longitude']));
+                    let ciudadDetectada = rawCiudad;
+                    let direccionLimpia = rawDireccion;
+
+                    // Si el Excel de SAP NO trae latitud/longitud pero sí trae Dirección, la limpiamos y geocodificamos localmente
+                    if ((isNaN(lat) || isNaN(lon) || !lat || !lon) && rawDireccion) {
+                        const geo = geocodeColombianAddressLocal(rawDireccion, `${rawCiudad} ${rawSede} ${rawGerencia}`, consecutivo);
+                        lat = geo.latitud;
+                        lon = geo.longitud;
+                        if (!ciudadDetectada) ciudadDetectada = geo.ciudad;
+                        direccionLimpia = geo.direccionLimpia;
+                        geocodedByAddressCount++;
+                    }
+
+                    // ANONIMIZACIÓN ESTRICTA:
+                    // Se descartan Nombres, Apellidos, Cédula, ID SAP, Celular y Correo.
+                    // Se conserva el Consecutivo (Colaborador # / Fila Excel), Compañía, Jerarquía (Gerencia) y Dirección para cruce manual con el Excel local del analista.
                     const col = {
-                        id: numeroFila,
-                        identificacion: `ID-${numeroFila}`,
+                        id: consecutivo,
+                        fila_excel: filaExcel,
+                        identificacion: `Colaborador ${consecutivo} (Fila ${filaExcel})`,
                         nombres: `Colaborador`,
-                        apellidos: `${numeroFila}`,
+                        apellidos: `${consecutivo}`,
                         cargo: 'Reservado (PII)',
-                        area: row['Area'] ? String(row['Area']).trim() : '',
-                        gerencia: row['Gerencia'] ? String(row['Gerencia']).trim() : '',
-                        modalidad: row['Modalidad'] ? String(row['Modalidad']).trim() : 'Presencial',
-                        direccion: 'Reservado (PII)',
+                        area: rawArea || rawGerencia || 'General',
+                        gerencia: rawGerencia || 'Sin gerencia',
+                        modalidad: rawModalidad,
+                        direccion: rawDireccion || direccionLimpia || 'Sin dirección',
+                        direccion_limpia: direccionLimpia || rawDireccion || '',
                         telefono: 'Reservado (PII)',
                         email: 'Reservado (PII)',
-                        compania: row['Compañia'] || row['Compania'] ? String(row['Compañia'] || row['Compania']).trim() : '',
+                        compania: rawCompania || 'Colmédica',
                         contacto_emergencia_nombre: 'Reservado (PII)',
                         contacto_emergencia_telefono: 'Reservado (PII)',
-                        activo: row['Activo'] !== undefined ? !['no', 'false', '0', 'n'].includes(String(row['Activo']).toLowerCase().trim()) : true,
-                        latitud: parseFloat(row['latitud']) || null,
-                        longitud: parseFloat(row['longitud']) || null,
+                        activo: true,
+                        ciudad: ciudadDetectada || 'Bogotá',
+                        latitud: !isNaN(lat) ? lat : null,
+                        longitud: !isNaN(lon) ? lon : null,
                     };
 
-                    // Enlace con Sede pública local
-                    if (row['Sede_Asignada'] && sedes.length > 0) {
-                        const sedeName = String(row['Sede_Asignada']).toLowerCase().trim();
-                        // Intento 1: Match parcial (el nombre de la sede contiene el texto del Excel o viceversa)
+                    // Enlace con la Sede de Colmédica más cercana a la dirección del colaborador
+                    if (rawSede && sedes.length > 0) {
+                        const sedeName = rawSede.toLowerCase();
                         let matchedSede = sedes.find(s => {
                             const sn = s.nombre.toLowerCase();
                             return sn.includes(sedeName) || sedeName.includes(sn);
                         });
-                        // Intento 2: Match por ciudad (el texto del Excel contiene el nombre de la ciudad)
                         if (!matchedSede) {
                             matchedSede = sedes.find(s => sedeName.includes(s.ciudad.toLowerCase()));
                         }
-                        // Intento 3: Sede geográficamente más cercana
                         if (!matchedSede && col.latitud && col.longitud) {
                             let minDist = Infinity;
                             sedes.forEach(s => {
@@ -174,7 +208,6 @@ const DataTab = ({
                             col.ciudad = matchedSede.ciudad;
                         }
                     } else if (sedes.length > 0 && col.latitud && col.longitud) {
-                        // Sin Sede_Asignada en el Excel: asignar la sede más cercana
                         let minDist = Infinity;
                         let closestSede = null;
                         sedes.forEach(s => {
@@ -184,7 +217,7 @@ const DataTab = ({
                         if (closestSede) {
                             col.sede_asignada = closestSede.id;
                             col.sede_nombre = closestSede.nombre;
-                            col.ciudad = closestSede.ciudad;
+                            if (!rawCiudad) col.ciudad = closestSede.ciudad;
                         }
                     }
 
@@ -195,7 +228,7 @@ const DataTab = ({
                     onColaboradoresLoaded(parsedColaboradores);
                 }
 
-                alert(`✅ Personal Cargado Exitosamente\n\nRegistros leídos: ${parsedColaboradores.length}\n\n*Nota: Estos datos residen solo en la memoria del navegador. No se guardaron en la red.`);
+                alert(`✅ Personal Cargado y Georreferenciado Exitosamente\n\n• Total registros procesados: ${parsedColaboradores.length}\n• Direcciones estandarizadas y ubicadas localmente: ${geocodedByAddressCount}\n• Privacidad (PII): Nombres, Cédula, ID SAP, Celular y Correo fueron descartados. Cada registro se identifica por su consecutivo (Colaborador 1, 2... y Fila de Excel) para cruce manual con su archivo local.`);
             } catch (error) {
                 alert("❌ Error procesando el archivo Excel localmente: " + error.message);
             } finally {

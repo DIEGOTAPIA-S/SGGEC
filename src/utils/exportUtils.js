@@ -4,23 +4,23 @@ export const downloadColaboradoresCSV = (colaboradores, filename = 'colaboradore
         return;
     }
 
-    // Columnas anonimizadas (Cumplimiento estricto PII - sin nombres, cédulas, teléfonos ni correos)
+    // Columnas anonimizadas para cruce manual con el Excel local del analista:
+    // Sin Nombres, sin Cédula, sin ID SAP, sin Celular ni Correo.
+    // Incluye Consecutivo, Fila exacta del Excel, Compañía, Jerarquía (Gerencia), Dirección y Sede Cercana.
     const headers = [
-        "Identificacion", "Identificador_Anonimo", "Area", "Gerencia",
-        "Modalidad", "Compañia", "Sede_Asignada", "Ciudad", "Activo"
+        "Consecutivo", "Fila_Excel", "Compañia", "Jerarquia_Gerencia",
+        "Direccion", "Ciudad_Detectada", "Sede_Mas_Cercana"
     ];
 
     // Mapa de columna → campo en el objeto del colaborador
     const fieldMap = {
-        "Identificacion": "identificacion",
-        "Identificador_Anonimo": (c) => `${c.nombres || 'Colaborador'} ${c.apellidos || c.id}`,
-        "Area": "area",
-        "Gerencia": "gerencia",
-        "Modalidad": "modalidad",
-        "Compañia": "compania",
-        "Sede_Asignada": (c) => c.sede_nombre || '',
-        "Ciudad": "ciudad",
-        "Activo": (c) => c.activo !== undefined ? (c.activo ? 'Sí' : 'No') : 'Sí',
+        "Consecutivo": (c) => `Colaborador ${c.id}`,
+        "Fila_Excel": (c) => c.fila_excel || (c.id + 1),
+        "Compañia": (c) => c.compania || 'Colmédica',
+        "Jerarquia_Gerencia": (c) => c.gerencia || '',
+        "Direccion": (c) => c.direccion || '',
+        "Ciudad_Detectada": (c) => c.ciudad || '',
+        "Sede_Mas_Cercana": (c) => c.sede_nombre || '',
     };
 
     const rows = colaboradores.map(c => {

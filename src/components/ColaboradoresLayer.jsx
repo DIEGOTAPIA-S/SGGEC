@@ -60,20 +60,19 @@ const ColaboradoresLayer = ({ visible, colaboradores }) => {
                     icon={colaboradorIcon}
                 >
                     <Popup>
-                        <div style={{ minWidth: '200px' }}>
-                            <h3 style={{ margin: '0 0 5px 0', fontSize: '1rem', fontWeight: 'bold', color: '#1e293b' }}>
-                                {colab.nombres} {colab.apellidos}
+                        <div style={{ minWidth: '210px' }}>
+                            <h3 style={{ margin: '0 0 4px 0', fontSize: '1rem', fontWeight: 'bold', color: '#1e293b' }}>
+                                Colaborador {colab.id} <span style={{ fontSize: '0.78rem', color: '#2563eb', fontWeight: 600 }}>(Fila Excel #{colab.fila_excel || (colab.id + 1)})</span>
                             </h3>
-                            <p style={{ margin: 0, fontWeight: 500, color: '#64748b', fontSize: '0.9rem' }}>{colab.cargo}</p>
-                            <p style={{ margin: '5px 0 0 0', lineHeight: '1.4', fontSize: '0.85rem', color: '#94a3b8' }}>
-                                <strong>Área:</strong> {colab.area}<br />
-                                <strong>Gerencia:</strong> {colab.gerencia}<br />
-                                <strong>Compañía:</strong> {colab.compania || 'N/A'}<br />
-                                <strong>Modalidad:</strong> {colab.modalidad}
+                            <p style={{ margin: '4px 0 0 0', lineHeight: '1.45', fontSize: '0.83rem', color: '#475569' }}>
+                                <strong>Compañía:</strong> {colab.compania || 'Colmédica'}<br />
+                                <strong>Jerarquía / Gerencia:</strong> {colab.gerencia || 'N/A'}<br />
+                                <strong>Dirección:</strong> {colab.direccion || 'N/A'}<br />
+                                <strong>Ciudad detectada:</strong> {colab.ciudad || 'N/A'}
                             </p>
                             {colab.sede_asignada && (
-                                <div style={{ marginTop: '8px', padding: '4px 8px', background: '#dbeafe', color: '#1e40af', borderRadius: '4px', fontSize: '0.8rem' }}>
-                                    🏢 Sede: {colab.sede_nombre || 'Asignada'}
+                                <div style={{ marginTop: '8px', padding: '4px 8px', background: '#dbeafe', color: '#1e40af', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 600 }}>
+                                    🏢 Sede más cercana: {colab.sede_nombre || 'Asignada'}
                                 </div>
                             )}
                         </div>
