@@ -253,8 +253,25 @@ const MapDrawControl = ({ onZonesChange }) => {
             syncActiveZones();
         });
 
+        // Actualizar sedes afectadas en tiempo real mientras se arrastran los vértices, el radio o el centro en modo "Edit layers"
+        map.on(L.Draw.Event.EDITVERTEX, () => {
+            syncActiveZones();
+        });
+        map.on(L.Draw.Event.EDITRESIZE, () => {
+            syncActiveZones();
+        });
+        map.on(L.Draw.Event.EDITMOVE, () => {
+            syncActiveZones();
+        });
+        map.on(L.Draw.Event.EDITSTOP, () => {
+            syncActiveZones();
+        });
+
         map.on(L.Draw.Event.DELETED, () => {
             removePinsUI();
+            syncActiveZones();
+        });
+        map.on(L.Draw.Event.DELETESTOP, () => {
             syncActiveZones();
         });
 

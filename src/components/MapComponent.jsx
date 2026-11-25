@@ -149,7 +149,7 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, buffer
 
     return (
         <div className="card" style={{ height: '100%', width: '100%', padding: 0, overflow: 'hidden', borderRadius: '0' }}>
-            <MapContainer center={[savedLat, savedLng]} zoom={savedZoom} style={{ height: '100%', width: '100%' }} preferCanvas={true} zoomControl={false}>
+            <MapContainer center={[savedLat, savedLng]} zoom={savedZoom} style={{ height: '100%', width: '100%' }} zoomControl={false}>
                 <ZoomControl position="topright" />
                 <MapController focusLocation={focusLocation} />
                 <MapPositionSaver />  {/* Guarda posicion automaticamente */}
