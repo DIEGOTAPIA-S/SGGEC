@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet-draw/dist/leaflet.draw.css';
@@ -22,17 +22,44 @@ const customPinIcon = L.divIcon({
     iconAnchor: [15, 30],
 });
 
-const MapDrawControl = ({ onCreated, onDeleted }) => {
+// Convierte cualquier capa de Leaflet (Polygon, Rectangle, Circle) a un Polygon GeoJSON válido para Turf
+const layerToGeoJson = (layer) => {
+    if (layer instanceof L.Circle) {
+        const center = layer.getLatLng();
+        const radiusKm = layer.getRadius() / 1000;
+        return turf.circle([center.lng, center.lat], radiusKm, { units: 'kilometers', steps: 64 });
+    }
+    if (typeof layer.toGeoJSON === 'function') {
+        return layer.toGeoJSON();
+    }
+    return null;
+};
+
+const MapDrawControl = ({ onZonesChange }) => {
     const map = useMap();
     const featureGroupRef = useRef(new L.FeatureGroup());
     const customPinsRef = useRef([]);
     const pinsLayerRef = useRef(new L.FeatureGroup());
     const connectBtnRef = useRef(null);
-    // Refs estables para los callbacks — evitan que el useEffect se re-ejecute
-    const onCreatedRef = useRef(onCreated);
-    const onDeletedRef = useRef(onDeleted);
-    useEffect(() => { onCreatedRef.current = onCreated; }, [onCreated]);
-    useEffect(() => { onDeletedRef.current = onDeleted; }, [onDeleted]);
+    const clearAllBtnRef = useRef(null);
+
+    const onZonesChangeRef = useRef(onZonesChange);
+    useEffect(() => { onZonesChangeRef.current = onZonesChange; }, [onZonesChange]);
+
+    // Extrae todas las zonas que existen realmente en featureGroupRef y notifica a MapComponent
+    const syncActiveZones = () => {
+        const layers = featureGroupRef.current.getLayers();
+        const activeGeoJsons = layers.map(layerToGeoJson).filter(Boolean);
+
+        if (clearAllBtnRef.current) {
+            const hasShapesOrPins = layers.length > 0 || customPinsRef.current.length > 0;
+            clearAllBtnRef.current.style.display = hasShapesOrPins ? 'flex' : 'none';
+        }
+
+        if (onZonesChangeRef.current) {
+            onZonesChangeRef.current(activeGeoJsons);
+        }
+    };
 
     const removePinsUI = () => {
         pinsLayerRef.current.clearLayers();
@@ -40,14 +67,19 @@ const MapDrawControl = ({ onCreated, onDeleted }) => {
         if (connectBtnRef.current) {
             connectBtnRef.current.style.display = 'none';
         }
+        if (clearAllBtnRef.current) {
+            const hasShapes = featureGroupRef.current.getLayers().length > 0;
+            clearAllBtnRef.current.style.display = hasShapes ? 'flex' : 'none';
+        }
     };
 
     const updateConnectButton = () => {
-        if (!connectBtnRef.current) return;
-        if (customPinsRef.current.length >= 3) {
-            connectBtnRef.current.style.display = 'flex';
-        } else {
-            connectBtnRef.current.style.display = 'none';
+        if (connectBtnRef.current) {
+            connectBtnRef.current.style.display = customPinsRef.current.length >= 3 ? 'flex' : 'none';
+        }
+        if (clearAllBtnRef.current) {
+            const hasShapesOrPins = featureGroupRef.current.getLayers().length > 0 || customPinsRef.current.length > 0;
+            clearAllBtnRef.current.style.display = hasShapesOrPins ? 'flex' : 'none';
         }
     };
 
@@ -84,7 +116,7 @@ const MapDrawControl = ({ onCreated, onDeleted }) => {
         btn.innerHTML = '🔗 Conectar Pines y Crear Zona';
         btn.style.cssText = `
             display: none; align-items: center; gap: 6px;
-            position: absolute; bottom: 80px; left: 50%;
+            position: absolute; bottom: 75px; left: 50%;
             transform: translateX(-50%);
             z-index: 5000;
             background: #7c3aed;
@@ -101,12 +133,11 @@ const MapDrawControl = ({ onCreated, onDeleted }) => {
         connectBtnRef.current = btn;
         map.getContainer().appendChild(btn);
 
-        L.DomEvent.on(btn, 'click', () => {
+        L.DomEvent.on(btn, 'click', (e) => {
+            L.DomEvent.stopPropagation(e);
             const coords = customPinsRef.current;
             if (coords.length < 3) return;
 
-            // turf.convex() calcula el "casco convexo" — ordena automáticamente los puntos
-            // en sentido horario correcto, evitando que el polígono se cruce
             const pointsCollection = turf.featureCollection(
                 coords.map(c => turf.point([c[1], c[0]])) // [lon, lat]
             );
@@ -119,8 +150,7 @@ const MapDrawControl = ({ onCreated, onDeleted }) => {
 
             hull.properties = { source: 'custom-pins' };
 
-            // Dibujar el polígono en el mapa usando las coordenadas ya ordenadas por turf
-            const hullCoords = hull.geometry.coordinates[0].map(c => [c[1], c[0]]); // [lat, lon] para Leaflet
+            const hullCoords = hull.geometry.coordinates[0].map(c => [c[1], c[0]]);
             const polygonLayer = L.polygon(hullCoords, {
                 color: '#7c3aed',
                 fillColor: '#7c3aed',
@@ -129,40 +159,60 @@ const MapDrawControl = ({ onCreated, onDeleted }) => {
             });
             featureGroupRef.current.addLayer(polygonLayer);
 
-            // Limpiar pines sueltos
             removePinsUI();
-
-            // Disparar análisis
-            if (onCreatedRef.current) onCreatedRef.current(hull, polygonLayer);
+            syncActiveZones();
         });
 
-        // Botón para limpiar pines sueltos
+        // --- Botón de 1 clic: "🗑️ Limpiar Zona(s) / Pines" ---
         const clearBtn = L.DomUtil.create('button');
-        clearBtn.innerHTML = '❌ Limpiar Pines';
+        clearBtn.innerHTML = '🗑️ Borrar Zona(s) del Mapa';
         clearBtn.style.cssText = `
             display: none; align-items: center; gap: 6px;
-            position: absolute; bottom: 40px; left: 50%;
+            position: absolute; bottom: 30px; left: 50%;
             transform: translateX(-50%);
             z-index: 5000;
             background: #ef4444;
             color: white;
-            border: none;
-            padding: 7px 16px;
+            border: 2px solid white;
+            padding: 8px 18px;
             border-radius: 999px;
-            font-weight: 600;
-            font-size: 0.8rem;
+            font-weight: 700;
+            font-size: 0.82rem;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(239,68,68,0.4);
+            box-shadow: 0 4px 12px rgba(239,68,68,0.45);
             white-space: nowrap;
         `;
+        clearAllBtnRef.current = clearBtn;
         map.getContainer().appendChild(clearBtn);
 
-        L.DomEvent.on(clearBtn, 'click', () => {
+        L.DomEvent.on(clearBtn, 'click', (e) => {
+            L.DomEvent.stopPropagation(e);
+            featureGroupRef.current.clearLayers();
             removePinsUI();
-            clearBtn.style.display = 'none';
+            syncActiveZones();
         });
 
-        // Event listeners de Leaflet Draw
+        //Cuando una capa se quita del featureGroup (incluso antes de pulsar "Save" en el bote de basura de Leaflet Draw),
+        //actualizamos inmediatamente las zonas activas para que las sedes se desmarquen en tiempo real
+        featureGroupRef.current.on('layerremove', () => {
+            syncActiveZones();
+        });
+
+        // Si el usuario activa el bote de basura de Leaflet Draw, limpia todas las figuras de inmediato en 1 clic
+        map.on(L.Draw.Event.DELETESTART, () => {
+            // Al tocar una figura en modo borrar, Leaflet la remueve de featureGroupRef y dispara 'layerremove'
+            // También limpiamos cualquier pin morado suelto
+            pinsLayerRef.current.clearLayers();
+            customPinsRef.current = [];
+            if (connectBtnRef.current) connectBtnRef.current.style.display = 'none';
+        });
+
+        // Si el usuario empieza a dibujar una nueva figura mientras el modo borrar estaba abierto sin darle a "Save",
+        // evitamos que Leaflet restaure las figuras que el usuario ya había tocado para borrar
+        map.on(L.Draw.Event.DRAWSTART, () => {
+            syncActiveZones();
+        });
+
         map.on(L.Draw.Event.CREATED, (e) => {
             const layer = e.layer;
 
@@ -171,7 +221,6 @@ const MapDrawControl = ({ onCreated, onDeleted }) => {
                 const latlng = layer.getLatLng();
                 customPinsRef.current.push([latlng.lat, latlng.lng]);
 
-                // Agregar número al pin
                 const num = customPinsRef.current.length;
                 const numberedIcon = L.divIcon({
                     html: `<div style="
@@ -192,35 +241,31 @@ const MapDrawControl = ({ onCreated, onDeleted }) => {
                 pinsLayerRef.current.addLayer(numberedMarker);
 
                 updateConnectButton();
-                clearBtn.style.display = customPinsRef.current.length >= 1 ? 'flex' : 'none';
-                return; // No lo agrega al featureGroup principal ni llama onCreated
+                return;
             }
 
             // Zonas normales (polígono, círculo, rectángulo)
             featureGroupRef.current.addLayer(layer);
-            let geoJson = layer.toGeoJSON();
-            if (layer instanceof L.Circle) {
-                const center = layer.getLatLng();
-                const radius = layer.getRadius() / 1000;
-                geoJson = turf.circle([center.lng, center.lat], radius, { units: 'kilometers', steps: 64 });
-            }
-            if (onCreatedRef.current) onCreatedRef.current(geoJson, layer);
+            syncActiveZones();
+        });
+
+        map.on(L.Draw.Event.EDITED, () => {
+            syncActiveZones();
         });
 
         map.on(L.Draw.Event.DELETED, () => {
             removePinsUI();
-            if (onDeletedRef.current) onDeletedRef.current();
+            syncActiveZones();
         });
 
         return () => {
             map.removeControl(drawControl);
             if (connectBtnRef.current) map.getContainer().removeChild(connectBtnRef.current);
-            if (clearBtn) map.getContainer().removeChild(clearBtn);
+            if (clearAllBtnRef.current) map.getContainer().removeChild(clearAllBtnRef.current);
         };
-    }, [map]); // ← Solo depende de map; los callbacks van por ref
+    }, [map]);
 
     return null;
 };
 
 export default MapDrawControl;
-

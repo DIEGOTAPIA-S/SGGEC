@@ -50,20 +50,23 @@ const MapPositionSaver = () => {
 
 const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, bufferRadiusKm = 2, externalZoneTrigger = null }) => {
     const [analyzedSedes, setAnalyzedSedes] = useState([]);
-    const [zones, setZones] = useState([]);
+    const [drawnZones, setDrawnZones] = useState([]);
+    const [externalZones, setExternalZones] = useState([]);
     const [programmaticPolygons, setProgrammaticPolygons] = useState([]);
 
-    const handleZoneCreated = (geoJson, layer) => {
-        const newZones = [...zones, geoJson];
-        setZones(newZones);
-        analyzeImpact(newZones, sedes, bufferRadiusKm);
-    };
+    const allActiveZones = [...drawnZones, ...externalZones];
 
-    const handleZoneDeleted = () => {
-        setZones([]);
-        setProgrammaticPolygons([]);
-        setAnalyzedSedes(sedes.map(s => ({ ...s, status: 'normal' })));
-        onAnalysisUpdate && onAnalysisUpdate([], [], []);
+    // Recibe la lista exacta de zonas actualmente vivas en Leaflet Draw
+    const handleDrawnZonesChange = (activeDrawnGeoJsons) => {
+        setDrawnZones(activeDrawnGeoJsons);
+        // Si el usuario borró todas las figuras del mapa, también limpiamos cualquier polígono externo (ej. sismo o escenario importado)
+        if (activeDrawnGeoJsons.length === 0 && externalZones.length > 0) {
+            setExternalZones([]);
+            setProgrammaticPolygons([]);
+            analyzeImpact([], sedes, bufferRadiusKm);
+        } else {
+            analyzeImpact([...activeDrawnGeoJsons, ...externalZones], sedes, bufferRadiusKm);
+        }
     };
 
     const analyzeImpact = (currentZones, currentSedes, radiusKm = bufferRadiusKm) => {
@@ -111,7 +114,7 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, buffer
 
     useEffect(() => {
         if (sedes && sedes.length > 0) {
-            analyzeImpact(zones, sedes, bufferRadiusKm);
+            analyzeImpact(allActiveZones, sedes, bufferRadiusKm);
         }
     }, [sedes, bufferRadiusKm]);
 
@@ -119,20 +122,23 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, buffer
     useEffect(() => {
         if (!externalZoneTrigger) return;
         if (externalZoneTrigger.type === 'clear') {
-            handleZoneDeleted();
+            setDrawnZones([]);
+            setExternalZones([]);
+            setProgrammaticPolygons([]);
+            analyzeImpact([], sedes, bufferRadiusKm);
             return;
         }
         if (externalZoneTrigger.zones && Array.isArray(externalZoneTrigger.zones)) {
-            const newZones = externalZoneTrigger.replace ? externalZoneTrigger.zones : [...zones, ...externalZoneTrigger.zones];
-            setZones(newZones);
-            const polyCoordsList = newZones
+            const newExtZones = externalZoneTrigger.zones;
+            setExternalZones(newExtZones);
+            const polyCoordsList = newExtZones
                 .filter(z => z?.geometry?.type === 'Polygon')
                 .map(z => ({
                     coords: z.geometry.coordinates[0].map(c => [c[1], c[0]]),
                     color: z.properties?.color || '#dc2626'
                 }));
             setProgrammaticPolygons(polyCoordsList);
-            analyzeImpact(newZones, sedes, bufferRadiusKm);
+            analyzeImpact([...drawnZones, ...newExtZones], sedes, bufferRadiusKm);
         }
     }, [externalZoneTrigger]);
 
@@ -154,7 +160,7 @@ const MapComponent = ({ sedes, onAnalysisUpdate, children, focusLocation, buffer
                     crossOrigin="anonymous"
                 />
                 {children}
-                <MapDrawControl onCreated={handleZoneCreated} onDeleted={handleZoneDeleted} />
+                <MapDrawControl onZonesChange={handleDrawnZonesChange} />
 
                 {programmaticPolygons.map((poly, idx) => (
                     <Polygon
